@@ -3,6 +3,8 @@ package com.example.fhsnews.data
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
 
+// https://www.unixtimestamp.com/
+
 object DataSource {
     val newsList: List<Article> = listOf(
         Article(false,
