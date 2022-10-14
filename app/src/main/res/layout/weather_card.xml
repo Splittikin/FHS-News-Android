@@ -48,7 +48,7 @@
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Current Weather" />
+            tools:text="Current Weather at FHS" />
 
         <ImageView
             android:id="@+id/imageView"

@@ -90,8 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:text="TextView"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toEndOf="@+id/topperIcon"
             app:layout_constraintTop_toTopOf="@+id/topperIcon"
             tools:text="Topper" />
