@@ -14,33 +14,63 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/articleSubtitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/articlePreview"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/articleSubtitle"
+            tools:text="This is an awesome article where we talk about things and stuff and here is some more text so that you can see the preview is just the article's whole text but truncated so you can see a little bit of the article but not too much of the..." />
+
+        <TextView
+            android:id="@+id/articleSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/articleHeadline"
             tools:text="Subtitle" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/postedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/articleHeadline"
-            tools:text="4 days ago" />
+            tools:text="Posted 6 hours ago" />
+
+        <TextView
+            android:id="@+id/authorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postedTime"
+            tools:text="Jeff H. Dinglenuts" />
 
         <TextView
             android:id="@+id/articleHeadline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            app:layout_constraintEnd_toStartOf="@+id/postedTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/articleThumbnail"
             tools:text="Header" />
@@ -49,6 +79,7 @@
             android:id="@+id/articleThumbnail"
             android:layout_width="wrap_content"
             android:layout_height="194dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topperIcon"
@@ -59,8 +90,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/topperIcon"
             app:layout_constraintStart_toEndOf="@+id/topperIcon"
             app:layout_constraintTop_toTopOf="@+id/topperIcon"
             tools:text="Topper" />
