@@ -7,7 +7,7 @@ import com.example.fhsnews.model.Article
 
 object DataSource {
     val newsList: List<Article> = listOf(
-        Article(
+        /* Article(
             true,
             0,
             0,
@@ -17,8 +17,9 @@ object DataSource {
             "",
             "",
             "",
+            "",
             ""
-        ),
+        ), */
         Article(
             false,
             R.drawable.img_6887_106,
@@ -29,6 +30,7 @@ object DataSource {
             "",
             "I three stars your Mother",
             "Idote",
+            "He He He Haw",
             "He He He Haw"
         ),
         Article(
@@ -41,6 +43,7 @@ object DataSource {
             "",
             "I three stars your Mother (Again)",
             "Again!",
+            "He He He Haw (x2)",
             "He He He Haw (x2)"
         )
     )

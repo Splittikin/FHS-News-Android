@@ -6,15 +6,16 @@ import androidx.annotation.DrawableRes
 // (This is the data that goes into the adapter)
 
 data class Article(
-    val isWeather: Boolean, // If true, this card will be the weather card and all other arguments will be ignored
-    @DrawableRes val imageResourceId: Int, // Image for the article, will be scaled and cropped
-    val time: Int, // UNIX time of when the article was posted
+    val isWeather: Boolean, // If true, this card will be the weather card and all other arguments will be ignored TODO: Change to generic type (0 for regular article, 1 for weather, 2 for red/silver, etc.)
+    @DrawableRes val articleThumbnail: Int, // Image for the article, will be scaled and cropped
+    val postedTime: Int, // UNIX time of when the article was posted
     val timeUntil: Int = 0, // If applicable, UNIX time of when the associated activity will happen (If specified, the timestamp will show how long until that activity happens i.e. "In 4 days" instead of "6 hours ago")
-    val topper: String, // Activity the card is associated with, such as "Fishers Football" or "FHS Percussion"
+    val topperText: String, // Activity the card is associated with, such as "Fishers Football" or "FHS Percussion"
     @DrawableRes val topperIcon: Int, // Emblem for the topper activity
     val author: String, // Who wrote the article (Will be skipped if blank)
     val headline: String, // Headline for the article
     val subtitle: String, // Subtitle displayed below the headline
+    val articlePreview: String,
     val text: String, // Contents of the article TODO: Change to a different text type that can embed images, videos, urls
 )
 

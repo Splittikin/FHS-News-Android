@@ -1,6 +1,9 @@
 package com.example.fhsnews.adapter
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,11 +14,10 @@ import com.example.fhsnews.model.Article
 
 // Adapter to find the correct card type to use for an article and inflate it
 
-class NewsCardAdapter(
-    private val context: Context?
-) : RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder>() {
+class NewsCardAdapter : RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder>() {
 
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+
 
     class NewsCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         // TODO: Check if article is weather or red/silver card first and grab those elements instead accordingly
@@ -32,11 +34,26 @@ class NewsCardAdapter(
     override fun getItemCount(): Int = newsList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCardViewHolder {
-        TODO("Not yet implemented")
+
+        // TODO:                                                V R.layout.weather_card, R.layout.red_day_card, etc
+        val adapterLayout =
+            LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+        Log.d(TAG, "onCreateViewHolder: ran, $adapterLayout")
+        return NewsCardViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: NewsCardViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val thisArticle = newsList[position]
+        Log.d(TAG, "onBindViewHolder: ran, $thisArticle")
+
+        holder.topperIcon.setImageResource(thisArticle.topperIcon)
+        holder.topperText.text = thisArticle.topperText
+        holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
+        holder.articleHeadline.text = thisArticle.headline
+        holder.articleSubtitle.text = thisArticle.subtitle
+        holder.postedTime.text = thisArticle.postedTime.toString()
+        holder.authorName.text = thisArticle.author
+        holder.articlePreview.text = thisArticle.articlePreview
     }
 
 }
