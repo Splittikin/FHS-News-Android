@@ -1,7 +1,6 @@
 package com.example.fhsnews.adapter
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +34,10 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var weatherIcon: ImageView = view!!.findViewById(R.id.weatherIcon)
     }
 
+    inner class RedDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+        // No vars here...
+    }
+
     override fun getItemCount(): Int {
         return newsList.size
     }
@@ -45,36 +48,53 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         Log.d(TAG, "onCreateViewHolder: ran, $viewType")
-        if (viewType == 1) { // Weather
+        when (viewType) {
+            1 -> { // Weather
 
-            val adapterLayout =
-                LayoutInflater.from(parent.context).inflate(R.layout.weather_card, parent, false)
-            return WeatherCardViewHolder(adapterLayout)
+                val adapterLayout =
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.weather_card, parent, false)
+                return WeatherCardViewHolder(adapterLayout)
 
-        } else { // Article
+            }
+            2 -> { // Red Day Card
 
-            val adapterLayout =
-                LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
-            return NewsCardViewHolder(adapterLayout)
+                val adapterLayout =
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.red_day_card, parent, false)
+                return RedDayCardViewHolder(adapterLayout)
 
+            }
+            else -> { // Article
+
+                val adapterLayout =
+                    LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+                return NewsCardViewHolder(adapterLayout)
+
+            }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisArticle = newsList[position]
         Log.d(TAG, "onBindViewHolder: ran, $thisArticle")
-        if (thisArticle.cardType == 1) {
-            return
-        } else {
-            (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
-            holder.topperText.text = thisArticle.topperText
-            holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
-            holder.articleHeadline.text = thisArticle.headline
-            holder.articleSubtitle.text = thisArticle.subtitle
-            holder.postedTime.text = thisArticle.postedTime.toString()
-            holder.authorName.text = thisArticle.author
-            holder.articlePreview.text = thisArticle.articlePreview
+        when (thisArticle.cardType) {
+            1 -> {
+                return
+            }
+            2 -> {
+                return
+            }
+            else -> {
+                (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
+                holder.topperText.text = thisArticle.topperText
+                holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
+                holder.articleHeadline.text = thisArticle.headline
+                holder.articleSubtitle.text = thisArticle.subtitle
+                holder.postedTime.text = thisArticle.postedTime.toString()
+                holder.authorName.text = thisArticle.author
+                holder.articlePreview.text = thisArticle.articlePreview
+            }
         }
     }
-
 }

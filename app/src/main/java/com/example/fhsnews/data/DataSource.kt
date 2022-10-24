@@ -26,6 +26,19 @@ object DataSource {
             ""
         ),
         Article(
+            2,
+            0,
+            Date(0),
+            0,
+            "Red/Silver Indicator",
+            0,
+            "",
+            "",
+            "",
+            "",
+            ""
+        ),
+        Article(
             0,
             R.drawable.img_6887_106,
             Date(1665757481),
