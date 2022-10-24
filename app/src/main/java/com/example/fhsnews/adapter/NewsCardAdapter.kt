@@ -14,13 +14,11 @@ import com.example.fhsnews.model.Article
 
 // Adapter to find the correct card type to use for an article and inflate it
 
-class NewsCardAdapter : RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder>() {
+class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
 
-
-    class NewsCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
-        // TODO: Check if article is weather or red/silver card first and grab those elements instead accordingly
+    inner class NewsCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)
         var topperText: TextView = view!!.findViewById(R.id.topperText)
         var articleThumbnail: ImageView = view!!.findViewById(R.id.articleThumbnail)
@@ -31,32 +29,52 @@ class NewsCardAdapter : RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder>
         var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)
     }
 
+    inner class WeatherCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+        var temperatureNumber: TextView = view!!.findViewById(R.id.temperatureNumber)
+        var weatherSubtitle: TextView = view!!.findViewById(R.id.weatherSubtitle)
+        var weatherIcon: ImageView = view!!.findViewById(R.id.weatherIcon)
+    }
+
     override fun getItemCount(): Int {
-        Log.d(TAG, "getItemCount: ran, $newsList.size")
         return newsList.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCardViewHolder {
-
-        // TODO:                                                V R.layout.weather_card, R.layout.red_day_card, etc
-        val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
-        Log.d(TAG, "onCreateViewHolder: ran, $adapterLayout")
-        return NewsCardViewHolder(adapterLayout)
+    override fun getItemViewType(position: Int): Int {
+        return newsList[position].cardType
     }
 
-    override fun onBindViewHolder(holder: NewsCardViewHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.d(TAG, "onCreateViewHolder: ran, $viewType")
+        if (viewType == 1) { // Weather
+
+            val adapterLayout =
+                LayoutInflater.from(parent.context).inflate(R.layout.weather_card, parent, false)
+            return WeatherCardViewHolder(adapterLayout)
+
+        } else { // Article
+
+            val adapterLayout =
+                LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+            return NewsCardViewHolder(adapterLayout)
+
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisArticle = newsList[position]
         Log.d(TAG, "onBindViewHolder: ran, $thisArticle")
-
-        holder.topperIcon.setImageResource(thisArticle.topperIcon)
-        holder.topperText.text = thisArticle.topperText
-        holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
-        holder.articleHeadline.text = thisArticle.headline
-        holder.articleSubtitle.text = thisArticle.subtitle
-        holder.postedTime.text = thisArticle.postedTime.toString()
-        holder.authorName.text = thisArticle.author
-        holder.articlePreview.text = thisArticle.articlePreview
+        if (thisArticle.cardType == 1) {
+            return
+        } else {
+            (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
+            holder.topperText.text = thisArticle.topperText
+            holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
+            holder.articleHeadline.text = thisArticle.headline
+            holder.articleSubtitle.text = thisArticle.subtitle
+            holder.postedTime.text = thisArticle.postedTime.toString()
+            holder.authorName.text = thisArticle.author
+            holder.articlePreview.text = thisArticle.articlePreview
+        }
     }
 
 }

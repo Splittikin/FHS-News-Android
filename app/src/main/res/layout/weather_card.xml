@@ -51,7 +51,7 @@
             tools:text="Current Weather at FHS" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/weatherIcon"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginTop="8dp"

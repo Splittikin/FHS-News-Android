@@ -7,7 +7,7 @@ import java.sql.Date
 // (This is the data that goes into the adapter)
 
 data class Article(
-    val isWeather: Boolean, // If true, this card will be the weather card and all other arguments will be ignored TODO: Change to generic type (0 for regular article, 1 for weather, 2 for red/silver, etc.)
+    val cardType: Int, // 0 = Article, 1 = Weather, 2 = Red/Silver card
     @DrawableRes val articleThumbnail: Int, // Image for the article, will be scaled and cropped TODO: Use placeholder if blank
     val postedTime: Date, // UNIX time of when the article was posted (Showed like "Posted 6 hours ago". Also determines where on the timeline this article appears, so this should be defined even if the time until is intended to be displayed instead) TODO: Formatting
     val timeUntil: Int = 0, // If applicable, UNIX time of when the associated activity will happen (Skipped if blank. If specified, the timestamp will show how long until that activity happens i.e. "In 4 days" instead of "6 hours ago") TODO: Implementation

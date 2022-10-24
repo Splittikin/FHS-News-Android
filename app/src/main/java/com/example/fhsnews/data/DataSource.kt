@@ -6,13 +6,16 @@ import java.sql.Date
 import java.sql.Time
 
 // https://www.unixtimestamp.com/
+// 0 = Article
+// 1 = Weather Card - Only displayed once, at very top
+// 2 = Red/Silver Card - Only displayed once, just below weather
 
 object DataSource {
     val newsList: List<Article> = listOf(
-        /* Article(
-            true,
+        Article(
+            1,
             0,
-            0,
+            Date(0),
             0,
             "Weather",
             0,
@@ -21,9 +24,9 @@ object DataSource {
             "",
             "",
             ""
-        ), */
+        ),
         Article(
-            false,
+            0,
             R.drawable.img_6887_106,
             Date(1665757481),
             0,
@@ -36,7 +39,7 @@ object DataSource {
             "He He He Haw"
         ),
         Article(
-            false,
+            0,
             R.drawable.img_6887_106,
             Date(1665757481),
             0,
