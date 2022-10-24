@@ -31,7 +31,10 @@ class NewsCardAdapter : RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder>
         var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)
     }
 
-    override fun getItemCount(): Int = newsList.size
+    override fun getItemCount(): Int {
+        Log.d(TAG, "getItemCount: ran, $newsList.size")
+        return newsList.size
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCardViewHolder {
 
