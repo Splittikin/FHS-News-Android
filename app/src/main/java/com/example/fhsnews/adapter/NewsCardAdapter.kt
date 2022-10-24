@@ -93,7 +93,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.articleSubtitle.text = thisArticle.subtitle
                 holder.postedTime.text = thisArticle.postedTime.toString()
                 holder.authorName.text = thisArticle.author
-                holder.articlePreview.text = thisArticle.articlePreview
+                holder.articlePreview.text = thisArticle.text
             }
         }
     }

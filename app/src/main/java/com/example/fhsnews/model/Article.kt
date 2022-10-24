@@ -16,7 +16,6 @@ data class Article(
     val author: String, // Who wrote the article (Skipped if blank)
     val headline: String, // Headline for the article
     val subtitle: String, // Subtitle displayed below the headline
-    val articlePreview: String, // Article contents, truncated to a certain length. Automatically set if blank TODO: Automatic truncation implementation
     val text: String // Contents of the article TODO: Change to a different text type that can embed images
 )
 
