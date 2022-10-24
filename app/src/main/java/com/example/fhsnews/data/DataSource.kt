@@ -7,7 +7,20 @@ import com.example.fhsnews.model.Article
 
 object DataSource {
     val newsList: List<Article> = listOf(
-        Article(false,
+        Article(
+            true,
+            0,
+            0,
+            0,
+            "Weather",
+            0,
+            "",
+            "",
+            "",
+            ""
+        ),
+        Article(
+            false,
             R.drawable.img_6887_106,
             1665757481,
             0,
@@ -18,7 +31,8 @@ object DataSource {
             "Idote",
             "He He He Haw"
         ),
-        Article(false,
+        Article(
+            false,
             R.drawable.img_6887_106,
             1665757481,
             0,
