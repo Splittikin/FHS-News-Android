@@ -3,7 +3,6 @@ package com.example.fhsnews.data
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
 import java.sql.Date
-import java.sql.Time
 
 // https://www.unixtimestamp.com/
 // 0 = Article
