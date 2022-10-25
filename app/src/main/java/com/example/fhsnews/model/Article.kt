@@ -14,6 +14,7 @@ data class Article(
     val topperText: String, // Activity the card is associated with, such as "Fishers Football" or "FHS Percussion" (Skipped if blank)
     @DrawableRes val topperIcon: Int, // Emblem for the topper activity (Skipped if topper text is blank) TODO: Skip if blank
     val author: String, // Who wrote the article (Skipped if blank)
+    val tags: List<String>, // Used for filtering
     val headline: String, // Headline for the article
     val subtitle: String, // Subtitle displayed below the headline
     val text: String // Contents of the article TODO: Change to a different text type that can embed images
