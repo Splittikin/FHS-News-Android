@@ -40,7 +40,7 @@ object DataSource {
         Article(
             0,
             R.drawable.img_6887_106,
-            Date(1665757481),
+            Date(1665757481000),
             0,
             "Doing Your Mom Class",
             R.drawable.sports_ico,
@@ -53,7 +53,7 @@ object DataSource {
         Article(
             0,
             R.drawable.img_6887_106,
-            Date(1665757481),
+            Date(1665757481000),
             0,
             "Doing Your Mom Class",
             R.drawable.club_ico,
