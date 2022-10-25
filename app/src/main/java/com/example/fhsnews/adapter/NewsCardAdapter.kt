@@ -38,6 +38,10 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         // No vars here...
     }
 
+    inner class SilverDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+        // No vars here...
+    }
+
     override fun getItemCount(): Int {
         return newsList.size
     }
@@ -57,13 +61,19 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 return WeatherCardViewHolder(adapterLayout)
 
             }
-            2 -> { // Red Day Card
-
-                val adapterLayout =
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.red_day_card, parent, false)
-                return RedDayCardViewHolder(adapterLayout)
-
+            2 -> { // Red/Silver Day Card
+                return if (System.currentTimeMillis() % 172800000 > 86400000) { // 86400000 milliseconds in a day
+                    val adapterLayout =
+                        LayoutInflater.from(parent.context)
+                            .inflate(R.layout.red_day_card, parent, false)
+                    RedDayCardViewHolder(adapterLayout)
+                } else {
+                    val adapterLayout =
+                        LayoutInflater.from(parent.context)
+                            .inflate(R.layout.silver_day_card, parent, false)
+                    RedDayCardViewHolder(adapterLayout)
+                }
+                // TODO: Make this account for weekends (currently changes every other day even on weekends)
             }
             else -> { // Article
 

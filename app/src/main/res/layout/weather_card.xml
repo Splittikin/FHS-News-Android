@@ -19,11 +19,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="75°"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTitle"
-            tools:text="75°" />
+            app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
 
         <TextView
             android:id="@+id/weatherSubtitle"
@@ -32,11 +31,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
-            android:text="TextView"
+            android:text="Sunny"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureNumber"
-            tools:text="Sunny" />
+            app:layout_constraintTop_toBottomOf="@+id/temperatureNumber" />
 
         <TextView
             android:id="@+id/cardTitle"
@@ -44,11 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="Current Weather at FHS"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Current Weather at FHS" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/weatherIcon"
