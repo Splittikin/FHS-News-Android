@@ -12,32 +12,10 @@ import java.sql.Date
 object DataSource {
     val newsList: List<Article> = listOf(
         Article(
-            1,
-            0,
-            Date(0),
-            0,
-            "Weather",
-            0,
-            "",
-            listOf(),
-            "",
-            "",
-            ""
-        ),
-        Article(
-            2,
-            0,
-            Date(0),
-            0,
-            "Red/Silver Indicator",
-            0,
-            "",
-            listOf(),
-            "",
-            "",
-            ""
-        ),
-        Article(
+            1, 0, Date(0), 0, "Weather", 0, "", listOf(), "", "", ""
+        ), Article(
+            2, 0, Date(0), 0, "Red/Silver Indicator", 0, "", listOf(), "", "", ""
+        ), Article(
             0,
             R.drawable.img_6887_106,
             Date(1665757481000),
@@ -49,8 +27,7 @@ object DataSource {
             "I three stars your Mother",
             "Idote",
             "He He He Haw"
-        ),
-        Article(
+        ), Article(
             0,
             R.drawable.img_6887_106,
             Date(1665757481000),

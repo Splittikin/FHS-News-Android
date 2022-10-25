@@ -1,11 +1,12 @@
 package com.example.fhsnews
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fhsnews.adapter.NewsCardAdapter
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.fhsnews.databinding.ActivityMainBinding
+
+private lateinit var navController: NavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
     }
-    
-    
+
+
 }
