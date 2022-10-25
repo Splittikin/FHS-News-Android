@@ -97,6 +97,16 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.postedTime.text = thisArticle.postedTime.toString()
                 holder.authorName.text = thisArticle.author
                 holder.articlePreview.text = thisArticle.text
+
+                if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
+                    val imgMarginParam = holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
+                    imgMarginParam.setMargins(0,0,0,0)
+                    holder.articleThumbnail.layoutParams = imgMarginParam
+
+                    val icoMarginParam = holder.topperIcon.layoutParams as ViewGroup.MarginLayoutParams
+                    icoMarginParam.setMargins(0,0,0,0)
+                    holder.topperIcon.layoutParams = icoMarginParam
+                }
             }
         }
     }
