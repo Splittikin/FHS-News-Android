@@ -6,7 +6,19 @@
         android:icon="@drawable/home_ico"
         android:title="Home" />
     <item
+        android:id="@+id/clubs"
+        android:icon="@drawable/club_ico"
+        android:title="Clubs" />
+    <item
+        android:id="@+id/events"
+        android:icon="@drawable/events_ico"
+        android:title="Events" />
+    <item
         android:id="@+id/search"
         android:icon="@drawable/search_ico"
         android:title="Search" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_ico"
+        android:title="Settings" />
 </menu>
