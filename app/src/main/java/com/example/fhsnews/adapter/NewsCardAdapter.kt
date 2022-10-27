@@ -23,7 +23,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var topperText: TextView = view!!.findViewById(R.id.topperText)
         var articleThumbnail: ImageView = view!!.findViewById(R.id.articleThumbnail)
         var articleHeadline: TextView = view!!.findViewById(R.id.articleHeadline)
-        var postedTime: TextView = view!!.findViewById(R.id.postedTime)
+        var postedTime: TextView = view!!.findViewById(R.id.articlePostedTime)
         var authorName: TextView = view!!.findViewById(R.id.authorName)
         var articleSubtitle: TextView = view!!.findViewById(R.id.articleSubtitle)
         var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)

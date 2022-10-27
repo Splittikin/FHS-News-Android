@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.R
 import com.example.fhsnews.data.DataSource
-import com.example.fhsnews.model.Article
 import com.example.fhsnews.model.Club
 
 // Adapter to find and inflate cards for clubs
@@ -20,7 +19,7 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ClubCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         var clubThumbnail: ImageView = view!!.findViewById(R.id.clubThumbnail)
         var clubName: TextView = view!!.findViewById(R.id.clubName)
-        var postedTime: TextView = view!!.findViewById(R.id.postedTime)
+        var postedTime: TextView = view!!.findViewById(R.id.clubPostedTime)
         var clubSubtitle: TextView = view!!.findViewById(R.id.clubSubtitle)
         var clubInfo: TextView = view!!.findViewById(R.id.clubInfo)
     }
@@ -31,7 +30,7 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.club_card, parent, false)
         return ClubCardViewHolder(adapterLayout)
     }
 
