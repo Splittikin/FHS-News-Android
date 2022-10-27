@@ -34,11 +34,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var weatherIcon: ImageView = view!!.findViewById(R.id.weatherIcon)
     }
 
-    inner class RedDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
-        // No vars here...
-    }
-
-    inner class SilverDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+    inner class RedSilverDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         // No vars here...
     }
 
@@ -55,23 +51,20 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (viewType) {
             1 -> { // Weather
 
-                val adapterLayout =
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.weather_card, parent, false)
+                val adapterLayout = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.weather_card, parent, false)
                 return WeatherCardViewHolder(adapterLayout)
 
             }
             2 -> { // Red/Silver Day Card
                 return if (System.currentTimeMillis() % 172800000 > 86400000) { // 86400000 milliseconds in a day
-                    val adapterLayout =
-                        LayoutInflater.from(parent.context)
-                            .inflate(R.layout.red_day_card, parent, false)
-                    RedDayCardViewHolder(adapterLayout)
+                    val adapterLayout = LayoutInflater.from(parent.context)
+                        .inflate(R.layout.red_day_card, parent, false)
+                    RedSilverDayCardViewHolder(adapterLayout)
                 } else {
-                    val adapterLayout =
-                        LayoutInflater.from(parent.context)
-                            .inflate(R.layout.silver_day_card, parent, false)
-                    RedDayCardViewHolder(adapterLayout)
+                    val adapterLayout = LayoutInflater.from(parent.context)
+                        .inflate(R.layout.silver_day_card, parent, false)
+                    RedSilverDayCardViewHolder(adapterLayout)
                 }
                 // TODO: Make this account for weekends (currently changes every other day even on weekends)
             }
@@ -104,6 +97,16 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.postedTime.text = thisArticle.postedTime.toString()
                 holder.authorName.text = thisArticle.author
                 holder.articlePreview.text = thisArticle.text
+
+                if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
+                    val imgMarginParam = holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
+                    imgMarginParam.setMargins(0,0,0,0)
+                    holder.articleThumbnail.layoutParams = imgMarginParam
+
+                    val icoMarginParam = holder.topperIcon.layoutParams as ViewGroup.MarginLayoutParams
+                    icoMarginParam.setMargins(0,0,0,0)
+                    holder.topperIcon.layoutParams = icoMarginParam
+                }
             }
         }
     }
