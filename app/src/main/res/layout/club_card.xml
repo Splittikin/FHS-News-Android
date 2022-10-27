@@ -46,7 +46,7 @@
             tools:text="Subtitle" />
 
         <TextView
-            android:id="@+id/postedTime"
+            android:id="@+id/clubPostedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -64,7 +64,7 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            app:layout_constraintEnd_toStartOf="@+id/postedTime"
+            app:layout_constraintEnd_toStartOf="@+id/clubPostedTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clubThumbnail"
             tools:text="Header" />

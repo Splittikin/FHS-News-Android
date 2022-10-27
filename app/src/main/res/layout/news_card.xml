@@ -45,7 +45,7 @@
             tools:text="Subtitle" />
 
         <TextView
-            android:id="@+id/postedTime"
+            android:id="@+id/articlePostedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -60,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/postedTime"
+            app:layout_constraintEnd_toEndOf="@+id/articlePostedTime"
             app:layout_constraintStart_toEndOf="@+id/articleHeadline"
-            app:layout_constraintTop_toBottomOf="@+id/postedTime"
+            app:layout_constraintTop_toBottomOf="@+id/articlePostedTime"
             tools:text="Jeff H. Dinglenuts" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            app:layout_constraintEnd_toStartOf="@+id/postedTime"
+            app:layout_constraintEnd_toStartOf="@+id/articlePostedTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/articleThumbnail"
             tools:text="Header" />
