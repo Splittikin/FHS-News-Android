@@ -2,6 +2,7 @@ package com.example.fhsnews.data
 
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
+import com.example.fhsnews.model.Club
 import java.sql.Date
 
 // https://www.unixtimestamp.com/
@@ -51,6 +52,16 @@ object DataSource {
             "This Article Has No Topper",
             "",
             "sorry i eated it"
+        )
+    )
+    val clubsList: List<Club> = listOf(
+        Club(
+            R.drawable.img_6887_106,
+            Date(1665757481000),
+            listOf(),
+            "The Onion Deployers",
+            "We Deploy The Onions",
+            "Come to our call-out meeting! Aux gym on the 31st!"
         )
     )
 }
