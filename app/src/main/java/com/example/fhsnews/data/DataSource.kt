@@ -57,6 +57,18 @@ object DataSource {
             "Webdev makes new website",
             "The Webdevs did the thing",
             "they made a website"
+        ), Article(
+            0,
+            R.drawable.img_ocean,
+            Date(1665757481000),
+            0,
+            "Girl's Volleyball",
+            R.drawable.sports_ico,
+            "Goobert Scoobert IV",
+            listOf(),
+            "They win",
+            "Yaaaaaayyyyy",
+            "they are awesome"
         )
     )
     val clubsList: List<Club> = listOf(
