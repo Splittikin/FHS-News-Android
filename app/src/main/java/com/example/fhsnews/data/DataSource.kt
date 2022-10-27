@@ -17,50 +17,55 @@ object DataSource {
         ), Article(
             2, 0, Date(0), 0, "Red/Silver Indicator", 0, "", listOf(), "", "", ""
         ), Article(
+            //first article
             0,
-            R.drawable.img_6887_106,
+            //picture displayed
+            R.drawable.img_ocean,
             Date(1665757481000),
+            //for announcements, not implemented yet
             0,
-            "Doing Your Mom Class",
+            //topper, topic of club
+            "Fishers Boy's Varsity Football",
+            //icon
             R.drawable.sports_ico,
             "Goobert Scoobert",
             listOf(),
-            "I three stars your Mother",
-            "Idote",
-            "He He He Haw"
+            "Lorel Ispum",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         ), Article(
             0,
-            R.drawable.img_6887_106,
+            R.drawable.img_ocean,
             Date(1665757481000),
             0,
-            "Doing Your Mom Class",
+            "Chess Club",
             R.drawable.club_ico,
             "Goobert Scoobert II",
             listOf(),
-            "I three stars your Mother (Again)",
-            "Again!",
-            "I’ve come to make an announcement: Shadow the Hedgehog’s a bitch ass mother fucker. He pissed on my fucking wife. That’s right, he took his hedgehog fuckin' quilly dick out and he pissed on my fucking wife, and he said his dick was THIS BIG. And I said “that’s disgusting!” So I’m making a callout post on my twitter dot com: \"Shadow the Hedgehog, you got a small dick, it’s the size of this walnut except WAY smaller.\" And guess what, here’s what my dong looks like: PFFFFFFFFGJT. That’s right baby. All point, no quills, no pillows, look at that it looks like two balls and a bong. He fucked my wife so guess what, I’m gonna FUCK THE EARTH. THATS RIGHT THIS IS WHAT YOU GET, MY SUPER LAZER PISS. Except I’m not gonna piss on the earth, I’m gonna go higher. I’m pissing on the MOOOOOON! How do you like that, OBAMA? I PISSED ON THE MOON, YOU IDIOT! You have twenty-three hours before the piss d r o p l e t s hit the fucking earth, now get out of my fucking sight before I piss on you too!\n"
+            "Lorel Ispum",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Lorel ispum dolor sit amet\n"
         ), Article(
             0,
-            R.drawable.kidney_failure,
+            R.drawable.img_ocean,
             Date(1665757481000),
             0,
-            "",
-            0,
-            "",
+            "Computer Science Club",
+            R.drawable.club_ico,
+            "Goobert Scoobert III",
             listOf(),
-            "This Article Has No Topper",
-            "",
-            "sorry i eated it"
+            "Webdev makes new website",
+            "The Webdevs did the thing",
+            "they made a website"
         )
     )
     val clubsList: List<Club> = listOf(
         Club(
-            R.drawable.img_6887_106,
+            R.drawable.img_ocean,
             Date(1665757481000),
             listOf(),
-            "The Onion Deployers",
-            "We Deploy The Onions",
+            "The piano club",
+            "We play piano",
             "Come to our call-out meeting! Aux gym on the 31st!"
         )
     )
