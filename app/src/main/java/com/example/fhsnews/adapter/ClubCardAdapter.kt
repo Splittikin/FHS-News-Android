@@ -14,6 +14,8 @@ import com.example.fhsnews.model.Club
 
 class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    // TODO: Filter by tag
+
     private val clubsList: List<Club> = com.example.fhsnews.data.DataSource.clubsList
 
     inner class ClubCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {

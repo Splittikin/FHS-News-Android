@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fhsnews.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
 
-        bottomNav = findViewById(R.id.bottomNavigationView) as BottomNavigationView
+        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {

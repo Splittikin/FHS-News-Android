@@ -18,6 +18,7 @@ data class Article(
     val headline: String, // Headline for the article
     val subtitle: String, // Subtitle displayed below the headline
     val text: String // Contents of the article TODO: Change to a different text type that can embed images
+    // TODO: Attribute for color of topper
 )
 
 // Arguments may be freely added (or removed if we don't end up using them)

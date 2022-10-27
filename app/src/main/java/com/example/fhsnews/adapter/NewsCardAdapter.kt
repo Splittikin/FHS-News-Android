@@ -16,6 +16,8 @@ import com.example.fhsnews.model.Article
 
 class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    // TODO: Filter by tag
+
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
 
     inner class NewsCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -94,6 +96,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     val intent = Intent(Intent.ACTION_VIEW, urlToOpen)
                     val context = holder.view.context
                 } */
+                // TODO: Enriching students/Clever button functionality
                 return
             }
             else -> {
