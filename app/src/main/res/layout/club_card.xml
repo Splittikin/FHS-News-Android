@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <TextView
-            android:id="@+id/articlePreview"
+            android:id="@+id/clubInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -26,11 +27,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleSubtitle"
-            tools:text="This is an awesome article where we talk about things and stuff and here is some more text so that you can see the preview is just the article's whole text but truncated so you can see a little bit of the article but not too much of the..." />
+            app:layout_constraintTop_toBottomOf="@+id/clubSubtitle"
+            tools:text="This is our awesome club where we do really great things" />
 
         <TextView
-            android:id="@+id/articleSubtitle"
+            android:id="@+id/clubSubtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -41,7 +42,7 @@
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleHeadline"
+            app:layout_constraintTop_toBottomOf="@+id/clubName"
             tools:text="Subtitle" />
 
         <TextView
@@ -51,22 +52,11 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/articleHeadline"
+            app:layout_constraintTop_toTopOf="@+id/clubName"
             tools:text="Posted 6 hours ago" />
 
         <TextView
-            android:id="@+id/authorName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/postedTime"
-            app:layout_constraintStart_toEndOf="@+id/articleHeadline"
-            app:layout_constraintTop_toBottomOf="@+id/postedTime"
-            tools:text="Jeff H. Dinglenuts" />
-
-        <TextView
-            android:id="@+id/articleHeadline"
+            android:id="@+id/clubName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -76,39 +66,16 @@
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
             app:layout_constraintEnd_toStartOf="@+id/postedTime"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleThumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/clubThumbnail"
             tools:text="Header" />
 
         <ImageView
-            android:id="@+id/articleThumbnail"
+            android:id="@+id/clubThumbnail"
             android:layout_width="wrap_content"
             android:layout_height="194dp"
-            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topperIcon"
-            app:srcCompat="@drawable/img_6887_106" />
-
-        <TextView
-            android:id="@+id/topperText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-            app:layout_constraintStart_toEndOf="@+id/topperIcon"
-            app:layout_constraintTop_toTopOf="@+id/topperIcon"
-            tools:text="Topper" />
-
-        <ImageView
-            android:id="@+id/topperIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/club_ico" />
+            app:srcCompat="@drawable/img_6887_106" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
