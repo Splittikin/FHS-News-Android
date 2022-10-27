@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,11 +29,10 @@ class NewsScrollerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d(TAG, "onViewCreated: fragment created")
         val recyclerView = binding.newsRecycler
         recyclerView.adapter = NewsCardAdapter()
         recyclerView.layoutManager = LinearLayoutManager(context)
-        Log.d(TAG, "onViewCreated: ${recyclerView.adapter}")
+        (activity as AppCompatActivity).supportActionBar?.title = "FHS News"
     }
 
     override fun onDestroyView() {
