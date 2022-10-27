@@ -20,7 +20,7 @@ object DataSource {
             //first article
             0,
             //picture displayed
-            R.drawable.IMG_0678,
+            R.drawable.img_ocean,
             Date(1665757481000),
             //for announcements, not implemented yet
             0,
@@ -35,7 +35,7 @@ object DataSource {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         ), Article(
             0,
-            R.drawable.IMG_0678,
+            R.drawable.img_ocean,
             Date(1665757481000),
             0,
             "Chess Club",
@@ -47,7 +47,7 @@ object DataSource {
             "Lorel ispum dolor sit amet\n"
         ), Article(
             0,
-            R.drawable.IMG_0678,
+            R.drawable.img_ocean,
             Date(1665757481000),
             0,
             "Computer Science Club",
@@ -61,7 +61,7 @@ object DataSource {
     )
     val clubsList: List<Club> = listOf(
         Club(
-            R.drawable.IMG_0678,
+            R.drawable.img_ocean,
             Date(1665757481000),
             listOf(),
             "The piano club",
