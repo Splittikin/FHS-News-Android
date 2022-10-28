@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.SilverDayCard" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:textColor">@color/black</item>
+        <item name="colorPrimary">@color/gray_700</item>
+        <item name="android:background">@color/gray_500</item> <!-- TODO: Unhardcode this -->
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.RedDayCard" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:textColor">@color/red_200</item>
+    </style>
+</resources>
