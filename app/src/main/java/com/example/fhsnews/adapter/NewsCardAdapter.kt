@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
@@ -20,7 +23,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
 
-    inner class NewsCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+    inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)
         var topperText: TextView = view!!.findViewById(R.id.topperText)
         var articleThumbnail: ImageView = view!!.findViewById(R.id.articleThumbnail)
@@ -29,6 +32,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var authorName: TextView = view!!.findViewById(R.id.authorName)
         var articleSubtitle: TextView = view!!.findViewById(R.id.articleSubtitle)
         var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)
+        var newsCardConstraintLayout: ConstraintLayout = view!!.findViewById(R.id.newsCardConstraintLayout)
     }
 
     inner class WeatherCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -108,6 +112,10 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.postedTime.text = thisArticle.postedTime.toString()
                 holder.authorName.text = thisArticle.author
                 holder.articlePreview.text = thisArticle.text
+                holder.newsCardConstraintLayout.setOnClickListener{
+                    Log.d(TAG, "onBindViewHolder: article click")
+                    holder.view!!.findNavController()!!.navigate(R.id.openArticleFragment)
+                }
 
                 // Hide any empty article elements
                 if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {

@@ -12,9 +12,21 @@
     <fragment
         android:id="@+id/newsScrollerFragment"
         android:name="com.example.fhsnews.NewsScrollerFragment"
-        android:label="NewsScrollerFragment" />
+        android:label="NewsScrollerFragment" >
+        <action
+            android:id="@+id/action_newsScrollerFragment_to_openArticleFragment"
+            app:destination="@id/openArticleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/clubScrollerFragment"
         android:name="com.example.fhsnews.ClubScrollerFragment"
         android:label="ClubScrollerFragment" />
+    <fragment
+        android:id="@+id/openArticleFragment"
+        android:name="com.example.fhsnews.OpenArticleFragment"
+        android:label="OpenArticleFragment" >
+        <action
+            android:id="@+id/action_openArticleFragment_to_newsScrollerFragment"
+            app:destination="@id/newsScrollerFragment" />
+    </fragment>
 </navigation>
