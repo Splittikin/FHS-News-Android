@@ -25,8 +25,7 @@
         android:id="@+id/openArticleFragment"
         android:name="com.example.fhsnews.OpenArticleFragment"
         android:label="OpenArticleFragment" >
-        <action
-            android:id="@+id/action_openArticleFragment_to_newsScrollerFragment"
-            app:destination="@id/newsScrollerFragment" />
+        <argument android:name="articleId"
+            app:argType="integer" />
     </fragment>
 </navigation>

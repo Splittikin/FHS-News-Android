@@ -12,8 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fhsnews.R
+import com.example.fhsnews.*
 import com.example.fhsnews.model.Article
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // Adapter to find the correct card type to use for an article and inflate it
 
@@ -114,7 +115,8 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.articlePreview.text = thisArticle.text
                 holder.newsCardConstraintLayout.setOnClickListener{
                     Log.d(TAG, "onBindViewHolder: article click")
-                    holder.view!!.findNavController()!!.navigate(R.id.openArticleFragment)
+                    val action = NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(articleId = position)
+                    holder.view!!.findNavController()!!.navigate(action)
                 }
 
                 // Hide any empty article elements
