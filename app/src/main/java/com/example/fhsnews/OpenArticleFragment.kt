@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fhsnews.adapter.NewsCardAdapter
 import com.example.fhsnews.databinding.FragmentOpenArticleBinding
 import com.example.fhsnews.model.Article
 import kotlin.properties.Delegates

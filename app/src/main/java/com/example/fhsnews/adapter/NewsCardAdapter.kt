@@ -10,11 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fhsnews.*
+import com.example.fhsnews.NewsScrollerFragmentDirections
+import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // Adapter to find the correct card type to use for an article and inflate it
 
@@ -33,7 +32,8 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var authorName: TextView = view!!.findViewById(R.id.authorName)
         var articleSubtitle: TextView = view!!.findViewById(R.id.articleSubtitle)
         var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)
-        var newsCardConstraintLayout: ConstraintLayout = view!!.findViewById(R.id.newsCardConstraintLayout)
+        var newsCardConstraintLayout: ConstraintLayout =
+            view!!.findViewById(R.id.newsCardConstraintLayout)
     }
 
     inner class WeatherCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -113,10 +113,13 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.postedTime.text = thisArticle.postedTime.toString()
                 holder.authorName.text = thisArticle.author
                 holder.articlePreview.text = thisArticle.text
-                holder.newsCardConstraintLayout.setOnClickListener{
+                holder.newsCardConstraintLayout.setOnClickListener {
                     Log.d(TAG, "onBindViewHolder: article click")
-                    val action = NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(articleId = position)
-                    holder.view!!.findNavController()!!.navigate(action)
+                    val action =
+                        NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(
+                            articleId = position
+                        )
+                    holder.view!!.findNavController().navigate(action)
                 }
 
                 // Hide any empty article elements
