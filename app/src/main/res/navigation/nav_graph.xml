@@ -29,4 +29,8 @@
             android:name="articleId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/eventsViewFragment"
+        android:name="com.example.fhsnews.EventsViewFragment"
+        android:label="EventsViewFragment" />
 </navigation>

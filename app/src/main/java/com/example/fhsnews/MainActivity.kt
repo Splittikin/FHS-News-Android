@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.clubScrollerFragment)
                     return@setOnItemSelectedListener true
                 }
+                R.id.events -> {
+                    navController.navigate(R.id.eventsViewFragment)
+                    return@setOnItemSelectedListener true
+                }
                 else -> {
                     return@setOnItemSelectedListener true
                 }
