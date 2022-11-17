@@ -41,6 +41,14 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.eventsViewFragment)
                     return@setOnItemSelectedListener true
                 }
+                R.id.search -> {
+                    navController.navigate(R.id.searchMenuFragment)
+                    return@setOnItemSelectedListener true
+                }
+                R.id.settings -> {
+                    navController.navigate(R.id.settingsMenuFragment)
+                    return@setOnItemSelectedListener true
+                }
                 else -> {
                     return@setOnItemSelectedListener true
                 }

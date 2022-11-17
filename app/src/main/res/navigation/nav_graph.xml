@@ -33,4 +33,12 @@
         android:id="@+id/eventsViewFragment"
         android:name="com.example.fhsnews.EventsViewFragment"
         android:label="EventsViewFragment" />
+    <fragment
+        android:id="@+id/searchMenuFragment"
+        android:name="com.example.fhsnews.SearchMenuFragment"
+        android:label="SearchMenuFragment" />
+    <fragment
+        android:id="@+id/settingsMenuFragment"
+        android:name="com.example.fhsnews.SettingsMenuFragment"
+        android:label="SettingsMenuFragment" />
 </navigation>
