@@ -20,7 +20,11 @@
     <fragment
         android:id="@+id/clubScrollerFragment"
         android:name="com.example.fhsnews.ClubScrollerFragment"
-        android:label="ClubScrollerFragment" />
+        android:label="ClubScrollerFragment" >
+        <action
+            android:id="@+id/action_clubScrollerFragment_to_openClubFragment"
+            app:destination="@id/openClubFragment" />
+    </fragment>
     <fragment
         android:id="@+id/openArticleFragment"
         android:name="com.example.fhsnews.OpenArticleFragment"
@@ -49,4 +53,12 @@
         android:id="@+id/settingsMenuFragment"
         android:name="com.example.fhsnews.SettingsMenuFragment"
         android:label="SettingsMenuFragment" />
+    <fragment
+        android:id="@+id/openClubFragment"
+        android:name="com.example.fhsnews.OpenClubFragment"
+        android:label="OpenClubFragment" >
+        <argument
+            android:name="clubId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

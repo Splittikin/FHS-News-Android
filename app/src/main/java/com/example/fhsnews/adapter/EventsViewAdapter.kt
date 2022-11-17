@@ -29,6 +29,7 @@ class EventsViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun filterNewsList (selectedDate: Date) : List<Article> {
+        // Filters the newsList to only events that were posted on the selected date, or have timeUntil occurring on that date instead if it is defined
         TODO()
     }
 

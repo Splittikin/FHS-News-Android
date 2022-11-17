@@ -1,11 +1,17 @@
 package com.example.fhsnews.adapter
 
+import android.content.ContentValues
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fhsnews.ClubScrollerFragmentDirections
+import com.example.fhsnews.NewsScrollerFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.data.DataSource
 import com.example.fhsnews.model.Club
@@ -18,12 +24,14 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val clubsList: List<Club> = com.example.fhsnews.data.DataSource.clubsList
 
-    inner class ClubCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+    inner class ClubCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var clubThumbnail: ImageView = view!!.findViewById(R.id.clubThumbnail)
         var clubName: TextView = view!!.findViewById(R.id.clubName)
         var postedTime: TextView = view!!.findViewById(R.id.clubPostedTime)
         var clubSubtitle: TextView = view!!.findViewById(R.id.clubSubtitle)
         var clubInfo: TextView = view!!.findViewById(R.id.clubInfo)
+        var clubCardConstraintLayout: ConstraintLayout =
+            view!!.findViewById(R.id.clubCardConstraintLayout)
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +51,14 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.clubSubtitle.text = thisClub.subtitle
         holder.postedTime.text = thisClub.postedTime.toString()
         holder.clubInfo.text = thisClub.text
+        holder.clubCardConstraintLayout.setOnClickListener {
+            Log.d(ContentValues.TAG, "onBindViewHolder: article click")
+            val action =
+                ClubScrollerFragmentDirections.actionClubScrollerFragmentToOpenClubFragment(
+                    clubId = position
+                )
+            holder.view!!.findNavController().navigate(action)
+        }
 
     }
 }
