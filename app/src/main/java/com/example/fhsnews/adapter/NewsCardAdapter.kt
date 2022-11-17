@@ -21,7 +21,11 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     // TODO: Filter by tag
 
-    private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+    private val newsList: List<Article>
+
+    init {
+        newsList = listOf(com.example.fhsnews.data.DataSource.extrasList, com.example.fhsnews.data.DataSource.newsList).flatten()
+    }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)

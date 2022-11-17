@@ -32,11 +32,19 @@
     <fragment
         android:id="@+id/eventsViewFragment"
         android:name="com.example.fhsnews.EventsViewFragment"
-        android:label="EventsViewFragment" />
+        android:label="EventsViewFragment" >
+        <action
+            android:id="@+id/action_eventsViewFragment_to_openArticleFragment"
+            app:destination="@id/openArticleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchMenuFragment"
         android:name="com.example.fhsnews.SearchMenuFragment"
-        android:label="SearchMenuFragment" />
+        android:label="SearchMenuFragment" >
+        <action
+            android:id="@+id/action_searchMenuFragment_to_openArticleFragment"
+            app:destination="@id/openArticleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsMenuFragment"
         android:name="com.example.fhsnews.SettingsMenuFragment"

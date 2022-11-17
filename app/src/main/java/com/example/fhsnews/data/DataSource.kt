@@ -11,12 +11,18 @@ import java.sql.Date
 // 2 = Red/Silver Card - Only displayed once, just below weather
 
 object DataSource {
-    val newsList: List<Article> = listOf(
+    val extrasList: List<Article> = listOf(
+        // Contains the weather and red/silver card
+        // This list is merged at the front of the news list in the NewsCard adapter, but they are
+        //  kept separate for the EventsViewAdapter
         Article(
             1, 0, Date(0), 0, "Weather", 0, "", listOf(), "", "", ""
         ), Article(
             2, 0, Date(0), 0, "Red/Silver Indicator", 0, "", listOf(), "", "", ""
-        ), Article(
+        )
+    )
+    val newsList: List<Article> = listOf(
+        Article(
             //first article
             0,
             //picture displayed
