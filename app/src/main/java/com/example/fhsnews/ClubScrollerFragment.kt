@@ -1,8 +1,6 @@
 package com.example.fhsnews
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +18,6 @@ class ClubScrollerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        Log.d(TAG, "onCreateView: fragment created")
         _binding = FragmentClubsScrollerBinding.inflate(inflater, container, false)
         val view = binding.root
         return view

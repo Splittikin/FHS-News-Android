@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/clubScrollerFragment"
         android:name="com.example.fhsnews.ClubScrollerFragment"
-        android:label="ClubScrollerFragment" >
+        android:label="ClubScrollerFragment">
         <action
             android:id="@+id/action_clubScrollerFragment_to_openClubFragment"
             app:destination="@id/openClubFragment" />
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/eventsViewFragment"
         android:name="com.example.fhsnews.EventsViewFragment"
-        android:label="EventsViewFragment" >
+        android:label="EventsViewFragment">
         <action
             android:id="@+id/action_eventsViewFragment_to_openArticleFragment"
             app:destination="@id/openArticleFragment" />
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/searchMenuFragment"
         android:name="com.example.fhsnews.SearchMenuFragment"
-        android:label="SearchMenuFragment" >
+        android:label="SearchMenuFragment">
         <action
             android:id="@+id/action_searchMenuFragment_to_openArticleFragment"
             app:destination="@id/openArticleFragment" />
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/openClubFragment"
         android:name="com.example.fhsnews.OpenClubFragment"
-        android:label="OpenClubFragment" >
+        android:label="OpenClubFragment">
         <argument
             android:name="clubId"
             app:argType="integer" />

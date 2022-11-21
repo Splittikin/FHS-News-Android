@@ -1,7 +1,5 @@
 package com.example.fhsnews.adapter
 
-import android.content.ContentValues
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +9,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.ClubScrollerFragmentDirections
-import com.example.fhsnews.NewsScrollerFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.data.DataSource
 import com.example.fhsnews.model.Club
@@ -52,7 +49,6 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.postedTime.text = thisClub.postedTime.toString()
         holder.clubInfo.text = thisClub.text
         holder.clubCardConstraintLayout.setOnClickListener {
-            Log.d(ContentValues.TAG, "onBindViewHolder: article click")
             val action =
                 ClubScrollerFragmentDirections.actionClubScrollerFragmentToOpenClubFragment(
                     clubId = position

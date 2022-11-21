@@ -1,9 +1,6 @@
 package com.example.fhsnews
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,14 +21,12 @@ class OpenArticleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         articleId = OpenArticleFragmentArgs.fromBundle(requireArguments()).articleId
-        Log.d(ContentValues.TAG, "onCreateView: fragment created $articleId")
         _binding = FragmentOpenArticleBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d(TAG, "onViewCreated: fragment created $articleId")
         var thisArticle = newsList[articleId]
         binding.openArticleTopperIcon.setImageResource(thisArticle.topperIcon)
         binding.openArticleTopperText.text = thisArticle.topperText

@@ -1,8 +1,6 @@
 package com.example.fhsnews
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -28,12 +26,10 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    Log.d(TAG, "onCreate: bottom nav home clicked")
                     navController.navigate(R.id.newsScrollerFragment)
                     return@setOnItemSelectedListener true
                 }
                 R.id.clubs -> {
-                    Log.d(TAG, "onCreate: bottom nav club clicked")
                     navController.navigate(R.id.clubScrollerFragment)
                     return@setOnItemSelectedListener true
                 }

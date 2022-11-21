@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.fhsnews.databinding.FragmentSettingsMenuBinding
 
-private var _binding : FragmentSettingsMenuBinding? = null
+private var _binding: FragmentSettingsMenuBinding? = null
 private val binding get() = _binding!!
 
 class SettingsMenuFragment : Fragment() {

@@ -11,26 +11,30 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.EventsViewFragmentDirections
-import com.example.fhsnews.NewsScrollerFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
-import java.sql.Date
+import java.util.*
 
 // This adapter uses the same data as the News Card Adapter, but filters it to only posts made on a given day
 
-class EventsViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val filteredNewsList: List<Article>
+    private lateinit var filteredNewsList: List<Article>
     private val newsList = com.example.fhsnews.data.DataSource.newsList
 
     init {
-            filteredNewsList = newsList
-            .filter { it.cardType == 0 }
+        /*filteredNewsList = newsList
+            .filter { it.cardType == 0 } */
+        filterNewsList(selectedDate)
     }
 
-    fun filterNewsList (selectedDate: Date) : List<Article> {
+    fun filterNewsList(selectedDate: Date): List<Article> {
         // Filters the newsList to only events that were posted on the selected date, or have timeUntil occurring on that date instead if it is defined
-        TODO()
+        val endTime = Date(selectedDate.time + 86400000) // (ms in a day)
+
+        filteredNewsList = newsList
+            .filter { it.postedTime >= selectedDate && it.postedTime < endTime }
+        return filteredNewsList
     }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
