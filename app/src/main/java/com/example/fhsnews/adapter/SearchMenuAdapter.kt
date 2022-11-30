@@ -10,32 +10,14 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fhsnews.EventsViewFragmentDirections
 import com.example.fhsnews.R
-import com.example.fhsnews.model.Article
-import java.util.*
+import com.example.fhsnews.SearchMenuFragmentDirections
 
-// This adapter uses the same data as the News Card Adapter, but filters it to only posts made on a given day
+// This adapter uses the same data as the News Card Adapter, but filters it to a search request
 
-class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var filteredNewsList: List<Article>
     private val newsList = com.example.fhsnews.data.DataSource.newsList
-
-    init {
-        /*filteredNewsList = newsList
-            .filter { it.cardType == 0 } */
-        filterNewsList(selectedDate)
-    }
-
-    fun filterNewsList(selectedDate: Date): List<Article> {
-        // Filters the newsList to only events that were posted on the selected date, or have timeUntil occurring on that date instead if it is defined
-        val endTime = Date(selectedDate.time + 86400000) // (ms in a day)
-
-        filteredNewsList = newsList
-            .filter { it.postedTime >= selectedDate && (it.timeUntil == 0) }
-        return filteredNewsList
-    }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)
@@ -51,11 +33,11 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return filteredNewsList.size
+        return newsList.size
     }
 
     override fun getItemViewType(position: Int): Int {
-        return filteredNewsList[position].cardType
+        return newsList[position].cardType
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -66,7 +48,7 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val thisArticle = filteredNewsList[position]
+        val thisArticle = newsList[position]
         (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
         holder.topperText.text = thisArticle.topperText
         holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
@@ -78,7 +60,7 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
         holder.newsCardConstraintLayout.setOnClickListener {
             Log.d(ContentValues.TAG, "onBindViewHolder: article click")
             val action =
-                EventsViewFragmentDirections.actionEventsViewFragmentToOpenArticleFragment(
+                SearchMenuFragmentDirections.actionSearchMenuFragmentToOpenArticleFragment(
                     articleId = position
                 )
             holder.view!!.findNavController().navigate(action)
