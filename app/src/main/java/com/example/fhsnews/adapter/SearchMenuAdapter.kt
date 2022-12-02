@@ -15,9 +15,13 @@ import com.example.fhsnews.SearchMenuFragmentDirections
 
 // This adapter uses the same data as the News Card Adapter, but filters it to a search request
 
-class SearchMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val newsList = com.example.fhsnews.data.DataSource.newsList
+
+    init {
+        newsList.filter { it.headline.contains(searchQuery) }
+    }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)

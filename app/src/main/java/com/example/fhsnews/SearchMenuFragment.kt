@@ -29,7 +29,7 @@ class SearchMenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView = binding.searchResultsRecycler
-        recyclerView.adapter = SearchMenuAdapter()
+        recyclerView.adapter = SearchMenuAdapter("")
         recyclerView.layoutManager = LinearLayoutManager(context)
         (activity as AppCompatActivity).supportActionBar?.title = "Search"
 

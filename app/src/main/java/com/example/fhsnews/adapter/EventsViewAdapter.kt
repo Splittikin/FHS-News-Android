@@ -23,8 +23,6 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
     private val newsList = com.example.fhsnews.data.DataSource.newsList
 
     init {
-        /*filteredNewsList = newsList
-            .filter { it.cardType == 0 } */
         filterNewsList(selectedDate)
     }
 

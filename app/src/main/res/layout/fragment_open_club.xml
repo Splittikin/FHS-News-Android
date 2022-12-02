@@ -71,8 +71,9 @@
         <ImageView
             android:id="@+id/openClubThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:scaleType="centerCrop"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/img_6887_106" />
