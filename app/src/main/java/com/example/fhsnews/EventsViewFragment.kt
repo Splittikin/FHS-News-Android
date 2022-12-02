@@ -1,8 +1,6 @@
 package com.example.fhsnews
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,8 +38,8 @@ class EventsViewFragment : Fragment() {
         calendarView = binding.eventsDatePicker
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val format = SimpleDateFormat("yyyy-MM-dd")
-            Log.d(TAG, "Guh - ${format.parse("$year-$month-$dayOfMonth")}")
-            recyclerView.adapter = EventsViewAdapter(format.parse("$year-$month-$dayOfMonth"))
+            recyclerView.adapter = EventsViewAdapter(format.parse("$year-${month + 1}-$dayOfMonth"))
+            // Shift $month one forward to become 1-12 instead of 0-11
         }
         recyclerView.adapter = EventsViewAdapter(Date(calendarView.date))
     }

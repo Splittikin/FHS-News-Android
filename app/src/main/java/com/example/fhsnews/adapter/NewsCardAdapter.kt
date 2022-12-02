@@ -22,10 +22,10 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // TODO: Filter by tag
 
     private val newsList: List<Article>
-    private val sortedNewsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+    private var sortedNewsList: List<Article> =
+        com.example.fhsnews.data.DataSource.newsList.sortedByDescending { it.postedTime }
 
     init {
-        sortedNewsList.sortedBy { it.postedTime }
         newsList = listOf(
             com.example.fhsnews.data.DataSource.extrasList,
             sortedNewsList
@@ -120,6 +120,8 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.articleHeadline.text = thisArticle.headline
                 holder.articleSubtitle.text = thisArticle.subtitle
                 holder.postedTime.text = thisArticle.postedTime.toString()
+                /* TODO: Format posted date relatively. Must be done manually, android's own system
+                    for this requires minimum API 24 (We are using minimum API 21) */
                 holder.authorName.text = thisArticle.author
                 holder.articlePreview.text = thisArticle.text
                 holder.newsCardConstraintLayout.setOnClickListener {

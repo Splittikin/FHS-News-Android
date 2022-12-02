@@ -5,7 +5,7 @@ import com.example.fhsnews.model.Article
 import com.example.fhsnews.model.Club
 import java.sql.Date
 
-// https://www.unixtimestamp.com/
+// https://www.unixtimestamp.com/ Multiply the number you get here by 1000
 // 0 = Article
 // 1 = Weather Card - Only displayed once, at very top
 // 2 = Red/Silver Card - Only displayed once, just below weather
@@ -20,7 +20,7 @@ object DataSource {
         //  kept separate for the EventsViewAdapter
         // Only the cardType field matters, no other fields here are used
         Article(
-            1, 0,0, Date(0), 0, "Weather", 0, "", listOf(), "", "", ""
+            1, 0, 0, Date(0), 0, "Weather", 0, "", listOf(), "", "", ""
         ), Article(
             2, 0, 0, Date(0), 0, "Red/Silver Indicator", 0, "", listOf(), "", "", ""
         )
@@ -74,7 +74,7 @@ object DataSource {
             0,
             3,
             R.drawable.img_ocean,
-            Date(1665757481000),
+            Date(1670003304000),
             0,
             "Girl's Volleyball",
             R.drawable.sports_ico,

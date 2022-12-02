@@ -1,6 +1,7 @@
 package com.example.fhsnews.adapter
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +29,12 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
 
     fun filterNewsList(selectedDate: Date): List<Article> {
         // Filters the newsList to only events that were posted on the selected date, or have timeUntil occurring on that date instead if it is defined
+        val startTime = Date(selectedDate.time)
         val endTime = Date(selectedDate.time + 86400000) // (ms in a day)
+        Log.d(TAG, "filterNewsList: articles between ${startTime.time} and ${endTime.time}")
 
         filteredNewsList = newsList
-            .filter { it.postedTime >= selectedDate && (it.timeUntil == 0) }
+            .filter { it.postedTime >= selectedDate && it.postedTime < endTime }
         return filteredNewsList
     }
 

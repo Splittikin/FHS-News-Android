@@ -1,6 +1,6 @@
 package com.example.fhsnews.adapter
 
-import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,14 +19,23 @@ import com.example.fhsnews.model.Article
 class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
-    private lateinit var searchedNewsList: List<Article>
+    private var searchedNewsList: List<Article>
 
     init {
-        searchedNewsList = newsList.filter { it.headline.contains(searchQuery)
-                || it.subtitle.contains(searchQuery)
-                || it.author.contains(searchQuery)
-                || it.topperText.contains(searchQuery)
-                || it.text.contains(searchQuery)}
+        searchedNewsList = searchArticles(searchQuery)
+        Log.d(TAG, "SearchMenu: initted")
+    }
+
+    fun searchArticles(query: String): List<Article> {
+        var result = newsList.filter {
+            it.headline.lowercase().contains(query.lowercase())
+                    || it.subtitle.lowercase().contains(query.lowercase())
+                    || it.author.lowercase().contains(query.lowercase())
+                    || it.topperText.lowercase().contains(query.lowercase())
+                    || it.text.lowercase().contains(query.lowercase())
+        }
+        Log.d(TAG, "searchArticles: ${result.size} articles found for \"$query\"")
+        return result
     }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -42,6 +51,10 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
             view!!.findViewById(R.id.newsCardConstraintLayout)
     }
 
+    inner class NoResultsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
+        // No vars here...
+    }
+
     override fun getItemCount(): Int {
         return searchedNewsList.size
     }
@@ -51,13 +64,20 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d(ContentValues.TAG, "onCreateViewHolder: ran, $viewType")
-        val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
-        return NewsCardViewHolder(adapterLayout)
+        if (searchedNewsList.size <= 0) {
+            val adapterLayout = LayoutInflater.from(parent.context)
+                .inflate(R.layout.no_results_card, parent, false)
+            return NoResultsCardViewHolder(adapterLayout)
+        } else {
+            val adapterLayout =
+                LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+            return NewsCardViewHolder(adapterLayout)
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        Log.d(TAG, "SeachMenu onBindViewHolder: ran")
+
         val thisArticle = searchedNewsList[position]
         (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
         holder.topperText.text = thisArticle.topperText
@@ -68,7 +88,6 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
         holder.authorName.text = thisArticle.author
         holder.articlePreview.text = thisArticle.text
         holder.newsCardConstraintLayout.setOnClickListener {
-            Log.d(ContentValues.TAG, "onBindViewHolder: article click")
             val action =
                 SearchMenuFragmentDirections.actionSearchMenuFragmentToOpenArticleFragment(
                     articleId = thisArticle.articleId
@@ -98,6 +117,7 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
                 holder.articlePreview.layoutParams as ViewGroup.MarginLayoutParams
             previewMarginParam.setMargins(8, 0, 8, 8)
             holder.articlePreview.layoutParams = previewMarginParam
+
         }
     }
 }

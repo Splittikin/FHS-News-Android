@@ -38,7 +38,7 @@ class SearchMenuFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Log.d(TAG, "onQueryTextSubmit: search for \"$query\"")
                 if (query != null) {
-                    recyclerView.adapter = SearchMenuAdapter(query!!)
+                    recyclerView.adapter = SearchMenuAdapter(query)
                 }
                 return false
             }
