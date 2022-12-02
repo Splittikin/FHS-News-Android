@@ -79,7 +79,7 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
             Log.d(ContentValues.TAG, "onBindViewHolder: article click")
             val action =
                 EventsViewFragmentDirections.actionEventsViewFragmentToOpenArticleFragment(
-                    articleId = position
+                    articleId = thisArticle.articleId
                 )
             holder.view!!.findNavController().navigate(action)
         }

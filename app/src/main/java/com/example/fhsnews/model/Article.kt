@@ -8,6 +8,7 @@ import java.sql.Date
 
 data class Article(
     val cardType: Int, // 0 = Article, 1 = Weather, 2 = Red/Silver card
+    val articleId: Int,
     @DrawableRes val articleThumbnail: Int, // Image for the article, will be scaled and cropped TODO: Use placeholder if blank
     val postedTime: Date, // UNIX time of when the article was posted (Showed like "Posted 6 hours ago". Also determines where on the timeline this article appears, so this should be defined even if the time until is intended to be displayed instead) TODO: Formatting
     val timeUntil: Int = 0, // If applicable, UNIX time of when the associated activity will happen (Skipped if blank. If specified, the timestamp will show how long until that activity happens i.e. "In 4 days" instead of "6 hours ago") TODO: Implementation

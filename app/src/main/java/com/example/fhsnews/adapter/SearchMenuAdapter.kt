@@ -61,7 +61,7 @@ class SearchMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             Log.d(ContentValues.TAG, "onBindViewHolder: article click")
             val action =
                 SearchMenuFragmentDirections.actionSearchMenuFragmentToOpenArticleFragment(
-                    articleId = position
+                    articleId = thisArticle.articleId
                 )
             holder.view!!.findNavController().navigate(action)
         }

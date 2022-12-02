@@ -124,7 +124,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     Log.d(TAG, "onBindViewHolder: article click")
                     val action =
                         NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(
-                            articleId = position
+                            articleId = thisArticle.articleId
                         )
                     holder.view!!.findNavController().navigate(action)
                 }
