@@ -12,15 +12,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.R
 import com.example.fhsnews.SearchMenuFragmentDirections
+import com.example.fhsnews.model.Article
 
 // This adapter uses the same data as the News Card Adapter, but filters it to a search request
 
 class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val newsList = com.example.fhsnews.data.DataSource.newsList
+    private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+    private lateinit var searchedNewsList: List<Article>
 
     init {
-        newsList.filter { it.headline.contains(searchQuery) }
+        searchedNewsList = newsList.filter { it.headline.contains(searchQuery) }
     }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -37,11 +39,11 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return newsList.size
+        return searchedNewsList.size
     }
 
     override fun getItemViewType(position: Int): Int {
-        return newsList[position].cardType
+        return searchedNewsList[position].cardType
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -52,7 +54,7 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val thisArticle = newsList[position]
+        val thisArticle = searchedNewsList[position]
         (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
         holder.topperText.text = thisArticle.topperText
         holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
