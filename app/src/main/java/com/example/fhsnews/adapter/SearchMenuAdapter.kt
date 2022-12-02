@@ -22,7 +22,11 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     private lateinit var searchedNewsList: List<Article>
 
     init {
-        searchedNewsList = newsList.filter { it.headline.contains(searchQuery) }
+        searchedNewsList = newsList.filter { it.headline.contains(searchQuery)
+                || it.subtitle.contains(searchQuery)
+                || it.author.contains(searchQuery)
+                || it.topperText.contains(searchQuery)
+                || it.text.contains(searchQuery)}
     }
 
     inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
