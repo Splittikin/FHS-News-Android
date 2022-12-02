@@ -22,11 +22,13 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // TODO: Filter by tag
 
     private val newsList: List<Article>
+    private val sortedNewsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
 
     init {
+        sortedNewsList.sortedBy { it.postedTime }
         newsList = listOf(
             com.example.fhsnews.data.DataSource.extrasList,
-            com.example.fhsnews.data.DataSource.newsList
+            sortedNewsList
         ).flatten()
     }
 

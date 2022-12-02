@@ -10,11 +10,15 @@ import java.sql.Date
 // 1 = Weather Card - Only displayed once, at very top
 // 2 = Red/Silver Card - Only displayed once, just below weather
 
+// ArticleId is used to tell the OpenArticleFragment which article to open when the article gets clicked
+// ArticleId can be any number as long as no two articles share the same number
+
 object DataSource {
     val extrasList: List<Article> = listOf(
         // Contains the weather and red/silver card
         // This list is merged at the front of the news list in the NewsCard adapter, but they are
         //  kept separate for the EventsViewAdapter
+        // Only the cardType field matters, no other fields here are used
         Article(
             1, 0,0, Date(0), 0, "Weather", 0, "", listOf(), "", "", ""
         ), Article(

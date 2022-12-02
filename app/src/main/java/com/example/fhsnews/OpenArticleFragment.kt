@@ -27,7 +27,11 @@ class OpenArticleFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var thisArticle = newsList[articleId]
+        var filteredNewsList: List<Article> = newsList.filter { it.articleId == articleId }
+        if (filteredNewsList.size > 1) {
+            error("More than one article with this articleId")
+        }
+        var thisArticle = filteredNewsList[0]
         binding.openArticleTopperIcon.setImageResource(thisArticle.topperIcon)
         binding.openArticleTopperText.text = thisArticle.topperText
         binding.openArticleThumbnail.setImageResource(thisArticle.articleThumbnail)
