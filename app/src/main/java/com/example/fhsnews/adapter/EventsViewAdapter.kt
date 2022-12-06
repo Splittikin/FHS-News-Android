@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.EventsViewFragmentDirections
@@ -27,7 +28,7 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
         filterNewsList(selectedDate)
     }
 
-    fun filterNewsList(selectedDate: Date): List<Article> {
+    private fun filterNewsList(selectedDate: Date): List<Article> {
         // Filters the newsList to only events that were posted on the selected date, or have timeUntil occurring on that date instead if it is defined
         val startTime = Date(selectedDate.time)
         val endTime = Date(selectedDate.time + 86400000) // (ms in a day)
@@ -86,6 +87,13 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
         }
 
         // Hide any empty article elements
+        if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
+            val topperTextConstraintParam = ConstraintSet()
+            topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
+            topperTextConstraintParam.connect(R.id.topperText, ConstraintSet.START, R.id.newsCardConstraintLayout, ConstraintSet.START)
+            topperTextConstraintParam.connect(R.id.articleThumbnail, ConstraintSet.TOP, R.id.topperText, ConstraintSet.BOTTOM)
+            topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
+        }
         if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
             val imgMarginParam =
                 holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams

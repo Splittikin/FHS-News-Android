@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.NewsScrollerFragmentDirections
@@ -134,6 +135,13 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
 
                 // Hide any empty article elements
+                if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
+                    val topperTextConstraintParam = ConstraintSet()
+                    topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
+                    topperTextConstraintParam.connect(R.id.topperText, ConstraintSet.START, R.id.newsCardConstraintLayout, ConstraintSet.START)
+                    topperTextConstraintParam.connect(R.id.articleThumbnail, ConstraintSet.TOP, R.id.topperText, ConstraintSet.BOTTOM)
+                    topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
+                }
                 if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
                     val imgMarginParam =
                         holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
