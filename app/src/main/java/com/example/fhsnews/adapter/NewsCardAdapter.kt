@@ -1,6 +1,8 @@
 package com.example.fhsnews.adapter
 
 import android.content.ContentValues.TAG
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -110,13 +112,16 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 return
             }
             2 -> { // Red/Silver Card
-                /* if (holder is SilverDayCardViewHolder) {
-                    var urlToOpen: Uri = Uri.parse("https://clever.com/in/hse/student/portal")
-                    val intent = Intent(Intent.ACTION_VIEW, urlToOpen)
-                    val context = holder.view.context
-                } */
-                // TODO: Enriching students/Clever button functionality
-                return
+                (holder as SilverDayCardViewHolder).cleverButton.setOnClickListener {
+                    val queryUrl: Uri = Uri.parse("https://clever.com/in/hse/student/portal")
+                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+                    holder.itemView.context.startActivity(intent)
+                }
+                holder.esButton.setOnClickListener {
+                    val queryUrl: Uri = Uri.parse("https://student.enrichingstudents.com/dashboard")
+                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+                    holder.itemView.context.startActivity(intent)
+                }
             }
             else -> {
                 (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
