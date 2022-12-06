@@ -31,7 +31,6 @@ class OpenClubFragment : Fragment() {
         binding.openClubThumbnail.setImageResource(thisClub.thumbnail)
         binding.openClubHeadline.text = thisClub.name
         binding.openClubContent.text = thisClub.text
-        binding.openClubPostedTime.text = thisClub.postedTime.toString()
         binding.openClubSubtitle.text = thisClub.subtitle
         return
     }

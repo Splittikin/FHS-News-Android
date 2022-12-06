@@ -21,19 +21,23 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
 
     private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
     private var searchedNewsList: List<Article>
+    private var noResults: Boolean = false
 
     init {
         searchedNewsList = searchArticles(searchQuery)
         Log.d(TAG, "SearchMenu: initted")
     }
 
-    fun searchArticles(query: String): List<Article> {
-        var result = newsList.filter {
+    private fun searchArticles(query: String): List<Article> {
+        val result = newsList.filter {
             it.headline.lowercase().contains(query.lowercase())
                     || it.subtitle.lowercase().contains(query.lowercase())
                     || it.author.lowercase().contains(query.lowercase())
                     || it.topperText.lowercase().contains(query.lowercase())
                     || it.text.lowercase().contains(query.lowercase())
+        }
+        if (result.isEmpty()) {
+            noResults = true
         }
         Log.d(TAG, "searchArticles: ${result.size} articles found for \"$query\"")
         return result
@@ -65,15 +69,10 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (searchedNewsList.size <= 0) {
-            val adapterLayout = LayoutInflater.from(parent.context)
-                .inflate(R.layout.no_results_card, parent, false)
-            return NoResultsCardViewHolder(adapterLayout)
-        } else {
-            val adapterLayout =
-                LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
-            return NewsCardViewHolder(adapterLayout)
-        }
+        Log.d(TAG, "onCreateViewHolder: searchmenuadapter")
+        val adapterLayout =
+            LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+        return NewsCardViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

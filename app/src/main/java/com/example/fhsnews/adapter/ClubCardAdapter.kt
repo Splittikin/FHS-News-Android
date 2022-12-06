@@ -24,7 +24,6 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ClubCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var clubThumbnail: ImageView = view!!.findViewById(R.id.clubThumbnail)
         var clubName: TextView = view!!.findViewById(R.id.clubName)
-        var postedTime: TextView = view!!.findViewById(R.id.clubPostedTime)
         var clubSubtitle: TextView = view!!.findViewById(R.id.clubSubtitle)
         var clubInfo: TextView = view!!.findViewById(R.id.clubInfo)
         var clubCardConstraintLayout: ConstraintLayout =
@@ -46,7 +45,6 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         (holder as ClubCardAdapter.ClubCardViewHolder).clubThumbnail.setImageResource(thisClub.thumbnail)
         holder.clubName.text = thisClub.name
         holder.clubSubtitle.text = thisClub.subtitle
-        holder.postedTime.text = thisClub.postedTime.toString()
         holder.clubInfo.text = thisClub.text
         holder.clubCardConstraintLayout.setOnClickListener {
             val action =
@@ -55,7 +53,6 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 )
             holder.view!!.findNavController().navigate(action)
         }
-
     }
 }
 

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.NewsScrollerFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
+import kotlinx.coroutines.NonDisposableHandle.parent
+import kotlinx.coroutines.flow.SharingCommand
 
 // Adapter to find the correct card type to use for an article and inflate it
 
@@ -47,6 +49,7 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class WeatherCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+        // TODO: Fetch real weather data
         var temperatureNumber: TextView = view!!.findViewById(R.id.temperatureNumber)
         var weatherSubtitle: TextView = view!!.findViewById(R.id.weatherSubtitle)
         var weatherIcon: ImageView = view!!.findViewById(R.id.weatherIcon)
@@ -87,7 +90,8 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         .inflate(R.layout.silver_day_card, parent, false)
                     SilverDayCardViewHolder(adapterLayout)
                 }
-                // TODO: Make this account for weekends (currently changes every other day even on weekends)
+                // TODO: Make red/silver card account for weekends
+                // (currently changes every other day even on weekends)
             }
             else -> { // Article
 

@@ -36,6 +36,8 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
 
         filteredNewsList = newsList
             .filter { it.postedTime >= selectedDate && it.postedTime < endTime }
+        // TODO: Show articles with timeUntil specified on date that article happens
+        // TODO: "No results" and "Start typing" card
         return filteredNewsList
     }
 
