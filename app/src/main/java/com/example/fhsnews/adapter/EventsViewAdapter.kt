@@ -22,7 +22,7 @@ import java.util.*
 class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var filteredNewsList: List<Article>
-    private val newsList = com.example.fhsnews.data.DataSource.newsList
+    private val newsList = com.example.fhsnews.data.articles.ArticlesList.newsList
 
     init {
         filterNewsList(selectedDate)
@@ -92,8 +92,18 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
         if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
             val topperTextConstraintParam = ConstraintSet()
             topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
-            topperTextConstraintParam.connect(R.id.topperText, ConstraintSet.START, R.id.newsCardConstraintLayout, ConstraintSet.START)
-            topperTextConstraintParam.connect(R.id.articleThumbnail, ConstraintSet.TOP, R.id.topperText, ConstraintSet.BOTTOM)
+            topperTextConstraintParam.connect(
+                R.id.topperText,
+                ConstraintSet.START,
+                R.id.newsCardConstraintLayout,
+                ConstraintSet.START
+            )
+            topperTextConstraintParam.connect(
+                R.id.articleThumbnail,
+                ConstraintSet.TOP,
+                R.id.topperText,
+                ConstraintSet.BOTTOM
+            )
             topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
         }
         if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {

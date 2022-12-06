@@ -15,7 +15,7 @@ private var clubId by Delegates.notNull<Int>()
 
 class OpenClubFragment : Fragment() {
 
-    private val clubsList: List<Club> = com.example.fhsnews.data.DataSource.clubsList
+    private val clubsList: List<Club> = com.example.fhsnews.data.clubs.ClubsList.clubsList
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

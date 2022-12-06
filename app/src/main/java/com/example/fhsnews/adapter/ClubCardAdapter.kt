@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.ClubScrollerFragmentDirections
 import com.example.fhsnews.R
-import com.example.fhsnews.data.DataSource
+import com.example.fhsnews.data.clubs.ClubsList
 import com.example.fhsnews.model.Club
 
 // Adapter to find and inflate cards for clubs
@@ -19,7 +19,7 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     // TODO: Filter by tag
 
-    private val clubsList: List<Club> = com.example.fhsnews.data.DataSource.clubsList
+    private val clubsList: List<Club> = com.example.fhsnews.data.clubs.ClubsList.clubsList
 
     inner class ClubCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         var clubThumbnail: ImageView = view!!.findViewById(R.id.clubThumbnail)
@@ -41,7 +41,7 @@ class ClubCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val thisClub = DataSource.clubsList[position]
+        val thisClub = ClubsList.clubsList[position]
         (holder as ClubCardAdapter.ClubCardViewHolder).clubThumbnail.setImageResource(thisClub.thumbnail)
         holder.clubName.text = thisClub.name
         holder.clubSubtitle.text = thisClub.subtitle

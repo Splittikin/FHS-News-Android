@@ -26,6 +26,7 @@ class SettingsMenuFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             // Is the button now checked?
@@ -35,14 +36,17 @@ class SettingsMenuFragment : Fragment() {
             when (view.getId()) {
                 R.id.radio_system ->
                     if (checked) {
+                        TODO()
                         // sex
                     }
                 R.id.radio_light ->
                     if (checked) {
+                        TODO()
                         // sex
                     }
                 R.id.radio_dark ->
                     if (checked) {
+                        TODO()
                         // sex
                     }
             }

@@ -16,7 +16,7 @@ private var articleId by Delegates.notNull<Int>()
 
 class OpenArticleFragment : Fragment() {
 
-    private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+    private val newsList: List<Article> = com.example.fhsnews.data.articles.ArticlesList.newsList
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -46,8 +46,18 @@ class OpenArticleFragment : Fragment() {
         if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
             val topperTextConstraintParam = ConstraintSet()
             topperTextConstraintParam.clone(binding.openArticleConstraintLayout)
-            topperTextConstraintParam.connect(R.id.openArticleTopperText, ConstraintSet.START, R.id.openArticleConstraintLayout, ConstraintSet.START)
-            topperTextConstraintParam.connect(R.id.openArticleThumbnail, ConstraintSet.TOP, R.id.openArticleTopperText, ConstraintSet.BOTTOM)
+            topperTextConstraintParam.connect(
+                R.id.openArticleTopperText,
+                ConstraintSet.START,
+                R.id.openArticleConstraintLayout,
+                ConstraintSet.START
+            )
+            topperTextConstraintParam.connect(
+                R.id.openArticleThumbnail,
+                ConstraintSet.TOP,
+                R.id.openArticleTopperText,
+                ConstraintSet.BOTTOM
+            )
             topperTextConstraintParam.applyTo(binding.openArticleConstraintLayout)
         }
         if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {

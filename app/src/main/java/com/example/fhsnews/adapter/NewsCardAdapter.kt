@@ -17,8 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.NewsScrollerFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
-import kotlinx.coroutines.NonDisposableHandle.parent
-import kotlinx.coroutines.flow.SharingCommand
 
 // Adapter to find the correct card type to use for an article and inflate it
 
@@ -28,11 +26,11 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val newsList: List<Article>
     private var sortedNewsList: List<Article> =
-        com.example.fhsnews.data.DataSource.newsList.sortedByDescending { it.postedTime }
+        com.example.fhsnews.data.articles.ArticlesList.newsList.sortedByDescending { it.postedTime }
 
     init {
         newsList = listOf(
-            com.example.fhsnews.data.DataSource.extrasList,
+            com.example.fhsnews.data.ExtrasList.extrasList,
             sortedNewsList
         ).flatten()
     }
@@ -147,8 +145,18 @@ class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
                     val topperTextConstraintParam = ConstraintSet()
                     topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
-                    topperTextConstraintParam.connect(R.id.topperText, ConstraintSet.START, R.id.newsCardConstraintLayout, ConstraintSet.START)
-                    topperTextConstraintParam.connect(R.id.articleThumbnail, ConstraintSet.TOP, R.id.topperText, ConstraintSet.BOTTOM)
+                    topperTextConstraintParam.connect(
+                        R.id.topperText,
+                        ConstraintSet.START,
+                        R.id.newsCardConstraintLayout,
+                        ConstraintSet.START
+                    )
+                    topperTextConstraintParam.connect(
+                        R.id.articleThumbnail,
+                        ConstraintSet.TOP,
+                        R.id.topperText,
+                        ConstraintSet.BOTTOM
+                    )
                     topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
                 }
                 if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {

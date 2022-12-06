@@ -1,7 +1,6 @@
 package com.example.fhsnews.model
 
 import androidx.annotation.DrawableRes
-import java.sql.Date
 
 // Data for a club on the clubs scroller
 // (This is the data that goes into the adapter)

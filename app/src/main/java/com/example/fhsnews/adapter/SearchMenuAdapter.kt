@@ -19,7 +19,7 @@ import com.example.fhsnews.model.Article
 
 class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val newsList: List<Article> = com.example.fhsnews.data.DataSource.newsList
+    private val newsList: List<Article> = com.example.fhsnews.data.articles.ArticlesList.newsList
     private var searchedNewsList: List<Article>
     private var noResults: Boolean = false
 
@@ -99,8 +99,18 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
         if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
             val topperTextConstraintParam = ConstraintSet()
             topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
-            topperTextConstraintParam.connect(R.id.topperText, ConstraintSet.START, R.id.newsCardConstraintLayout, ConstraintSet.START)
-            topperTextConstraintParam.connect(R.id.articleThumbnail, ConstraintSet.TOP, R.id.topperText, ConstraintSet.BOTTOM)
+            topperTextConstraintParam.connect(
+                R.id.topperText,
+                ConstraintSet.START,
+                R.id.newsCardConstraintLayout,
+                ConstraintSet.START
+            )
+            topperTextConstraintParam.connect(
+                R.id.articleThumbnail,
+                ConstraintSet.TOP,
+                R.id.topperText,
+                ConstraintSet.BOTTOM
+            )
             topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
         }
         if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
