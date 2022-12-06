@@ -27,9 +27,9 @@ object DataSource {
     )
     val newsList: List<Article> = listOf(
         Article(
-            0, 1, R.drawable.gift_wrappinh, Date(42069), 0, "Weather", 0, "", listOf(), "", "", ""
+            0, 1, R.drawable.gift_wrappinh, Date(1671469200000), 0, "Fundraiser", R.drawable.events_ico, "", listOf(), "Holiday Gift Wrapping", "For the Leukemia and Lymphoma Society", "On December 19th at door 19, remember to drop off 5-10 gifts to be wrapped for a donation via cash, check, or CashApp. You may bring your own wrapping paper if it is specific to your kid. All proceeds go to the Leukemia and Lymphoma Society"
         ), Article(
-            0, 2, R.drawable., Date(42069), 0, "Red/Silver Indicator", 0, "", listOf(), "", "", ""
+            0, 2, R.drawable.winter_band_digital_program, Date(1670542200000), 0, "Band", R.drawable.music_ico, "", listOf(), "Sounds of the Season Concert", "Intermediate Jazz Ensemble, Advanced Jazz Ensemble, Concert Band, Symphonic Band Red, Symphonic Band Gold, Wind Symphony, Wind Ensemble", "Enjoy the Sounds of the Season as the FHS Bands play selections to get you into the holiday spirit. The Intermediate Jazz Ensemble will play in the Auditorium Lobby beginning at 6:30 p.m. as we begin seating. The concert will begin in the Auditorium at 7 p.m. and the Concert, Symphonic Band Red, Symphonic Band Gold, Wind Symphony, Wind Ensemble and Advanced Jazz Ensemble bands will perform."
         )
     )
     val clubsList: List<Club> = listOf(
