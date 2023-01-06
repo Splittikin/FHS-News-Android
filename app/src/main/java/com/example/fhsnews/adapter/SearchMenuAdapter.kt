@@ -29,12 +29,13 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
     }
 
     private fun searchArticles(query: String): List<Article> {
+        // TODO: Filter on separate thread
         val result = newsList.filter {
-            it.headline.lowercase().contains(query.lowercase())
-                    || it.subtitle.lowercase().contains(query.lowercase())
-                    || it.author.lowercase().contains(query.lowercase())
-                    || it.topperText.lowercase().contains(query.lowercase())
-                    || it.text.lowercase().contains(query.lowercase())
+            it.headline.contains(query, true)
+                    || it.subtitle.contains(query, true)
+                    || it.author.contains(query, true)
+                    || it.topperText.contains(query, true)
+                    || it.text.contains(query, true)
         }
         if (result.isEmpty()) {
             noResults = true

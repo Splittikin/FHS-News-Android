@@ -12,14 +12,14 @@ import java.sql.Date
 // ArticleId is used to tell the OpenArticleFragment which article to open when the article gets clicked
 // ArticleId can be any number as long as no two articles share the same number
 
-/*
+/* Copy and paste this as necessary
 Article(
     /*         Card type */ 0, // Leave as 0 always
     /*        Article ID */ 1, // (Change to any int that isn't in use by another article)
     /* Article thumbnail */ R.drawable.img_ocean,
     /*       Time posted */ Date(1671469200000),
     /*  Time until event */ Date(0), // (Optional - Set to Date(0) to skip)
-    /*       Topper text */"Fundraiser", // (Optional - Set to "" to skip) ("FHS Percussion", "Computer Science Club", etc.)
+    /*       Topper text */ "Fundraiser", // (Optional - Set to "" to skip) ("FHS Percussion", "Computer Science Club", etc.)
     /*       Topper icon */ R.drawable.events_ico, // (Optional - Set to 0 to skip)
     /*    Article author */ "Jeff Jimothy Jones", // (Optional - Set to "" to skip)
     /*      Article tags */ listOf("fundraiser", "holiday", "december"), // (Optional - Set to listOf() to skip)

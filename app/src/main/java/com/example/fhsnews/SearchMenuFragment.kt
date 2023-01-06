@@ -39,11 +39,14 @@ class SearchMenuFragment : Fragment() {
                 Log.d(TAG, "onQueryTextSubmit: search for \"$query\"")
                 if (query != null) {
                     recyclerView.adapter = SearchMenuAdapter(query)
+                } else {
+                    recyclerView.adapter = SearchMenuAdapter("")
                 }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                // TODO: Find first 3 results and show them as the user types
                 return false
             }
         })

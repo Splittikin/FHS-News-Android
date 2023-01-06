@@ -10,6 +10,8 @@ import com.example.fhsnews.databinding.FragmentOpenArticleBinding
 import com.example.fhsnews.model.Article
 import kotlin.properties.Delegates
 
+// TODO: Fetch weather at FHS on date of article
+
 private var _binding: FragmentOpenArticleBinding? = null
 private val binding get() = _binding!!
 private var articleId by Delegates.notNull<Int>()
