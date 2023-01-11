@@ -9,10 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fhsnews.EventsViewFragmentDirections
 import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
 import java.util.*
@@ -71,6 +68,7 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisArticle = filteredNewsList[position]
+        /*
         (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
         holder.topperText.text = thisArticle.topperText
         holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
@@ -128,5 +126,6 @@ class EventsViewAdapter(selectedDate: Date) : RecyclerView.Adapter<RecyclerView.
             previewMarginParam.setMargins(8, 0, 8, 8)
             holder.articlePreview.layoutParams = previewMarginParam
         }
+         */
     }
 }

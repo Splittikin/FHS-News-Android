@@ -8,11 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.R
-import com.example.fhsnews.SearchMenuFragmentDirections
 import com.example.fhsnews.model.Article
 
 // This adapter uses the same data as the News Card Adapter, but filters it to a search request
@@ -80,6 +77,7 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
         Log.d(TAG, "SeachMenu onBindViewHolder: ran")
 
         val thisArticle = searchedNewsList[position]
+        /*
         (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
         holder.topperText.text = thisArticle.topperText
         holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
@@ -137,5 +135,6 @@ class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView
             holder.articlePreview.layoutParams = previewMarginParam
 
         }
+         */
     }
 }

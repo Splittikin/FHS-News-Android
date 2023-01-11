@@ -35,9 +35,7 @@ class OpenArticleFragment : Fragment() {
             error("More than one article with this articleId")
         }
         var thisArticle = filteredNewsList[0]
-        binding.openArticleTopperIcon.setImageResource(thisArticle.topperIcon)
         binding.openArticleTopperText.text = thisArticle.topperText
-        binding.openArticleThumbnail.setImageResource(thisArticle.articleThumbnail)
         binding.openArticleHeadline.text = thisArticle.headline
         binding.openArticleContent.text = thisArticle.text
         binding.openArticlePostedTime.text = thisArticle.postedTime.toString()
@@ -45,7 +43,7 @@ class OpenArticleFragment : Fragment() {
         binding.openArticleAuthorName.text = thisArticle.author
 
         // hide any empty article elements
-        if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
+        if (thisArticle.topperIcon == "" && thisArticle.topperText != "") {
             val topperTextConstraintParam = ConstraintSet()
             topperTextConstraintParam.clone(binding.openArticleConstraintLayout)
             topperTextConstraintParam.connect(
@@ -62,7 +60,7 @@ class OpenArticleFragment : Fragment() {
             )
             topperTextConstraintParam.applyTo(binding.openArticleConstraintLayout)
         }
-        if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
+        if (thisArticle.topperText == "" && thisArticle.topperIcon == "") {
             val imgMarginParam =
                 binding.openArticleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
             imgMarginParam.setMargins(0, 0, 0, 0)

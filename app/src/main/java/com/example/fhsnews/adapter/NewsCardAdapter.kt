@@ -1,187 +1,102 @@
 package com.example.fhsnews.adapter
 
 import android.content.ContentValues.TAG
-import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fhsnews.NewsScrollerFragmentDirections
-import com.example.fhsnews.R
+import com.example.fhsnews.databinding.NewsCardBinding
 import com.example.fhsnews.model.Article
 
 // Adapter to find the correct card type to use for an article and inflate it
 
-class NewsCardAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsCardAdapter : ListAdapter<Article, NewsCardAdapter.NewsCardViewHolder>(DiffCallback) {
 
     // TODO: Filter by tag
 
-    private val newsList: List<Article>
-    private var sortedNewsList: List<Article> =
-        com.example.fhsnews.data.articles.ArticlesList.newsList.sortedByDescending { it.postedTime }
-
-    init {
-        newsList = listOf(
-            com.example.fhsnews.data.ExtrasList.extrasList,
-            sortedNewsList
-        ).flatten()
-    }
-
-    inner class NewsCardViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
-        var topperIcon: ImageView = view!!.findViewById(R.id.topperIcon)
-        var topperText: TextView = view!!.findViewById(R.id.topperText)
-        var articleThumbnail: ImageView = view!!.findViewById(R.id.articleThumbnail)
-        var articleHeadline: TextView = view!!.findViewById(R.id.articleHeadline)
-        var postedTime: TextView = view!!.findViewById(R.id.articlePostedTime)
-        var authorName: TextView = view!!.findViewById(R.id.authorName)
-        var articleSubtitle: TextView = view!!.findViewById(R.id.articleSubtitle)
-        var articlePreview: TextView = view!!.findViewById(R.id.articlePreview)
-        var newsCardConstraintLayout: ConstraintLayout =
-            view!!.findViewById(R.id.newsCardConstraintLayout)
-    }
-
-    inner class WeatherCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
-        // TODO: Fetch real weather data
-        var temperatureNumber: TextView = view!!.findViewById(R.id.temperatureNumber)
-        var weatherSubtitle: TextView = view!!.findViewById(R.id.weatherSubtitle)
-        var weatherIcon: ImageView = view!!.findViewById(R.id.weatherIcon)
-    }
-
-    inner class RedDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
-        // No vars here...
-    }
-
-    inner class SilverDayCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
-        var cleverButton: Button = view!!.findViewById(R.id.clvr_button)
-        var esButton: Button = view!!.findViewById(R.id.es_button)
-    }
-
-    override fun getItemCount(): Int {
-        return newsList.size
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return newsList[position].cardType
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d(TAG, "onCreateViewHolder: ran, $viewType")
-        when (viewType) {
-            1 -> { // Weather
-                val adapterLayout = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.weather_card, parent, false)
-                return WeatherCardViewHolder(adapterLayout)
+    class NewsCardViewHolder(private var binding: NewsCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(article: Article) {
+            binding.article = article
+            /* TODO: Format posted date relatively. Must be done manually, android's own system
+                for this requires minimum API 24 (We are using minimum API 21) */
+            binding.newsCardConstraintLayout.setOnClickListener {
+                Log.d(TAG, "onBindViewbinding: article click")
+                val action =
+                    NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(
+                        articleId = article.articleId
+                    )
+                binding.root.findNavController().navigate(action)
             }
-            2 -> { // Red/Silver Day Card
-                return if (System.currentTimeMillis() % 172800000 > 86400000) { // 86400000 milliseconds in a day
-                    val adapterLayout = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.red_day_card, parent, false)
-                    RedDayCardViewHolder(adapterLayout)
-                } else {
-                    val adapterLayout = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.silver_day_card, parent, false)
-                    SilverDayCardViewHolder(adapterLayout)
-                }
-                // TODO: Make red/silver card account for weekends
-                // (currently changes every other day even on weekends)
-            }
-            else -> { // Article
-
-                val adapterLayout =
-                    LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
-                return NewsCardViewHolder(adapterLayout)
-
-            }
+            binding.executePendingBindings()
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val thisArticle = newsList[position]
-        when (thisArticle.cardType) {
-            1 -> { // Weather
-                return
-            }
-            2 -> { // Red/Silver Card
-                (holder as SilverDayCardViewHolder).cleverButton.setOnClickListener {
-                    val queryUrl: Uri = Uri.parse("https://clever.com/in/hse/student/portal")
-                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-                    holder.itemView.context.startActivity(intent)
-                }
-                holder.esButton.setOnClickListener {
-                    val queryUrl: Uri = Uri.parse("https://student.enrichingstudents.com/dashboard")
-                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
-                    holder.itemView.context.startActivity(intent)
-                }
-            }
-            else -> {
-                (holder as NewsCardViewHolder).topperIcon.setImageResource(thisArticle.topperIcon)
-                holder.topperText.text = thisArticle.topperText
-                holder.articleThumbnail.setImageResource(thisArticle.articleThumbnail)
-                holder.articleHeadline.text = thisArticle.headline
-                holder.articleSubtitle.text = thisArticle.subtitle
-                holder.postedTime.text = thisArticle.postedTime.toString()
-                /* TODO: Format posted date relatively. Must be done manually, android's own system
-                    for this requires minimum API 24 (We are using minimum API 21) */
-                holder.authorName.text = thisArticle.author
-                holder.articlePreview.text = thisArticle.text
-                holder.newsCardConstraintLayout.setOnClickListener {
-                    Log.d(TAG, "onBindViewHolder: article click")
-                    val action =
-                        NewsScrollerFragmentDirections.actionNewsScrollerFragmentToOpenArticleFragment(
-                            articleId = thisArticle.articleId
-                        )
-                    holder.view!!.findNavController().navigate(action)
-                }
-
-                // Hide any empty article elements
-                if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
-                    val topperTextConstraintParam = ConstraintSet()
-                    topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
-                    topperTextConstraintParam.connect(
-                        R.id.topperText,
-                        ConstraintSet.START,
-                        R.id.newsCardConstraintLayout,
-                        ConstraintSet.START
-                    )
-                    topperTextConstraintParam.connect(
-                        R.id.articleThumbnail,
-                        ConstraintSet.TOP,
-                        R.id.topperText,
-                        ConstraintSet.BOTTOM
-                    )
-                    topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
-                }
-                if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
-                    val imgMarginParam =
-                        holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
-                    imgMarginParam.setMargins(0, 0, 0, 0)
-                    holder.articleThumbnail.layoutParams = imgMarginParam
-
-                    val icoMarginParam =
-                        holder.topperIcon.layoutParams as ViewGroup.MarginLayoutParams
-                    icoMarginParam.setMargins(0, 0, 0, 0)
-                    holder.topperIcon.layoutParams = icoMarginParam
-                }
-                if (thisArticle.subtitle == "") {
-                    val subMarginParam =
-                        holder.articleSubtitle.layoutParams as ViewGroup.MarginLayoutParams
-                    subMarginParam.setMargins(0, 0, 0, 0)
-                    holder.articleSubtitle.layoutParams = subMarginParam
-
-                    val previewMarginParam =
-                        holder.articlePreview.layoutParams as ViewGroup.MarginLayoutParams
-                    previewMarginParam.setMargins(8, 0, 8, 8)
-                    holder.articlePreview.layoutParams = previewMarginParam
-                }
-            }
+    companion object DiffCallback : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.articleId == newItem.articleId
         }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.text == newItem.text
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCardViewHolder {
+        return NewsCardViewHolder(
+            NewsCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
+    }
+
+    override fun onBindViewHolder(holder: NewsCardViewHolder, position: Int) {
+        val thisArticle = getItem(position)
+        holder.bind(thisArticle)
+
+        /*
+        // Hide any empty article elements
+        if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
+            val topperTextConstraintParam = ConstraintSet()
+            topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
+            topperTextConstraintParam.connect(
+                R.id.topperText,
+                ConstraintSet.START,
+                R.id.newsCardConstraintLayout,
+                ConstraintSet.START
+            )
+            topperTextConstraintParam.connect(
+                R.id.articleThumbnail,
+                ConstraintSet.TOP,
+                R.id.topperText,
+                ConstraintSet.BOTTOM
+            )
+            topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
+        }
+        if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
+            val imgMarginParam =
+                holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
+            imgMarginParam.setMargins(0, 0, 0, 0)
+            holder.articleThumbnail.layoutParams = imgMarginParam
+
+            val icoMarginParam =
+                holder.topperIcon.layoutParams as ViewGroup.MarginLayoutParams
+            icoMarginParam.setMargins(0, 0, 0, 0)
+            holder.topperIcon.layoutParams = icoMarginParam
+        }
+        if (thisArticle.subtitle == "") {
+            val subMarginParam =
+                holder.articleSubtitle.layoutParams as ViewGroup.MarginLayoutParams
+            subMarginParam.setMargins(0, 0, 0, 0)
+            holder.articleSubtitle.layoutParams = subMarginParam
+
+            val previewMarginParam =
+                holder.articlePreview.layoutParams as ViewGroup.MarginLayoutParams
+            previewMarginParam.setMargins(8, 0, 8, 8)
+            holder.articlePreview.layoutParams = previewMarginParam
+        }
+         */
     }
 }

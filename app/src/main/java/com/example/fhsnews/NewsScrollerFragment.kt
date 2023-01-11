@@ -4,37 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.viewModels
 import com.example.fhsnews.adapter.NewsCardAdapter
 import com.example.fhsnews.databinding.FragmentNewsScrollerBinding
-
-private var _binding: FragmentNewsScrollerBinding? = null
-private val binding get() = _binding!!
-private lateinit var recyclerView: RecyclerView
+import com.example.fhsnews.overview.OverviewViewModel
 
 class NewsScrollerFragment : Fragment() {
+
+
+    private val viewModel: OverviewViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentNewsScrollerBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
-    }
+        val binding = FragmentNewsScrollerBinding.inflate(inflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val recyclerView = binding.newsRecycler
-        recyclerView.adapter = NewsCardAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        (activity as AppCompatActivity).supportActionBar?.title = "FHS News"
-    }
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.newsRecycler.adapter = NewsCardAdapter()
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return binding.root
     }
-
 }

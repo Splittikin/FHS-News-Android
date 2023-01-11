@@ -1,6 +1,5 @@
 package com.example.fhsnews.data.articles
 
-import com.example.fhsnews.R
 import com.example.fhsnews.model.Article
 import java.sql.Date
 
@@ -34,11 +33,11 @@ object ArticlesList {
         Article(
             0,
             1,
-            R.drawable.gift_wrappinh,
+            "0",
             Date(1671469200000),
             Date(0),
             "Fundraiser",
-            R.drawable.events_ico,
+            "0",
             "",
             listOf(),
             "Holiday Gift Wrapping",
@@ -48,11 +47,11 @@ object ArticlesList {
         Article(
             0,
             2,
-            R.drawable.winter_band_digital_program,
+            "0",
             Date(1670542200000),
             Date(0),
             "Band",
-            R.drawable.music_ico,
+            "0",
             "",
             listOf(),
             "Sounds of the Season Concert",
