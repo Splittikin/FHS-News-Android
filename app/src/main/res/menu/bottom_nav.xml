@@ -4,21 +4,21 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/home_ico"
-        android:title="Home" />
+        android:title="@string/home_tab" />
     <item
         android:id="@+id/clubs"
         android:icon="@drawable/club_ico"
-        android:title="Clubs" />
+        android:title="@string/clubs_tab" />
     <item
         android:id="@+id/events"
         android:icon="@drawable/events_ico"
-        android:title="Events" />
+        android:title="@string/events_tab" />
     <item
         android:id="@+id/search"
         android:icon="@drawable/search_ico"
-        android:title="Search" />
+        android:title="@string/search_tab" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/settings_ico"
-        android:title="Settings" />
+        android:title="@string/settings_tab" />
 </menu>

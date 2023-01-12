@@ -16,7 +16,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="App Theme" />
+            android:text="@string/setting_app_theme_name" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -27,21 +27,21 @@
                 android:id="@+id/radio_system"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="System Default"
+                android:text="@string/setting_app_theme_systemdefault"
                 android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/radio_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Light"
+                android:text="@string/setting_app_theme_light"
                 android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/radio_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dark"
+                android:text="@string/setting_app_theme_dark"
                 android:onClick="onRadioButtonClicked" />
         </RadioGroup>
 

@@ -1,118 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/openArticleConstraintLayout"
+        <variable
+            name="article"
+            type="com.example.fhsnews.model.Article" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/openArticleContent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test Scrolling test "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openArticleSubtitle"
-            tools:text="This is an awesome article where we talk about things and stuff and here is some more text so that you can see the preview is just the article's whole text but truncated so you can see a little bit of the article and especially even more of the article because this is the whole thing the entire article all of it no ellipsizing here beacause you clicked on it woo hoo yeah oh yeah" />
-
-        <TextView
-            android:id="@+id/openArticleSubtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:singleLine="false"
-            android:text="TextView"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openArticleHeadline"
-            tools:text="Subtitle" />
-
-        <TextView
-            android:id="@+id/openArticlePostedTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/openArticleHeadline"
-            tools:text="Posted 6 hours ago" />
-
-        <TextView
-            android:id="@+id/openArticleAuthorName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/openArticlePostedTime"
-            app:layout_constraintStart_toEndOf="@+id/openArticleHeadline"
-            app:layout_constraintTop_toBottomOf="@+id/openArticlePostedTime"
-            tools:text="Jeff H. Dinglenuts" />
-
-        <TextView
-            android:id="@+id/openArticleHeadline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/openArticlePostedTime"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openArticleThumbnail"
-            tools:text="Header" />
-
-        <ImageView
-            android:id="@+id/openArticleThumbnail"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/openArticleConstraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openArticleTopperIcon"
-            app:srcCompat="@drawable/img_6887_106" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/openArticleTopperText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-            app:layout_constraintStart_toEndOf="@+id/openArticleTopperIcon"
-            app:layout_constraintTop_toTopOf="@+id/openArticleTopperIcon"
-            tools:text="Topper" />
+            <TextView
+                android:id="@+id/openArticleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{article.text}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/openArticleSubtitle"
+                tools:text="This is an awesome article where we talk about things and stuff and here is some more text so that you can see the preview is just the article's whole text but truncated so you can see a little bit of the article and especially even more of the article because this is the whole thing the entire article all of it no ellipsizing here beacause you clicked on it woo hoo yeah oh yeah" />
 
-        <ImageView
-            android:id="@+id/openArticleTopperIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/club_ico" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/openArticleSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:singleLine="false"
+                android:text="@{article.subtitle}"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/openArticleHeadline"
+                tools:text="Subtitle" />
+
+            <TextView
+                android:id="@+id/openArticlePostedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{article.postedTime.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/openArticleHeadline"
+                tools:text="Posted 6 hours ago" />
+
+            <TextView
+                android:id="@+id/openArticleAuthorName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{article.author}"
+                app:layout_constraintEnd_toEndOf="@+id/openArticlePostedTime"
+                app:layout_constraintStart_toEndOf="@+id/openArticleHeadline"
+                app:layout_constraintTop_toBottomOf="@+id/openArticlePostedTime"
+                tools:text="Jeff H. Dinglenuts" />
+
+            <TextView
+                android:id="@+id/openArticleHeadline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{article.headline}"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/openArticlePostedTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/openArticleThumbnail"
+                tools:text="Header" />
+
+            <ImageView
+                android:id="@+id/openArticleThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{article.articleThumbnail}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/openArticleTopperIcon"
+                app:srcCompat="@drawable/img_6887_106" />
+
+            <TextView
+                android:id="@+id/openArticleTopperText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{article.topperText}"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                app:layout_constraintStart_toEndOf="@+id/openArticleTopperIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Topper" />
+
+            <ImageView
+                android:id="@+id/openArticleTopperIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{article.topperIcon}"
+                app:layout_constraintBottom_toBottomOf="@+id/openArticleTopperText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/openArticleTopperText"
+                app:srcCompat="@drawable/club_ico" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
