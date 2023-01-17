@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!-- This is a card that displays the weather and time at FHS -->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -12,6 +13,29 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/lastUpdatedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherSubtitle"
+            tools:text="Last updated 4 hours ago" />
+
+        <TextView
+            android:id="@+id/weatherSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Sunny"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureNumber" />
+
+        <TextView
             android:id="@+id/temperatureNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,18 +45,6 @@
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
-
-        <TextView
-            android:id="@+id/weatherSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:text="Sunny"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureNumber" />
 
         <TextView
             android:id="@+id/cardTitle"

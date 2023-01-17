@@ -27,7 +27,7 @@ class OpenClubFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var thisClub = clubsList[clubId]
+        val thisClub = clubsList[clubId]
         binding.openClubThumbnail.setImageResource(thisClub.thumbnail)
         binding.openClubHeadline.text = thisClub.name
         binding.openClubContent.text = thisClub.text

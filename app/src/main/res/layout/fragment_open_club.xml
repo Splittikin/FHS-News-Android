@@ -64,7 +64,7 @@
             android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_6887_106" />
+            tools:srcCompat="@drawable/img_ocean" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

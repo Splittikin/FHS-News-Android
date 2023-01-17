@@ -100,7 +100,7 @@
                 app:imageUrl="@{article.articleThumbnail}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/openArticleTopperIcon"
-                app:srcCompat="@drawable/img_6887_106" />
+                tools:srcCompat="@drawable/img_ocean" />
 
             <TextView
                 android:id="@+id/openArticleTopperText"
@@ -124,7 +124,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/openArticleTopperText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/openArticleTopperText"
-                app:srcCompat="@drawable/club_ico" />
+                tools:srcCompat="@drawable/club_ico" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
 
-        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNav = findViewById(R.id.bottomNavigationView)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {

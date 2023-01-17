@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.size.Scale
 import com.example.fhsnews.adapter.NewsCardAdapter
 import com.example.fhsnews.model.Article
 import com.example.fhsnews.overview.FHSNewsApiStatus
@@ -28,6 +29,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         imgView.load(imgUri) {
             placeholder(R.drawable.ic_baseline_download_24)
             error(R.drawable.ic_baseline_broken_image_24)
+            scale(Scale.FILL)
         }
     }
 }
