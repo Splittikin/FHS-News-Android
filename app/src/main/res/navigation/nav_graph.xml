@@ -6,12 +6,12 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.fhsnews.MainActivity"
+        android:name="com.fhs.fhsnews.MainActivity"
         android:label="activity_main" />
 
     <fragment
         android:id="@+id/newsScrollerFragment"
-        android:name="com.example.fhsnews.NewsScrollerFragment"
+        android:name="com.fhs.fhsnews.NewsScrollerFragment"
         android:label="NewsScrollerFragment">
         <action
             android:id="@+id/action_newsScrollerFragment_to_openArticleFragment"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/clubScrollerFragment"
-        android:name="com.example.fhsnews.ClubScrollerFragment"
+        android:name="com.fhs.fhsnews.ClubScrollerFragment"
         android:label="ClubScrollerFragment">
         <action
             android:id="@+id/action_clubScrollerFragment_to_openClubFragment"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/openArticleFragment"
-        android:name="com.example.fhsnews.OpenArticleFragment"
+        android:name="com.fhs.fhsnews.OpenArticleFragment"
         android:label="OpenArticleFragment">
         <argument
             android:name="articleId"
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventsViewFragment"
-        android:name="com.example.fhsnews.EventsViewFragment"
+        android:name="com.fhs.fhsnews.EventsViewFragment"
         android:label="EventsViewFragment">
         <action
             android:id="@+id/action_eventsViewFragment_to_openArticleFragment"
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchMenuFragment"
-        android:name="com.example.fhsnews.SearchMenuFragment"
+        android:name="com.fhs.fhsnews.SearchMenuFragment"
         android:label="SearchMenuFragment">
         <action
             android:id="@+id/action_searchMenuFragment_to_openArticleFragment"
@@ -51,11 +51,11 @@
     </fragment>
     <fragment
         android:id="@+id/settingsMenuFragment"
-        android:name="com.example.fhsnews.SettingsMenuFragment"
+        android:name="com.fhs.fhsnews.SettingsMenuFragment"
         android:label="SettingsMenuFragment" />
     <fragment
         android:id="@+id/openClubFragment"
-        android:name="com.example.fhsnews.OpenClubFragment"
+        android:name="com.fhs.fhsnews.OpenClubFragment"
         android:label="OpenClubFragment">
         <argument
             android:name="clubId"

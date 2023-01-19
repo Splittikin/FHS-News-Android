@@ -7,7 +7,7 @@
 
         <variable
             name="article"
-            type="com.example.fhsnews.model.Article" />
+            type="com.fhs.fhsnews.model.Article" />
     </data>
 
     <ScrollView

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.fhsnews.overview.OverviewViewModel" />
+            type="com.fhs.fhsnews.overview.OverviewViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
