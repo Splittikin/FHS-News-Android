@@ -18,7 +18,7 @@ school project
 IF YOU GET THIS ERROR
 "Latest AGP supported is 7.2.2, current version is 7.3.1"
 DO THIS:
-- File (In top right)
+- File (In top left)
 - Project Structure
 - 'Project' on left sidebar
 - Change Android Gradle Plugin Version to 7.2.1
