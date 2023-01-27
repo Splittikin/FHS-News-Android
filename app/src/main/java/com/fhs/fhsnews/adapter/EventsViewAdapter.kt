@@ -14,7 +14,7 @@ import com.fhs.fhsnews.model.Article
 
 // This adapter uses the same data as the News Card Adapter, but filters it to only posts made on a given day
 
-class EventsViewAdapter() :  ListAdapter<Article, EventsViewAdapter.NewsCardViewHolder>(
+class EventsViewAdapter : ListAdapter<Article, EventsViewAdapter.NewsCardViewHolder>(
     NewsCardAdapter
 ) {
 

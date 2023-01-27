@@ -1,12 +1,12 @@
 package com.fhs.fhsnews.data.clubs
 
-import com.fhs.fhsnews.R
 import com.fhs.fhsnews.model.Club
 
 object ClubsList {
     val clubsList: List<Club> = listOf(
         Club(
-            R.drawable.img_ocean,
+            1,
+            "R.drawable.img_ocean",
             listOf(),
             "Computer Science Club",
             "Sponsored by Mr Guler, Room C209",

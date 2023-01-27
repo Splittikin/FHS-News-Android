@@ -23,6 +23,7 @@ class NewsScrollerFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.newsRecycler.adapter = NewsCardAdapter()
+        viewModel.getArticlesHomeFeed()
 
         return binding.root
     }

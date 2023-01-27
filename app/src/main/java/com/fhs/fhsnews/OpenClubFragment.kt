@@ -1,12 +1,7 @@
 package com.fhs.fhsnews
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.fhs.fhsnews.databinding.FragmentOpenClubBinding
-import com.fhs.fhsnews.model.Club
 import kotlin.properties.Delegates
 
 private var _binding: FragmentOpenClubBinding? = null
@@ -15,6 +10,7 @@ private var clubId by Delegates.notNull<Int>()
 
 class OpenClubFragment : Fragment() {
 
+    /*
     private val clubsList: List<Club> = com.fhs.fhsnews.data.clubs.ClubsList.clubsList
 
     override fun onCreateView(
@@ -28,7 +24,7 @@ class OpenClubFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val thisClub = clubsList[clubId]
-        binding.openClubThumbnail.setImageResource(thisClub.thumbnail)
+        binding.openClubThumbnail.setImageResource(thisClub.clubThumbnail)
         binding.openClubHeadline.text = thisClub.name
         binding.openClubContent.text = thisClub.text
         binding.openClubSubtitle.text = thisClub.subtitle
@@ -38,5 +34,5 @@ class OpenClubFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    } */
 }

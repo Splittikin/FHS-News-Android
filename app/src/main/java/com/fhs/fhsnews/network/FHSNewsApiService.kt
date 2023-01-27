@@ -1,6 +1,7 @@
 package com.fhs.fhsnews.network
 
 import com.fhs.fhsnews.model.Article
+import com.fhs.fhsnews.model.Club
 import com.google.gson.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,13 +32,19 @@ private val retrofit = Retrofit.Builder()
 
 interface FHSNewsApiService {
     @GET("api/home")
-    suspend fun getArticles(): List<Article>
+    suspend fun getArticlesFromApi(): List<Article>
+
+    @GET("api/clubs")
+    suspend fun getClubs(): List<Club>
 
     @GET("api/article/{id}")
     suspend fun getArticle(@Path("id") articleId: Int): Article
 
     @GET("api/search_date")
-    suspend fun searchArticlesDate(@Query("range_start") rangeStart: Long, @Query("range_end") rangeEnd: Long): List<Article>
+    suspend fun searchArticlesDate(
+        @Query("range_start") rangeStart: Long,
+        @Query("range_end") rangeEnd: Long
+    ): List<Article>
 }
 
 object FHSNewsApi {

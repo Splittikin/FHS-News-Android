@@ -10,9 +10,11 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
+import com.fhs.fhsnews.adapter.ClubCardAdapter
 import com.fhs.fhsnews.adapter.EventsViewAdapter
 import com.fhs.fhsnews.adapter.NewsCardAdapter
 import com.fhs.fhsnews.model.Article
+import com.fhs.fhsnews.model.Club
 import com.fhs.fhsnews.overview.FHSNewsApiStatus
 
 @BindingAdapter("articleListData")
@@ -21,10 +23,18 @@ fun bindArticlesRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
     val adapter = recyclerView.adapter as NewsCardAdapter?
     adapter?.submitList(data)
 }
+
 @BindingAdapter("eventsListData")
 fun bindEventsRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
     Log.d(TAG, "bindRecyclerView: updating list data with $data")
     val adapter = recyclerView.adapter as EventsViewAdapter?
+    adapter?.submitList(data)
+}
+
+@BindingAdapter("clubsListData")
+fun bindClubsRecyclerView(recyclerView: RecyclerView, data: List<Club>?) {
+    Log.d(TAG, "bindRecyclerView: updating list data with $data")
+    val adapter = recyclerView.adapter as ClubCardAdapter?
     adapter?.submitList(data)
 }
 

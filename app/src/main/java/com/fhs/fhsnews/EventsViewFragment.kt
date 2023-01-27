@@ -34,9 +34,20 @@ class EventsViewFragment : Fragment() {
         calendarView = binding.eventsDatePicker
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val format = SimpleDateFormat("yyyy-M-dd")
-            Log.d(TAG, "onCreateView: \"$year-${month+1}-$dayOfMonth\" selected\npattern: $format")
-            viewModel.getSearchDateResults(format.parse("$year-${month+1}-$dayOfMonth").getTime(), format.parse("$year-${month+1}-${dayOfMonth + 1}").getTime())
-            Log.d(TAG, "onCreateView: searching between ${format.parse("$year-${month+1}-$dayOfMonth").getTime()} and ${format.parse("$year-${month + 1}-${dayOfMonth + 1}").getTime()}")
+            Log.d(
+                TAG,
+                "onCreateView: \"$year-${month + 1}-$dayOfMonth\" selected\npattern: $format"
+            )
+            viewModel.getSearchDateResults(
+                format.parse("$year-${month + 1}-$dayOfMonth").time,
+                format.parse("$year-${month + 1}-${dayOfMonth + 1}").time
+            )
+            Log.d(
+                TAG,
+                "onCreateView: searching between ${
+                    format.parse("$year-${month + 1}-$dayOfMonth").time
+                } and ${format.parse("$year-${month + 1}-${dayOfMonth + 1}").time}"
+            )
             // Shift $month one forward to become 1-12 instead of 0-11
         }
 
