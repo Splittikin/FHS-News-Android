@@ -18,33 +18,36 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weatherSubtitle"
-            tools:text="Last updated 4 hours ago" />
+            tools:text="Last updated 4 hours ago"
+            tools:textAlignment="center" />
 
         <TextView
             android:id="@+id/weatherSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"
             android:text="Sunny"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
 
         <TextView
             android:id="@+id/temperatureNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="75°"
+
+            android:text="75°F"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
+            android:textSize="40dp"
+            app:layout_constraintEnd_toStartOf="@id/weatherIcon"
+            app:layout_constraintTop_toTopOf="@id/weatherIcon"
+            app:layout_constraintBottom_toBottomOf="@id/weatherIcon"
+            />
 
         <TextView
             android:id="@+id/cardTitle"
@@ -65,6 +68,6 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/wthr_sunny_ico" />
+            app:srcCompat="@drawable/wthr_thunderstorm_ico" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
