@@ -37,7 +37,7 @@ interface FHSNewsApiService {
     suspend fun getArticle(@Path("id") articleId: Int): Article
 
     @GET("api/search_date")
-    suspend fun searchArticlesDate(@Query("range_start") rangeStart: Int, @Query("range_end") rangeEnd: Int): List<Article>
+    suspend fun searchArticlesDate(@Query("range_start") rangeStart: Long, @Query("range_end") rangeEnd: Long): List<Article>
 }
 
 object FHSNewsApi {
