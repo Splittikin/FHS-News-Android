@@ -55,48 +55,5 @@ class NewsCardAdapter : ListAdapter<Article, NewsCardAdapter.NewsCardViewHolder>
     override fun onBindViewHolder(holder: NewsCardViewHolder, position: Int) {
         val thisArticle = getItem(position)
         holder.bind(thisArticle)
-
-        /*
-        // Hide any empty article elements
-        if (thisArticle.topperIcon == 0 && thisArticle.topperText != "") {
-            val topperTextConstraintParam = ConstraintSet()
-            topperTextConstraintParam.clone(holder.newsCardConstraintLayout)
-            topperTextConstraintParam.connect(
-                R.id.topperText,
-                ConstraintSet.START,
-                R.id.newsCardConstraintLayout,
-                ConstraintSet.START
-            )
-            topperTextConstraintParam.connect(
-                R.id.articleThumbnail,
-                ConstraintSet.TOP,
-                R.id.topperText,
-                ConstraintSet.BOTTOM
-            )
-            topperTextConstraintParam.applyTo(holder.newsCardConstraintLayout)
-        }
-        if (thisArticle.topperText == "" && thisArticle.topperIcon == 0) {
-            val imgMarginParam =
-                holder.articleThumbnail.layoutParams as ViewGroup.MarginLayoutParams
-            imgMarginParam.setMargins(0, 0, 0, 0)
-            holder.articleThumbnail.layoutParams = imgMarginParam
-
-            val icoMarginParam =
-                holder.topperIcon.layoutParams as ViewGroup.MarginLayoutParams
-            icoMarginParam.setMargins(0, 0, 0, 0)
-            holder.topperIcon.layoutParams = icoMarginParam
-        }
-        if (thisArticle.subtitle == "") {
-            val subMarginParam =
-                holder.articleSubtitle.layoutParams as ViewGroup.MarginLayoutParams
-            subMarginParam.setMargins(0, 0, 0, 0)
-            holder.articleSubtitle.layoutParams = subMarginParam
-
-            val previewMarginParam =
-                holder.articlePreview.layoutParams as ViewGroup.MarginLayoutParams
-            previewMarginParam.setMargins(8, 0, 8, 8)
-            holder.articlePreview.layoutParams = previewMarginParam
-        }
-         */
     }
 }

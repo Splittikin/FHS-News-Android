@@ -24,6 +24,9 @@ class OverviewViewModel : ViewModel() {
     private val _articles = MutableLiveData<List<Article>>()
     val articles: LiveData<List<Article>> = _articles
 
+    private val _searchResults = MutableLiveData<List<Article>>()
+    val searchResults: LiveData<List<Article>> = _searchResults
+
     init {
         getArticles()
     }
@@ -41,6 +44,22 @@ class OverviewViewModel : ViewModel() {
                 _problem.value = e.toString()
                 Log.e(TAG, "getArticles: couldn't get articles: $e")
                 _articles.value = listOf()
+            }
+        }
+    }
+
+    fun getSearchDateResults(rangeStart: Long, rangeEnd: Long) {
+        viewModelScope.launch {
+            _status.value = FHSNewsApiStatus.LOADING
+            _problem.value = ""
+            try {
+                _searchResults.value = FHSNewsApi.retrofitService.searchArticlesDate(rangeStart, rangeEnd)
+                _status.value = FHSNewsApiStatus.DONE
+            } catch (e: Exception) {
+                _status.value = FHSNewsApiStatus.ERROR
+                _problem.value = e.toString()
+                Log.e(TAG, "getArticles: couldn't get articles: $e")
+                _searchResults.value = listOf()
             }
         }
     }

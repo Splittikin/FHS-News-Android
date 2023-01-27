@@ -10,15 +10,22 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
+import com.fhs.fhsnews.adapter.EventsViewAdapter
 import com.fhs.fhsnews.adapter.NewsCardAdapter
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.overview.FHSNewsApiStatus
 
-@BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
+@BindingAdapter("articleListData")
+fun bindArticlesRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
     Log.d(TAG, "bindRecyclerView: updating list data with $data")
-    val adapter = recyclerView.adapter as NewsCardAdapter
-    adapter.submitList(data)
+    val adapter = recyclerView.adapter as NewsCardAdapter?
+    adapter?.submitList(data)
+}
+@BindingAdapter("eventsListData")
+fun bindEventsRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
+    Log.d(TAG, "bindRecyclerView: updating list data with $data")
+    val adapter = recyclerView.adapter as EventsViewAdapter?
+    adapter?.submitList(data)
 }
 
 @BindingAdapter("imageUrl")
