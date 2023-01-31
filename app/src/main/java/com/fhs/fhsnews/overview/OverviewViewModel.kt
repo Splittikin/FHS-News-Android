@@ -32,7 +32,7 @@ class OverviewViewModel : ViewModel() {
     val clubs: LiveData<List<Club>> = _clubs
 
     fun getArticlesHomeFeed() {
-
+        // Called when opening or refreshing the home feed
         viewModelScope.launch {
             _status.value = FHSNewsApiStatus.LOADING
             try {
@@ -49,6 +49,7 @@ class OverviewViewModel : ViewModel() {
     }
 
     fun getSearchDateResults(rangeStart: Long, rangeEnd: Long) {
+        // Called when opening the events tab and every time you click on a day on the day picker
         viewModelScope.launch {
             _status.value = FHSNewsApiStatus.LOADING
             _problem.value = ""
@@ -66,7 +67,7 @@ class OverviewViewModel : ViewModel() {
     }
 
     fun getClubsClubFeed() {
-
+        // Called when opening or refreshing the clubs feed
         viewModelScope.launch {
             _status.value = FHSNewsApiStatus.LOADING
             try {
