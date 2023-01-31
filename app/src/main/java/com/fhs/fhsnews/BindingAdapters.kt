@@ -53,7 +53,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("FHSNewsApiStatus")
-fun bindStatus(statusImageView: ImageView, status: FHSNewsApiStatus) {
+fun bindStatus(statusImageView: ImageView, status: FHSNewsApiStatus?) {
     when (status) {
         FHSNewsApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
@@ -63,6 +63,9 @@ fun bindStatus(statusImageView: ImageView, status: FHSNewsApiStatus) {
             statusImageView.visibility = View.GONE
         }
         FHSNewsApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+        else -> {
             statusImageView.visibility = View.GONE
         }
     }
