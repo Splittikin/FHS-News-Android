@@ -31,7 +31,8 @@
             app:layout_constraintTop_toBottomOf="@+id/eventsDatePicker"
             app:layout_constraintVertical_bias="1.0">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
+                android:background="#fff"
                 android:id="@+id/events_view_status_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
