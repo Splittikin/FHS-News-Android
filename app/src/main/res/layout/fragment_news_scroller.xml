@@ -15,7 +15,6 @@
 
 
         <pl.droidsonroids.gif.GifImageView
-            android:background="#fff"
             android:id="@+id/news_scroller_status_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
