@@ -50,10 +50,10 @@ class EventsViewFragment : Fragment() {
             )
             // Shift $month one forward to become 1-12 instead of 0-11
         }
-        viewModel.getSearchDateResults(calendarView.date, calendarView.date+86400000)
+        viewModel.getSearchDateResults(calendarView.date, calendarView.date + 86400000)
         Log.d(
             TAG,
-            "onCreateView: searching between ${calendarView.date} and ${calendarView.date+86400000}"
+            "onCreateView: searching between ${calendarView.date} and ${calendarView.date + 86400000}"
         )
 
 

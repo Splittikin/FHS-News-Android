@@ -6,7 +6,6 @@ import java.util.*
 // (This is the data that goes into the adapter)
 
 data class Article(
-    var cardType: Int, // 0 = Article, 1 = Weather, 2 = Red/Silver card
     var articleId: Int, // Id of this article. Can be any int as long as no two articles share the same ID
     var articleThumbnail: String, // (Optional with placeholder) Image for the article, will be scaled and cropped TODO: Use placeholder if blank
     var postedTime: Date, // Time of when the article was posted (Showed relative like "Posted 6 hours ago". Also determines where on the timeline this article appears, so this should be defined even if the time until is intended to be displayed instead) TODO: Relative time formatting

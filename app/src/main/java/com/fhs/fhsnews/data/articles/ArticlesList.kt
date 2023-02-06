@@ -31,7 +31,6 @@ Article(
 object ArticlesList {
     val newsList: List<Article> = listOf(
         Article(
-            0,
             1,
             "0",
             Date(1671469200000),
@@ -45,7 +44,6 @@ object ArticlesList {
             "On December 19th at door 19, remember to drop off 5-10 gifts to be wrapped for a donation via cash, check, or CashApp. You may bring your own wrapping paper if it is specific to your kid. All proceeds go to the Leukemia and Lymphoma Society"
         ),
         Article(
-            0,
             2,
             "0",
             Date(1670542200000),

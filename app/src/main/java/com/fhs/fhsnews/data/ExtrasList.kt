@@ -10,9 +10,9 @@ object ExtrasList {
         //  kept separate for the EventsViewAdapter
         // Only the cardType field matters, no other fields here are used
         Article(
-            1, 0, "0", Date(0), Date(0), "Weather", "0", "", listOf(), "", "", ""
+            0, "0", Date(0), Date(0), "Weather", "0", "", listOf(), "", "", ""
         ), Article(
-            2, 0, "0", Date(0), Date(0), "Red/Silver Indicator", "0", "", listOf(), "", "", ""
+            0, "0", Date(0), Date(0), "Red/Silver Indicator", "0", "", listOf(), "", "", ""
         )
     )
 }
