@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.fhs.fhsnews.databinding.FragmentSettingsMenuBinding
 
@@ -25,31 +26,5 @@ class SettingsMenuFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.radio_system ->
-                    if (checked) {
-                        TODO()
-                        // sex
-                    }
-                R.id.radio_light ->
-                    if (checked) {
-                        TODO()
-                        // sex
-                    }
-                R.id.radio_dark ->
-                    if (checked) {
-                        TODO()
-                        // sex
-                    }
-            }
-        }
     }
 }
