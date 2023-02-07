@@ -3,6 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/drawable/home_ico.xml" value="0.2265" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/drawable/sports_ico.xml" value="0.2265" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/activity_main.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/club_card.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/fragment_clubs_scroller.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/fragment_news_scroller.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/fragment_open_article.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/fragment_open_club.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/lunch_tab.xml" value="0.29136690647482016" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/news_card.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/red_day_card.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/silver_day_card.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/start_typing_card.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/cools/AndroidStudioProjects/FHS-News-Android/app/src/main/res/layout/weather_card.xml" value="0.264" />
         <entry key="..\:/Users/james/AndroidStudioProjects/FHS-News/app/src/main/res/drawable/sportsicon.xml" value="0.2375" />
       </map>
     </option>
