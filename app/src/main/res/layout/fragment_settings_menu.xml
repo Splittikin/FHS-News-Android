@@ -12,38 +12,44 @@
         android:layout_marginEnd="8dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:id="@+id/setting_app_theme_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_app_theme_name" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radio_system"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/setting_app_theme_systemdefault"
-                android:onClick="onRadioButtonClicked" />
+                android:text="@string/setting_app_theme_name" />
 
-            <RadioButton
-                android:id="@+id/radio_light"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/setting_app_theme_radio_group"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/setting_app_theme_light"
-                android:onClick="onRadioButtonClicked" />
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radio_dark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/setting_app_theme_dark"
-                android:onClick="onRadioButtonClicked" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radio_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_app_theme_systemdefault" />
+
+                <RadioButton
+                    android:id="@+id/radio_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_app_theme_light" />
+
+                <RadioButton
+                    android:id="@+id/radio_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_app_theme_dark" />
+            </RadioGroup>
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
