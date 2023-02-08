@@ -1,10 +1,7 @@
 package com.fhs.fhsnews
 
 import android.os.Bundle
-import android.view.View
-import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.fhs.fhsnews.databinding.ActivityMainBinding
@@ -51,28 +48,6 @@ class MainActivity : AppCompatActivity() {
                 else -> {
                     return@setOnItemSelectedListener true
                 }
-            }
-        }
-    }
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.radio_system ->
-                    if (checked) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    }
-                R.id.radio_light ->
-                    if (checked) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    }
-                R.id.radio_dark ->
-                    if (checked) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    }
             }
         }
     }
