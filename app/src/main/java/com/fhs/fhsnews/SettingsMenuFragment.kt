@@ -4,27 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.fhs.fhsnews.databinding.FragmentSettingsMenuBinding
 
-private var _binding: FragmentSettingsMenuBinding? = null
-private val binding get() = _binding!!
 
 class SettingsMenuFragment : Fragment() {
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentSettingsMenuBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
-    }
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        val binding = FragmentSettingsMenuBinding.inflate(inflater)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.settingAppThemeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radio_system -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+                R.id.radio_light -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+                R.id.radio_dark -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+            }
+        }
+
+        return binding.root
     }
 }
