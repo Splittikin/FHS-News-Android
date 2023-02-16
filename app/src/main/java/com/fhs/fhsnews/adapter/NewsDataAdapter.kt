@@ -88,6 +88,8 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
             0 // Article
         } else if (thisItem.itemType == "Club") {
             1 // Club
+        } else if (thisItem.itemType == "WeatherData") {
+            2 // Weather Data
         } else {
             -1 // I Don't Know What This Thing Is
         }

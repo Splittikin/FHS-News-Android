@@ -5,6 +5,7 @@ import android.util.Log
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.Club
 import com.fhs.fhsnews.model.FeedData
+import com.fhs.fhsnews.model.WeatherData
 import com.google.gson.*
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
@@ -18,11 +19,11 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
+//private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
-//private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
+private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
-// Thingy that converts the date strings fron the json files to proper java.util.Date objects
+// Thingy that converts the date strings from the json files to proper java.util.Date objects
 var dateDeser =
     JsonDeserializer { jSon: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext? ->
         if (jSon == null) null else Date(
@@ -37,8 +38,8 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
 
     override fun read(reader: JsonReader): FeedData {
         Log.d(TAG, "read: got feed data ${reader.beginObject()}, ${reader.nextName()}")
-
-        if (reader.nextString() == "Article") {
+        val firstString = reader.nextString()
+        if (firstString == "Article") {
             var returnData = FeedData(
                 Article(
                     -1,
@@ -94,6 +95,31 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                     }
                     "text" -> {
                         returnData.article.text = reader.nextString()
+                    }
+                }
+            }
+            reader.endObject()
+            Log.d(TAG, "read: final data is $returnData")
+            return returnData
+        } else if (firstString == "WeatherData") {
+            var returnData = FeedData(
+                WeatherData(Date(-1), -1, "", "Bruh")
+            )
+            while (reader.peek() != JsonToken.END_OBJECT) {
+                var fieldName = reader.nextName()
+
+                when (fieldName) {
+                    "time" -> {
+                        returnData.weatherData.time = Date(reader.nextString().toLong())
+                    }
+                    "temp" -> {
+                        returnData.weatherData.temp = reader.nextInt()
+                    }
+                    "weather_icon_id" -> {
+                        returnData.weatherData.weather_icon_id = reader.nextString()
+                    }
+                    "weather_description" -> {
+                        returnData.weatherData.weather_description = reader.nextString()
                     }
                 }
             }
