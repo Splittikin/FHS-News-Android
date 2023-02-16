@@ -10,7 +10,7 @@ import android.widget.CalendarView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fhs.fhsnews.adapter.EventsViewAdapter
+import com.fhs.fhsnews.adapter.NewsDataAdapter
 import com.fhs.fhsnews.databinding.FragmentEventsViewBinding
 import com.fhs.fhsnews.overview.OverviewViewModel
 import java.text.SimpleDateFormat
@@ -28,7 +28,7 @@ class EventsViewFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.eventsRecycler.adapter = EventsViewAdapter()
+        binding.eventsRecycler.adapter = NewsDataAdapter()
         binding.eventsRecycler.layoutManager = LinearLayoutManager(context)
 
         calendarView = binding.eventsDatePicker

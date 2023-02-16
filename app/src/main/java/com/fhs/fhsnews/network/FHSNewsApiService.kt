@@ -153,7 +153,7 @@ interface FHSNewsApiService {
     suspend fun searchArticlesDate(
         @Query("range_start") rangeStart: Long,
         @Query("range_end") rangeEnd: Long
-    ): List<Article>
+    ): List<FeedData>
 }
 
 object FHSNewsApi {

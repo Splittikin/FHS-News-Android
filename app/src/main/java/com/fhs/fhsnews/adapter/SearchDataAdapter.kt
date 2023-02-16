@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 // This adapter uses the same data as the News Card Adapter, but filters it to a search request
 
-class SearchMenuAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchDataAdapter(searchQuery: String) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         TODO()
     }

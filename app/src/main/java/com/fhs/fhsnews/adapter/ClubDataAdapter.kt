@@ -14,8 +14,8 @@ import com.fhs.fhsnews.model.Club
 
 // Adapter to find and inflate cards for clubs
 
-class ClubCardAdapter : ListAdapter<Club, ClubCardAdapter.ClubCardViewHolder>(
-    ClubCardAdapter
+class ClubDataAdapter : ListAdapter<Club, ClubDataAdapter.ClubCardViewHolder>(
+    ClubDataAdapter
 ) {
 
     // TODO: Filter by tag

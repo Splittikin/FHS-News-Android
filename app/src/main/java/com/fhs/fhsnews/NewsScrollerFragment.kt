@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.fhs.fhsnews.adapter.NewsCardAdapter
+import com.fhs.fhsnews.adapter.NewsDataAdapter
 import com.fhs.fhsnews.databinding.FragmentNewsScrollerBinding
 import com.fhs.fhsnews.overview.OverviewViewModel
 
@@ -22,7 +22,7 @@ class NewsScrollerFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.newsRecycler.adapter = NewsCardAdapter()
+        binding.newsRecycler.adapter = NewsDataAdapter()
         viewModel.getArticlesHomeFeed()
 
         return binding.root

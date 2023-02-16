@@ -17,7 +17,7 @@ import com.fhs.fhsnews.model.WeatherData
 
 // Adapter to find the correct card type to use for an article and inflate it
 
-class NewsCardAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallback) {
+class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallback) {
 
     // TODO: Filter by tag
 
@@ -42,7 +42,7 @@ class NewsCardAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
     class WeatherCardViewHolder(private var binding: WeatherCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(weather: WeatherData) {
-            binding.weather = weather
+            binding.weatherData = weather
             binding.executePendingBindings()
         }
     }

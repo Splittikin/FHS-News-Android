@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.Club
 import com.fhs.fhsnews.model.FeedData
 import com.fhs.fhsnews.network.FHSNewsApi
@@ -26,8 +25,8 @@ class OverviewViewModel : ViewModel() {
     private val _articles = MutableLiveData<List<FeedData>>()
     val articles: LiveData<List<FeedData>> = _articles
 
-    private val _searchResults = MutableLiveData<List<Article>>()
-    val searchResults: LiveData<List<Article>> = _searchResults
+    private val _searchResults = MutableLiveData<List<FeedData>>()
+    val searchResults: LiveData<List<FeedData>> = _searchResults
 
     private val _clubs = MutableLiveData<List<Club>>()
     val clubs: LiveData<List<Club>> = _clubs

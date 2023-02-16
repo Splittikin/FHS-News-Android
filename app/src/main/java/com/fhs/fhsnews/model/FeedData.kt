@@ -15,13 +15,12 @@ data class FeedData(
         "",
         "",
         "",
-        listOf(),
+        mutableListOf(),
         "",
         "",
         ""
     ),
     var club: Club = Club(
-        "",
         -1,
         "",
         listOf(),
