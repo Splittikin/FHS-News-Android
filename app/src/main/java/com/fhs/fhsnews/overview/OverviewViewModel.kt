@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.Club
+import com.fhs.fhsnews.model.FeedData
 import com.fhs.fhsnews.network.FHSNewsApi
 import kotlinx.coroutines.launch
 
@@ -22,8 +23,8 @@ class OverviewViewModel : ViewModel() {
     private val _problem = MutableLiveData("")
     val problem: LiveData<String> = _problem
 
-    private val _articles = MutableLiveData<List<Article>>()
-    val articles: LiveData<List<Article>> = _articles
+    private val _articles = MutableLiveData<List<FeedData>>()
+    val articles: LiveData<List<FeedData>> = _articles
 
     private val _searchResults = MutableLiveData<List<Article>>()
     val searchResults: LiveData<List<Article>> = _searchResults

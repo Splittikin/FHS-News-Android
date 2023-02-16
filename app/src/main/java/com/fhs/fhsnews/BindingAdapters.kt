@@ -15,11 +15,12 @@ import com.fhs.fhsnews.adapter.EventsViewAdapter
 import com.fhs.fhsnews.adapter.NewsCardAdapter
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.Club
+import com.fhs.fhsnews.model.FeedData
 import com.fhs.fhsnews.overview.FHSNewsApiStatus
 
 // All of these List Data adapters do the same thing but with different types of objects and different card views
 @BindingAdapter("articleListData")
-fun bindArticlesRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
+fun bindArticlesRecyclerView(recyclerView: RecyclerView, data: List<FeedData>?) {
     Log.d(TAG, "bindRecyclerView: updating list data with $data")
     val adapter = recyclerView.adapter as NewsCardAdapter?
     adapter?.submitList(data)

@@ -1,8 +1,14 @@
 package com.fhs.fhsnews.network
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.Club
+import com.fhs.fhsnews.model.FeedData
 import com.google.gson.*
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonToken
+import com.google.gson.stream.JsonWriter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -13,17 +19,111 @@ import java.util.*
 
 
 private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
+//private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
 //private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
 // Thingy that converts the date strings fron the json files to proper java.util.Date objects
-var deser =
+var dateDeser =
     JsonDeserializer { jSon: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext? ->
         if (jSon == null) null else Date(
             jSon.asLong
         )
     }
+
+class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
+    override fun write(out: JsonWriter?, value: FeedData?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun read(reader: JsonReader): FeedData {
+        Log.d(TAG, "read: got feed data ${reader.beginObject()}, ${reader.nextName()}")
+
+        if (reader.nextString() == "Article") {
+            var returnData = FeedData(
+                Article(
+                    -1,
+                    "",
+                    Date(-1),
+                    Date(-1),
+                    "",
+                    "",
+                    "",
+                    mutableListOf(),
+                    "Bruh",
+                    "",
+                    ""
+                )
+            )
+            while (reader.peek() != JsonToken.END_OBJECT) {
+                var fieldName = reader.nextName()
+
+                when (fieldName) {
+                    "articleId" -> {
+                        returnData.article.articleId = reader.nextInt()
+                    }
+                    "articleThumbnail" -> {
+                        returnData.article.articleThumbnail = reader.nextString()
+                    }
+                    "postedTime" -> {
+                        returnData.article.postedTime = Date(reader.nextString().toLong())
+                    }
+                    "timeUntil" -> {
+                        returnData.article.timeUntil = Date(reader.nextString().toLong())
+                    }
+                    "topperText" -> {
+                        returnData.article.topperText = reader.nextString()
+                    }
+                    "topperIcon" -> {
+                        returnData.article.topperIcon = reader.nextString()
+                    }
+                    "author" -> {
+                        returnData.article.author = reader.nextString()
+                    }
+                    "tags" -> {
+                        reader.beginArray()
+                        while (reader.peek() != JsonToken.END_ARRAY) {
+                            returnData.article.tags.add(reader.nextString())
+                        }
+                        reader.endArray()
+                    }
+                    "headline" -> {
+                        returnData.article.headline = reader.nextString()
+                    }
+                    "subtitle" -> {
+                        returnData.article.subtitle = reader.nextString()
+                    }
+                    "text" -> {
+                        returnData.article.text = reader.nextString()
+                    }
+                }
+            }
+            reader.endObject()
+            Log.d(TAG, "read: final data is $returnData")
+            return returnData
+        } else {
+            return FeedData(
+                Article(
+                    -1,
+                    "",
+                    Date(-1),
+                    Date(-1),
+                    "",
+                    "",
+                    "",
+                    mutableListOf(),
+                    "Bruh Moment",
+                    "",
+                    "A Bruh Moment has occurred."
+                )
+            )
+        }
+    }
+}
+
 var gson = GsonBuilder()
-    .registerTypeAdapter(Date::class.java, deser).create()
+    .registerTypeAdapter(Date::class.java, dateDeser)
+    .registerTypeAdapter(FeedData::class.java, HomeFeedDataJsonAdapter())
+    .create()
 
 // Retrofit
 private val retrofit = Retrofit.Builder()
@@ -34,7 +134,7 @@ private val retrofit = Retrofit.Builder()
 interface FHSNewsApiService {
     // Called when opening or refreshing the home feed
     @GET("api/home")
-    suspend fun getArticlesFromApi(): List<Article>
+    suspend fun getArticlesFromApi(): List<FeedData>
 
     // Called when opening or refreshing the clubs feed
     @GET("api/feedClubs")

@@ -13,7 +13,7 @@ data class Article(
     var topperText: String, // (Optional) Activity the card is associated with, such as "Fishers Football" or "FHS Percussion"
     var topperIcon: String, // (Optional) Emblem for the topper text
     var author: String, // (Optional) Name of who wrote the article
-    var tags: List<String>, // (Optional) Used for filtering TODO: Filter by tag
+    var tags: MutableList<String>, // (Optional) Used for filtering TODO: Filter by tag
     var headline: String, // Headline for the article
     var subtitle: String, // (Optional) One-line subtitle displayed below the headline
     var text: String // Contents of the article TODO: Change to a different text type that can embed images and links
