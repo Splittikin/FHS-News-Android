@@ -29,7 +29,7 @@ data class FeedData(
         ""
     ),
     var dayType: DayType = DayType("", ""),
-    var weatherData: WeatherData = WeatherData(Date(-1), -1, "", "")
+    var weatherData: WeatherData = WeatherData(Date(-1), "-1", "", "")
 ) {
     constructor(inArticle: Article) : this(itemType = "Article", article = inArticle)
     constructor(inClub: Club) : this(itemType = "Club", club = inClub)

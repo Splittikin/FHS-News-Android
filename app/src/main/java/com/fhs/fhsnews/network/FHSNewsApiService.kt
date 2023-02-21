@@ -19,13 +19,13 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-//private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
+private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
-private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
+//private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
 // Thingy that converts the date strings from the json files to proper java.util.Date objects
 var dateDeser =
-    JsonDeserializer { jSon: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext? ->
+    JsonDeserializer { jSon: JsonElement?, _: Type?, _: JsonDeserializationContext? ->
         if (jSon == null) null else Date(
             jSon.asLong
         )
@@ -33,120 +33,123 @@ var dateDeser =
 
 class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
     override fun write(out: JsonWriter?, value: FeedData?) {
-        TODO("Not yet implemented")
+        TODO("Not needed")
     }
 
     override fun read(reader: JsonReader): FeedData {
         Log.d(TAG, "read: got feed data ${reader.beginObject()}, ${reader.nextName()}")
-        val firstString = reader.nextString()
-        if (firstString == "Article") {
-            var returnData = FeedData(
-                Article(
-                    -1,
-                    "",
-                    Date(-1),
-                    Date(-1),
-                    "",
-                    "",
-                    "",
-                    mutableListOf(),
-                    "Bruh",
-                    "",
-                    ""
+        when (reader.nextString()) {
+            "Article" -> {
+                var returnData = FeedData(
+                    Article(
+                        -1,
+                        "",
+                        Date(-1),
+                        Date(-1),
+                        "",
+                        "",
+                        "",
+                        mutableListOf(),
+                        "Bruh",
+                        "",
+                        ""
+                    )
                 )
-            )
-            while (reader.peek() != JsonToken.END_OBJECT) {
-                var fieldName = reader.nextName()
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
 
-                when (fieldName) {
-                    "articleId" -> {
-                        returnData.article.articleId = reader.nextInt()
-                    }
-                    "articleThumbnail" -> {
-                        returnData.article.articleThumbnail = reader.nextString()
-                    }
-                    "postedTime" -> {
-                        returnData.article.postedTime = Date(reader.nextString().toLong())
-                    }
-                    "timeUntil" -> {
-                        returnData.article.timeUntil = Date(reader.nextString().toLong())
-                    }
-                    "topperText" -> {
-                        returnData.article.topperText = reader.nextString()
-                    }
-                    "topperIcon" -> {
-                        returnData.article.topperIcon = reader.nextString()
-                    }
-                    "author" -> {
-                        returnData.article.author = reader.nextString()
-                    }
-                    "tags" -> {
-                        reader.beginArray()
-                        while (reader.peek() != JsonToken.END_ARRAY) {
-                            returnData.article.tags.add(reader.nextString())
+                    when (fieldName) {
+                        "articleId" -> {
+                            returnData.article.articleId = reader.nextInt()
                         }
-                        reader.endArray()
-                    }
-                    "headline" -> {
-                        returnData.article.headline = reader.nextString()
-                    }
-                    "subtitle" -> {
-                        returnData.article.subtitle = reader.nextString()
-                    }
-                    "text" -> {
-                        returnData.article.text = reader.nextString()
+                        "articleThumbnail" -> {
+                            returnData.article.articleThumbnail = reader.nextString()
+                        }
+                        "postedTime" -> {
+                            returnData.article.postedTime = Date(reader.nextString().toLong())
+                        }
+                        "timeUntil" -> {
+                            returnData.article.timeUntil = Date(reader.nextString().toLong())
+                        }
+                        "topperText" -> {
+                            returnData.article.topperText = reader.nextString()
+                        }
+                        "topperIcon" -> {
+                            returnData.article.topperIcon = reader.nextString()
+                        }
+                        "author" -> {
+                            returnData.article.author = reader.nextString()
+                        }
+                        "tags" -> {
+                            reader.beginArray()
+                            while (reader.peek() != JsonToken.END_ARRAY) {
+                                returnData.article.tags.add(reader.nextString())
+                            }
+                            reader.endArray()
+                        }
+                        "headline" -> {
+                            returnData.article.headline = reader.nextString()
+                        }
+                        "subtitle" -> {
+                            returnData.article.subtitle = reader.nextString()
+                        }
+                        "text" -> {
+                            returnData.article.text = reader.nextString()
+                        }
                     }
                 }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
             }
-            reader.endObject()
-            Log.d(TAG, "read: final data is $returnData")
-            return returnData
-        } else if (firstString == "WeatherData") {
-            var returnData = FeedData(
-                WeatherData(Date(-1), -1, "", "Bruh")
-            )
-            while (reader.peek() != JsonToken.END_OBJECT) {
-                var fieldName = reader.nextName()
-
-                when (fieldName) {
-                    "time" -> {
-                        returnData.weatherData.time = Date(reader.nextString().toLong())
-                    }
-                    "temp" -> {
-                        returnData.weatherData.temp = reader.nextInt()
-                    }
-                    "weather_icon_id" -> {
-                        returnData.weatherData.weather_icon_id = reader.nextString()
-                    }
-                    "weather_description" -> {
-                        returnData.weatherData.weather_description = reader.nextString()
-                    }
-                }
-            }
-            reader.endObject()
-            Log.d(TAG, "read: final data is $returnData")
-            return returnData
-        } else {
-            return FeedData(
-                Article(
-                    -1,
-                    "",
-                    Date(-1),
-                    Date(-1),
-                    "",
-                    "",
-                    "",
-                    mutableListOf(),
-                    "Bruh Moment",
-                    "",
-                    "A Bruh Moment has occurred."
+            "WeatherData" -> {
+                var returnData = FeedData(
+                    WeatherData(Date(-1), "-1", "", "Bruh")
                 )
-            )
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
+
+                    when (fieldName) {
+                        "time" -> {
+                            returnData.weatherData.time = Date(reader.nextString().toLong())
+                        }
+                        "current_temp" -> {
+                            returnData.weatherData.current_temp = reader.nextInt().toString() + "°F"
+                        }
+                        "weather_icon_id" -> {
+                            returnData.weatherData.weather_icon_id = reader.nextString()
+                        }
+                        "weather_description" -> {
+                            returnData.weatherData.weather_description = reader.nextString()
+                        }
+                    }
+                }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
+            }
+            else -> {
+                return FeedData(
+                    Article(
+                        -1,
+                        "",
+                        Date(-1),
+                        Date(-1),
+                        "",
+                        "",
+                        "",
+                        mutableListOf(),
+                        "Bruh Moment",
+                        "",
+                        "A Bruh Moment has occurred."
+                    )
+                )
+            }
         }
     }
 }
 
-var gson = GsonBuilder()
+var gson: Gson = GsonBuilder()
     .registerTypeAdapter(Date::class.java, dateDeser)
     .registerTypeAdapter(FeedData::class.java, HomeFeedDataJsonAdapter())
     .create()

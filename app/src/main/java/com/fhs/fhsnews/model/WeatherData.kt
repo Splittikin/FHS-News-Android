@@ -4,7 +4,7 @@ import java.util.*
 
 data class WeatherData(
     var time: Date,
-    var temp: Int,
+    var current_temp: String,
     var weather_icon_id: String,
-    var weather_description: String
+    var weather_description: String = "Loading..."
 )

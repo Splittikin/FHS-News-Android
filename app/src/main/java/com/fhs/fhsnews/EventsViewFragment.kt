@@ -32,7 +32,7 @@ class EventsViewFragment : Fragment() {
         binding.eventsRecycler.layoutManager = LinearLayoutManager(context)
 
         calendarView = binding.eventsDatePicker
-        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val format = SimpleDateFormat("yyyy-M-dd")
             Log.d(
                 TAG,

@@ -51,6 +51,21 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+@BindingAdapter("weatherImage")
+fun bindWeatherImage(imgView: ImageView, imgCode: String?) {
+    imgCode?.let {
+        val imgUri = "https://www.weatherbit.io/static/img/icons/$imgCode.png".toUri().buildUpon()
+            .scheme("https").build()
+
+        Log.d(TAG, "bindImage: loading weather image with code $imgCode from $imgUri")
+        imgView.load(imgUri) {
+            placeholder(R.drawable.ic_baseline_download_24)
+            error(R.drawable.ic_baseline_broken_image_24)
+            scale(Scale.FILL)
+        }
+    }
+}
+
 @BindingAdapter("FHSNewsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: FHSNewsApiStatus?) {
     when (status) {

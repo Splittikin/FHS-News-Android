@@ -15,7 +15,7 @@ class SettingsMenuFragment : Fragment() {
     ): View {
         val binding = FragmentSettingsMenuBinding.inflate(inflater)
 
-        binding.settingAppThemeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+        binding.settingAppThemeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radio_system -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
