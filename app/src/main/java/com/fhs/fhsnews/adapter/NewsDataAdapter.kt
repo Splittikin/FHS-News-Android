@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fhs.fhsnews.NewsScrollerFragmentDirections
+import com.fhs.fhsnews.databinding.AlertCardBinding
+import com.fhs.fhsnews.databinding.ClubCardBinding
 import com.fhs.fhsnews.databinding.NewsCardBinding
 import com.fhs.fhsnews.databinding.WeatherCardBinding
+import com.fhs.fhsnews.model.Alert
 import com.fhs.fhsnews.model.Article
 import com.fhs.fhsnews.model.FeedData
 import com.fhs.fhsnews.model.WeatherData
@@ -47,6 +50,14 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
         }
     }
 
+    class AlertCardViewHolder(private var binding: AlertCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(alert: Alert) {
+            binding.alert = alert
+            binding.executePendingBindings()
+        }
+    }
+
     companion object DiffCallback : DiffUtil.ItemCallback<FeedData>() {
         override fun areItemsTheSame(oldItem: FeedData, newItem: FeedData): Boolean {
             return when (newItem.itemType) {
@@ -55,6 +66,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
                 }
                 "WeatherData" -> {
                     oldItem.weatherData.time == newItem.weatherData.time
+                }
+                "Alert" -> {
+                    oldItem.alert.text == newItem.alert.text
                 }
                 else -> {
                     false
@@ -70,6 +84,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
                 "WeatherData" -> {
                     oldItem.weatherData.time == newItem.weatherData.time
                 }
+                "Alert" -> {
+                    oldItem.alert.text == newItem.alert.text
+                }
                 else -> {
                     false
                 }
@@ -79,14 +96,24 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            1 -> {
+            0 -> {
                 NewsCardViewHolder(
                     NewsCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                )
+            }
+            1 -> {
+                ClubDataAdapter.ClubCardViewHolder(
+                    ClubCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
             2 -> {
                 WeatherCardViewHolder(
                     WeatherCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                )
+            }
+            3 -> {
+                AlertCardViewHolder(
+                    AlertCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
             else -> {
@@ -110,6 +137,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
             "WeatherData" -> {
                 2 // Weather Data
             }
+            "Alert" -> {
+                3 // Alert
+            }
             else -> {
                 -1 // I Don't Know What This Thing Is
             }
@@ -120,12 +150,19 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
         val thisItem = getItem(position)
         val thisItemViewType = getItemViewType(position)
         Log.d(TAG, "onBindViewHolder: position $position is ${getItemViewType(position)}")
-        if (thisItemViewType == 0) { // If thisItem is an article
-            Log.d(TAG, "onBindViewHolder: binding article $thisItem")
-            (holder as NewsCardViewHolder).bind(thisItem.article)
-        } else if (thisItemViewType == 2) {
-            Log.d(TAG, "onBindViewHolder: binding weather $thisItem")
-            (holder as WeatherCardViewHolder).bind(thisItem.weatherData)
+        when (thisItemViewType) {
+            0 -> {
+                Log.d(TAG, "onBindViewHolder: binding article $thisItem")
+                (holder as NewsCardViewHolder).bind(thisItem.article)
+            }
+            2 -> {
+                Log.d(TAG, "onBindViewHolder: binding weather $thisItem")
+                (holder as WeatherCardViewHolder).bind(thisItem.weatherData)
+            }
+            3 -> {
+                Log.d(TAG, "onBindViewHolder: binding alert $thisItem")
+                (holder as AlertCardViewHolder).bind(thisItem.alert)
+            }
         }
     }
 }

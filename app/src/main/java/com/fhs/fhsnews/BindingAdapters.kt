@@ -1,10 +1,12 @@
 package com.fhs.fhsnews
 
 import android.content.ContentValues.TAG
+import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -91,4 +93,14 @@ fun bindProblem(problemTextView: TextView, problem: String) {
         problemTextView.visibility = View.VISIBLE
         problemTextView.text = problem
     }
+}
+
+@BindingAdapter("alertCardBackgroundColor")
+fun bindAlertCardColor(colorCardView: CardView, color: String) {
+    colorCardView.setCardBackgroundColor(Color.parseColor(color))
+}
+
+@BindingAdapter("alertCardForegroundColor")
+fun bindAlertTextColor(colorTextView: TextView, color: String) {
+    colorTextView.setTextColor(Color.parseColor(color))
 }

@@ -2,10 +2,7 @@ package com.fhs.fhsnews.network
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import com.fhs.fhsnews.model.Article
-import com.fhs.fhsnews.model.Club
-import com.fhs.fhsnews.model.FeedData
-import com.fhs.fhsnews.model.WeatherData
+import com.fhs.fhsnews.model.*
 import com.google.gson.*
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
@@ -121,6 +118,42 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                         }
                         "weather_description" -> {
                             returnData.weatherData.weather_description = reader.nextString()
+                        }
+                    }
+                }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
+            }
+            "Alert" -> {
+                var returnData = FeedData(
+                    Alert("", "", "")
+                )
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
+
+                    when (fieldName) {
+                        "text" -> {
+                            returnData.alert.text = reader.nextString()
+                        }
+                        "background_color" -> {
+                            returnData.alert.background_color = reader.nextString()
+                        }
+                        "foreground_color" -> {
+                            returnData.alert.foreground_color = reader.nextString()
+                        }
+                        "night_background_color" -> {
+                            returnData.alert.night_background_color = reader.nextString()
+                        }
+                        "night_foreground_color" -> {
+                            returnData.alert.night_foreground_color = reader.nextString()
+                        }
+                        "buttons" -> {
+                            reader.beginObject()
+                            while (reader.peek() != JsonToken.END_OBJECT) {
+                                returnData.alert.buttons[reader.nextName()] = reader.nextString()
+                            }
+                            reader.endObject()
                         }
                     }
                 }
