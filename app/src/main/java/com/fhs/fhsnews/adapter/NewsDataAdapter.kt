@@ -1,9 +1,16 @@
 package com.fhs.fhsnews.adapter
 
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.constraintlayout.helper.widget.Flow
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -50,10 +57,26 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
         }
     }
 
-    class AlertCardViewHolder(private var binding: AlertCardBinding) :
+    class AlertCardViewHolder(private var context: Context, private var binding: AlertCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(alert: Alert) {
             binding.alert = alert
+
+            val cardConstraint: ConstraintLayout = binding.alertCardConstraintLayout
+            val cardFlow: Flow = binding.buttonsFlow
+            for (button in alert.links) {
+                var linkButton = Button(context)
+                linkButton.text = button.key
+                linkButton.id = View.generateViewId()
+                cardConstraint.addView(linkButton)
+                cardFlow.addView(linkButton)
+                linkButton.setOnClickListener {
+                    val queryUrl: Uri = Uri.parse(button.value)
+                    val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+                    context.startActivity(intent)
+                }
+            }
+
             binding.executePendingBindings()
         }
     }
@@ -97,7 +120,7 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> {
-                NewsCardViewHolder(
+                NewsDataAdapter.NewsCardViewHolder(
                     NewsCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
@@ -113,6 +136,7 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
             }
             3 -> {
                 AlertCardViewHolder(
+                    parent.context,
                     AlertCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }

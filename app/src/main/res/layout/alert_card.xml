@@ -20,6 +20,7 @@
         tools:cardBackgroundColor="#FFFF00">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/alertCardConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -28,15 +29,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@{alert.text}"
+                app:alertCardForegroundColor="@{alert.foreground_color}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@{alert.text}"
-                app:alertCardForegroundColor="@{alert.foreground_color}"
                 tools:text="Our servers are on fire!"
                 tools:textColor="#000000" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/buttonsFlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alertText" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

@@ -16,9 +16,9 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
+//private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
-//private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
+private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
 // Thingy that converts the date strings from the json files to proper java.util.Date objects
 var dateDeser =
@@ -148,10 +148,10 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                         "night_foreground_color" -> {
                             returnData.alert.night_foreground_color = reader.nextString()
                         }
-                        "buttons" -> {
+                        "links" -> {
                             reader.beginObject()
                             while (reader.peek() != JsonToken.END_OBJECT) {
-                                returnData.alert.buttons[reader.nextName()] = reader.nextString()
+                                returnData.alert.links[reader.nextName()] = reader.nextString()
                             }
                             reader.endObject()
                         }
