@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?><!-- This is a card that displays what's available to buy for lunch today -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginEnd="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:constraint_referenced_ids="lunchEntreeLayout,lunchVegetableLayout,lunchGrainLayout,lunchFruitLayout"
+            app:flow_horizontalGap="8dp"
+            app:flow_verticalGap="8dp"
+            app:flow_wrapMode="aligned"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lunchCardTitle" />
+
+        <LinearLayout
+            android:id="@+id/lunchEntreeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lunchEntreeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lunch_entree_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lunchEntreeItem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="entreeItem1"
+                android:textAlignment="center"
+                tools:text="Boneless Wings"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/lunchEntreeItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="entreeItem2"
+                android:textAlignment="center"
+                tools:text="Chef Salad w/ Sun Chips"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lunchVegetableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lunchVegetableHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lunch_vegetable_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lunchVegetableItem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="vegetableItem1"
+                android:textAlignment="center"
+                tools:text="Carrots"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/lunchVegetableItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="vegetableItem2"
+                android:textAlignment="center"
+                tools:text="Broccoli"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lunchGrainLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lunchGrainHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lunch_grain_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lunchGrainItem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="grainItem1"
+                android:textAlignment="center"
+                tools:text="Pretzel"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/lunchGrainItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="grainItem2"
+                android:textAlignment="center"
+                tools:text="Biscuit"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lunchFruitLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="362dp"
+            tools:layout_editor_absoluteY="43dp">
+
+            <TextView
+                android:id="@+id/lunchFruitHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/lunch_fruit_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/lunchFruitItem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="fruitItem1"
+                android:textAlignment="center"
+                tools:text="Apple"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/lunchFruitItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="fruitItem2"
+                android:textAlignment="center"
+                tools:text="Banana"
+                tools:textAlignment="center"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lunchCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lunch_card_title"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

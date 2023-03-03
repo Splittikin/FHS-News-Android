@@ -16,9 +16,9 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-//private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
+private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
-private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
+//private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
 // Thingy that converts the date strings from the json files to proper java.util.Date objects
 var dateDeser =
@@ -30,7 +30,7 @@ var dateDeser =
 
 class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
     override fun write(out: JsonWriter?, value: FeedData?) {
-        TODO("Not needed")
+        // burh
     }
 
     override fun read(reader: JsonReader): FeedData {
@@ -196,7 +196,11 @@ private val retrofit = Retrofit.Builder()
 interface FHSNewsApiService {
     // Called when opening or refreshing the home feed
     @GET("api/home")
-    suspend fun getArticlesFromApi(): List<FeedData>
+    suspend fun getArticlesFromApi(
+        /* @Query("position") position: Int,
+        @Query("amount") amount: Int */
+        // SOON
+    ): List<FeedData>
 
     // Called when opening or refreshing the clubs feed
     @GET("api/feedClubs")

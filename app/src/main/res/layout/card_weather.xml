@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/lastUpdatedDate"
+                android:id="@+id/weatherLastUpdatedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -46,10 +46,10 @@
                 tools:text="Sunny"
                 android:text="@{weatherData.weather_description}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/weatherCardTitle" />
 
             <TextView
-                android:id="@+id/temperatureNumber"
+                android:id="@+id/weatherTemperatureNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -63,7 +63,7 @@
                 tools:text="75°F" />
 
             <TextView
-                android:id="@+id/cardTitle"
+                android:id="@+id/weatherCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

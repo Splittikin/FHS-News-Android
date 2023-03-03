@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- This is a card that contains news, such as upcoming activites -->
+<?xml version="1.0" encoding="utf-8"?><!-- This is a card that contains a club, and some detailed info about it -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">

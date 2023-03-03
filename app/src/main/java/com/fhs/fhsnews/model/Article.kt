@@ -12,6 +12,8 @@ data class Article(
     var timeUntil: Date = Date(0), // (Optional) UNIX time of when the associated activity will happen (Set to 0 to skip. If specified, the timestamp will show how long until that activity happens i.e. "In 4 days" instead of "6 hours ago", as well as placing the article on the calendar at that date) TODO: Implementation
     var topperText: String, // (Optional) Activity the card is associated with, such as "Fishers Football" or "FHS Percussion"
     var topperIcon: String, // (Optional) Emblem for the topper text
+    /* var topperColor: String,
+    var topperTextColor: String, */ // SOON
     var author: String, // (Optional) Name of who wrote the article
     var tags: MutableList<String>, // (Optional) Used for filtering TODO: Filter by tag
     var headline: String, // Headline for the article

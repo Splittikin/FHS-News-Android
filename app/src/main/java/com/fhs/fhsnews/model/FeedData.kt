@@ -14,6 +14,8 @@ data class FeedData(
         Date(-1),
         "",
         "",
+        /* "",
+        "", */ // Topper color & text color, soon
         "",
         mutableListOf(),
         "",
