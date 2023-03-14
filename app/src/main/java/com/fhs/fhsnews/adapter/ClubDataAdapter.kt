@@ -9,18 +9,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fhs.fhsnews.ClubScrollerFragmentDirections
-import com.fhs.fhsnews.databinding.ClubCardBinding
+import com.fhs.fhsnews.databinding.CardClubBinding
 import com.fhs.fhsnews.model.Club
 
 // Adapter to find and inflate cards for clubs
 
-class ClubDataAdapter : ListAdapter<Club, ClubDataAdapter.ClubCardViewHolder>(
+class ClubDataAdapter : ListAdapter<Club, ClubDataAdapter.CardClubViewHolder>(
     ClubDataAdapter
 ) {
 
     // TODO: Filter by tag
 
-    class ClubCardViewHolder(private var binding: ClubCardBinding) :
+    class CardClubViewHolder(private var binding: CardClubBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(club: Club) {
             binding.club = club
@@ -46,13 +46,13 @@ class ClubDataAdapter : ListAdapter<Club, ClubDataAdapter.ClubCardViewHolder>(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubCardViewHolder {
-        return ClubCardViewHolder(
-            ClubCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardClubViewHolder {
+        return CardClubViewHolder(
+            CardClubBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ClubCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardClubViewHolder, position: Int) {
         val thisClub = getItem(position)
         holder.bind(thisClub)
     }

@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_searchMenuFragment_to_openArticleFragment"
             app:destination="@id/openArticleFragment" />
+        <action
+            android:id="@+id/action_searchMenuFragment_to_openClubFragment"
+            app:destination="@id/openClubFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsMenuFragment"
