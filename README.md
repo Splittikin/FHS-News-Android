@@ -1,5 +1,6 @@
 # FHS-News
-school project
+News feed for FHS happenings
+Super duper WIP! Any part of the app can change at any time! Here be jank!
 
 - Copy the URL to this page at the top
 - Open Android Studio
