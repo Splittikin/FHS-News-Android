@@ -1,7 +1,9 @@
 # FHS-News
 News feed for FHS happenings
+
 Super duper WIP! Any part of the app can change at any time! Here be jank!
 
+To develop:
 - Copy the URL to this page at the top
 - Open Android Studio
 - File
@@ -26,3 +28,8 @@ DO THIS:
 - Click apply
 - Change Android Gradle Plugin Version back to 7.2.2
 - Click apply again
+
+Notes:
+- The backend server is private for the time being. Once it's in a reasonably good and secure state, it will be made public just like this client.
+- The iOS client can be found here: https://github.com/mrbfrench/FHSNewsIOS_remote
+- The web client can be found here: TBD
