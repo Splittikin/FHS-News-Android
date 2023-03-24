@@ -63,10 +63,11 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                             returnData.article.articleThumbnail = reader.nextString()
                         }
                         "postedTime" -> {
-                            returnData.article.postedTime = Date(reader.nextString().toLong())
+                            returnData.article.postedTime =
+                                Date(reader.nextString().toLong() * 1000)
                         }
                         "timeUntil" -> {
-                            returnData.article.timeUntil = Date(reader.nextString().toLong())
+                            returnData.article.timeUntil = Date(reader.nextString().toLong() * 1000)
                         }
                         "topperText" -> {
                             returnData.article.topperText = reader.nextString()
@@ -108,7 +109,7 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
 
                     when (fieldName) {
                         "time" -> {
-                            returnData.weatherData.time = Date(reader.nextString().toLong())
+                            returnData.weatherData.time = Date(reader.nextString().toLong() * 1000)
                         }
                         "current_temp" -> {
                             returnData.weatherData.current_temp = reader.nextInt().toString() + "°F"
@@ -154,6 +155,47 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                                 returnData.alert.links[reader.nextName()] = reader.nextString()
                             }
                             reader.endObject()
+                        }
+                    }
+                }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
+            }
+            "LunchData" -> {
+                var returnData = FeedData(
+                    LunchData(Date(0))
+                )
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
+
+                    when (fieldName) {
+                        "time" -> {
+                            returnData.lunchData.time = Date(reader.nextInt().toLong() * 1000)
+                        }
+                        "entree1" -> {
+                            returnData.lunchData.entree1 = reader.nextString()
+                        }
+                        "entree2" -> {
+                            returnData.lunchData.entree2 = reader.nextString()
+                        }
+                        "vegetable1" -> {
+                            returnData.lunchData.vegetable1 = reader.nextString()
+                        }
+                        "vegetable2" -> {
+                            returnData.lunchData.vegetable2 = reader.nextString()
+                        }
+                        "grain1" -> {
+                            returnData.lunchData.grain1 = reader.nextString()
+                        }
+                        "grain2" -> {
+                            returnData.lunchData.grain2 = reader.nextString()
+                        }
+                        "fruit1" -> {
+                            returnData.lunchData.fruit1 = reader.nextString()
+                        }
+                        "fruit2" -> {
+                            returnData.lunchData.fruit2 = reader.nextString()
                         }
                     }
                 }

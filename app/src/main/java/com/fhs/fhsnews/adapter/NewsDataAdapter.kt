@@ -19,14 +19,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fhs.fhsnews.EventsViewFragmentDirections
 import com.fhs.fhsnews.NewsScrollerFragmentDirections
 import com.fhs.fhsnews.R
-import com.fhs.fhsnews.databinding.CardAlertBinding
-import com.fhs.fhsnews.databinding.CardClubBinding
-import com.fhs.fhsnews.databinding.CardNewsBinding
-import com.fhs.fhsnews.databinding.CardWeatherBinding
-import com.fhs.fhsnews.model.Alert
-import com.fhs.fhsnews.model.Article
-import com.fhs.fhsnews.model.FeedData
-import com.fhs.fhsnews.model.WeatherData
+import com.fhs.fhsnews.databinding.*
+import com.fhs.fhsnews.model.*
 
 // Adapter to find the correct card type to use for an item and inflate it
 
@@ -101,6 +95,13 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
         }
     }
 
+    class CardLunchViewHolder(private var binding: CardLunchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(lunchData: LunchData) {
+            binding.lunchData = lunchData
+        }
+    }
+
     companion object DiffCallback : DiffUtil.ItemCallback<FeedData>() {
         override fun areItemsTheSame(oldItem: FeedData, newItem: FeedData): Boolean {
             return when (newItem.itemType) {
@@ -112,6 +113,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
                 }
                 "Alert" -> {
                     oldItem.alert.text == newItem.alert.text
+                }
+                "LunchData" -> {
+                    oldItem.lunchData.time == newItem.lunchData.time
                 }
                 else -> {
                     false
@@ -129,6 +133,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
                 }
                 "Alert" -> {
                     oldItem.alert.text == newItem.alert.text
+                }
+                "LunchData" -> {
+                    oldItem.lunchData.time == newItem.lunchData.time
                 }
                 else -> {
                     false
@@ -160,6 +167,11 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
                     CardAlertBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 )
             }
+            4 -> {
+                CardLunchViewHolder(
+                    CardLunchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                )
+            }
             else -> {
                 CardNewsViewHolder(
                     CardNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -184,6 +196,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
             "Alert" -> {
                 3 // Alert
             }
+            "LunchData" -> {
+                4 // Lunch Menu Data
+            }
             else -> {
                 -1 // I Don't Know What This Thing Is
             }
@@ -206,6 +221,10 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
             3 -> {
                 Log.d(TAG, "onBindViewHolder: binding alert $thisItem")
                 (holder as CardAlertViewHolder).bind(thisItem.alert)
+            }
+            4 -> {
+                Log.d(TAG, "onBindViewHolder: binding lunchData $thisItem")
+                (holder as CardLunchViewHolder).bind(thisItem.lunchData)
             }
         }
     }
