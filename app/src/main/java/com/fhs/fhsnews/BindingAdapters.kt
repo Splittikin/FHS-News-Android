@@ -47,7 +47,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         val imgUri = imgUrl.toUri().buildUpon().scheme("http").build()
         imgView.load(imgUri) {
             placeholder(R.drawable.ic_baseline_download_24)
-            error(R.drawable.ic_baseline_broken_image_24)
+            error(R.drawable.ico_image_error)
             scale(Scale.FILL)
         }
     }
@@ -62,7 +62,7 @@ fun bindWeatherImage(imgView: ImageView, imgCode: String?) {
         Log.d(TAG, "bindImage: loading weather image with code $imgCode from $imgUri")
         imgView.load(imgUri) {
             placeholder(R.drawable.ic_baseline_download_24)
-            error(R.drawable.ic_baseline_broken_image_24)
+            error(R.drawable.ico_image_error)
             scale(Scale.FILL)
         }
     }

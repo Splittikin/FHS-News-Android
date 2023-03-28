@@ -42,7 +42,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/topperText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/topperText"
-                    tools:srcCompat="@drawable/club_ico" />
+                    tools:srcCompat="@drawable/ico_club" />
 
                 <TextView
                     android:id="@+id/topperText"
@@ -142,12 +142,11 @@
                     android:id="@+id/articleThumbnail"
                     android:layout_width="0dp"
                     android:layout_height="194dp"
-                    android:layout_marginTop="8dp"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{article.articleThumbnail}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/topperText"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/img_ocean" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
