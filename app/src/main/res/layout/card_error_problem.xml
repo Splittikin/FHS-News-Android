@@ -2,8 +2,11 @@
 <!--
 	Used when something has gone wrong that affects the functionality of the app.
 	Such as the API failing to read a necessary file, or when the API encounters an error regarding
-	your request that it has no real way to work around, or the API not responding at all (despite
+	your request that it has no real way to work around, or if the API cannot be reached (despite
 	having an internet connection.)
+
+	The three errors in order of least important to most important are:
+	Unknown, Warning, Problem
 -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

@@ -2,7 +2,11 @@
 <!--
 	Used when the API returns a card that the app doesn't know.
 	Such as when the user hasn't updated the app in a while and the API sends objects that the most
-	recent version would have, but this particular user does not.
+	recent version would have, but this particular user does not. Or, if the API sends a card without
+	specifying it's itemType (which should never happen, but just in case it does somehow.)
+
+	The three errors in order of least important to most important are:
+	Unknown, Warning, Problem
 -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

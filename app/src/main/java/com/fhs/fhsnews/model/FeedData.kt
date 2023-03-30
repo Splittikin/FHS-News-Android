@@ -32,7 +32,8 @@ data class FeedData(
     ),
     var weatherData: WeatherData = WeatherData(Date(-1), "-1", "", ""),
     var alert: Alert = Alert("", "", ""),
-    var lunchData: LunchData = LunchData(Date(0))
+    var lunchData: LunchData = LunchData(Date(0)),
+    var error: Error = Error(ErrorType.UNKNOWN, "", "")
 ) {
     constructor(inArticle: Article) : this(itemType = "Article", article = inArticle)
     constructor(inClub: Club) : this(itemType = "Club", club = inClub)
@@ -40,15 +41,17 @@ data class FeedData(
         itemType = "WeatherData",
         weatherData = inWeatherData
     )
-
     constructor(inAlert: Alert) : this(
         itemType = "Alert",
         alert = inAlert
     )
-
     constructor(inLunchData: LunchData) : this(
         itemType = "LunchData",
         lunchData = inLunchData
+    )
+    constructor(inError: Error) :this(
+        itemType = "Error",
+        error = inError
     )
 }
 

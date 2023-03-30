@@ -21,35 +21,25 @@ private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
 // Thingy that converts the date strings from the json files to proper java.util.Date objects
-var dateDeser =
-    JsonDeserializer { jSon: JsonElement?, _: Type?, _: JsonDeserializationContext? ->
-        if (jSon == null) null else Date(
-            jSon.asLong
-        )
-    }
+var dateDeser = JsonDeserializer { jSon: JsonElement?, _: Type?, _: JsonDeserializationContext? ->
+    if (jSon == null) null else Date(
+        jSon.asLong
+    )
+}
 
-class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
+class HomeFeedDataJsonAdapter() : TypeAdapter<FeedData>() {
     override fun write(out: JsonWriter?, value: FeedData?) {
         // burh
     }
 
     override fun read(reader: JsonReader): FeedData {
         Log.d(TAG, "read: got feed data ${reader.beginObject()}, ${reader.nextName()}")
+        Log.d(TAG, "read: reader is ")
         when (reader.nextString()) {
             "Article" -> {
                 var returnData = FeedData(
                     Article(
-                        -1,
-                        "",
-                        Date(-1),
-                        Date(-1),
-                        "",
-                        "",
-                        "",
-                        mutableListOf(),
-                        "Bruh",
-                        "",
-                        ""
+                        -1, "", Date(-1), Date(-1), "", "", "", mutableListOf(), "Bruh", "", ""
                     )
                 )
                 while (reader.peek() != JsonToken.END_OBJECT) {
@@ -203,37 +193,59 @@ class HomeFeedDataJsonAdapter : TypeAdapter<FeedData>() {
                 Log.d(TAG, "read: final data is $returnData")
                 return returnData
             }
+            "ServerError" -> {
+                var returnData = FeedData(
+                    Error(ErrorType.PROBLEM, "", "")
+                )
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
+
+                    when (fieldName) {
+                        "details" -> {
+                            returnData.error.description = reader.nextString()
+                        }
+                    }
+                }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
+            }
+            "ClientError" -> {
+                var returnData = FeedData(
+                    Error(ErrorType.WARNING, "", "")
+                )
+                while (reader.peek() != JsonToken.END_OBJECT) {
+                    var fieldName = reader.nextName()
+
+                    when (fieldName) {
+                        "details" -> {
+                            returnData.error.description = reader.nextString()
+                        }
+                    }
+                }
+                reader.endObject()
+                Log.d(TAG, "read: final data is $returnData")
+                return returnData
+            }
             else -> {
                 return FeedData(
-                    Article(
-                        -1,
-                        "",
-                        Date(-1),
-                        Date(-1),
-                        "",
-                        "",
-                        "",
-                        mutableListOf(),
-                        "Bruh Moment",
-                        "",
-                        "A Bruh Moment has occurred."
+                    Error(
+                        ErrorType.WARNING, "", "API returned an object that we can't identify."
                     )
                 )
+                // TODO: Set attribute text to the ENTIRE json as a string. If successful, change errorType to UNKNOWN
             }
         }
     }
 }
 
-var gson: Gson = GsonBuilder()
-    .registerTypeAdapter(Date::class.java, dateDeser)
-    .registerTypeAdapter(FeedData::class.java, HomeFeedDataJsonAdapter())
-    .create()
+var gson: Gson = GsonBuilder().registerTypeAdapter(Date::class.java, dateDeser)
+    .registerTypeAdapter(FeedData::class.java, HomeFeedDataJsonAdapter()).create()
 
 // Retrofit
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create(gson))
-    .baseUrl(BASE_URL)
-    .build()
+private val retrofit =
+    Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).baseUrl(BASE_URL)
+        .build()
 
 interface FHSNewsApiService {
     // Called when opening or refreshing the home feed
@@ -259,8 +271,7 @@ interface FHSNewsApiService {
     // Called when selecting a date in the Events tab
     @GET("api/search_date")
     suspend fun searchArticlesDate(
-        @Query("range_start") rangeStart: Long,
-        @Query("range_end") rangeEnd: Long
+        @Query("range_start") rangeStart: Long, @Query("range_end") rangeEnd: Long
     ): List<FeedData>
 }
 
