@@ -10,7 +10,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fhs.fhsnews.adapter.SearchDataAdapter
+import com.fhs.fhsnews.adapter.FeedDataAdapter
 import com.fhs.fhsnews.databinding.FragmentSearchMenuBinding
 
 private var _binding: FragmentSearchMenuBinding? = null
@@ -28,7 +28,7 @@ class FragmentSearchMenu : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		val recyclerView = binding.searchResultsRecycler
-		recyclerView.adapter = SearchDataAdapter("")
+		recyclerView.adapter = FeedDataAdapter()
 		recyclerView.layoutManager = LinearLayoutManager(context)
 		(activity as AppCompatActivity).supportActionBar?.title = resources.getString(R.string.title_search)
 
@@ -37,9 +37,9 @@ class FragmentSearchMenu : Fragment() {
 			override fun onQueryTextSubmit(query: String?): Boolean {
 				Log.d(TAG, "onQueryTextSubmit: search for \"$query\"")
 				if (query != null) {
-					recyclerView.adapter = SearchDataAdapter(query)
+					TODO()
 				} else {
-					recyclerView.adapter = SearchDataAdapter("")
+					TODO()
 				}
 				return false
 			}

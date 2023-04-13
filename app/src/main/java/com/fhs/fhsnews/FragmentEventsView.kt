@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fhs.fhsnews.adapter.NewsDataAdapter
+import com.fhs.fhsnews.adapter.FeedDataAdapter
 import com.fhs.fhsnews.databinding.FragmentEventsViewBinding
 import com.fhs.fhsnews.overview.OverviewViewModel
 import java.text.SimpleDateFormat
@@ -29,7 +29,7 @@ class FragmentEventsView : Fragment() {
 
 		binding.lifecycleOwner = this
 		binding.viewModel = viewModel
-		binding.eventsRecycler.adapter = NewsDataAdapter()
+		binding.eventsRecycler.adapter = FeedDataAdapter()
 		binding.eventsRecycler.layoutManager = LinearLayoutManager(context)
 
 		(activity as AppCompatActivity).supportActionBar?.title =

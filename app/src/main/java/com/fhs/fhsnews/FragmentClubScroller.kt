@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.fhs.fhsnews.adapter.ClubDataAdapter
+import com.fhs.fhsnews.adapter.FeedDataAdapter
 import com.fhs.fhsnews.databinding.FragmentClubsScrollerBinding
 import com.fhs.fhsnews.overview.OverviewViewModel
 
@@ -25,7 +25,7 @@ class FragmentClubScroller : Fragment() {
 
 		binding.lifecycleOwner = this
 		binding.viewModel = viewModel
-		binding.clubRecycler.adapter = ClubDataAdapter()
+		binding.clubRecycler.adapter = FeedDataAdapter()
 		viewModel.getClubsClubFeed()
 
 		return binding.root

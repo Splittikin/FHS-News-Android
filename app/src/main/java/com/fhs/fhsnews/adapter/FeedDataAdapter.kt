@@ -1,5 +1,6 @@
 package com.fhs.fhsnews.adapter
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -16,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fhs.fhsnews.FragmentClubScrollerDirections
 import com.fhs.fhsnews.FragmentEventsViewDirections
 import com.fhs.fhsnews.FragmentNewsScrollerDirections
 import com.fhs.fhsnews.R
@@ -24,7 +26,7 @@ import com.fhs.fhsnews.model.*
 
 // Adapter to find the correct card type to use for an item and inflate it
 
-class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallback) {
+class FeedDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallback) {
 
 	// TODO: Filter by tag
 
@@ -57,6 +59,22 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 						error("Can't figure out which directions to use")
 					}
 				}
+				binding.root.findNavController().navigate(action)
+			}
+			binding.executePendingBindings()
+		}
+	}
+
+	class CardClubViewHolder(private var binding: CardClubBinding) :
+		RecyclerView.ViewHolder(binding.root) {
+		fun bind(club: Club) {
+			binding.club = club
+			binding.clubCardConstraintLayout.setOnClickListener {
+				Log.d(ContentValues.TAG, "onBindViewbinding: club click")
+				val action =
+					FragmentClubScrollerDirections.actionClubScrollerFragmentToOpenClubFragment(
+						clubId = club.clubId
+					)
 				binding.root.findNavController().navigate(action)
 			}
 			binding.executePendingBindings()
@@ -130,6 +148,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 				"Article" -> {
 					oldItem.article.articleId == newItem.article.articleId
 				}
+				"Club" -> {
+					oldItem.club.clubId == newItem.club.clubId
+				}
 				"WeatherData" -> {
 					oldItem.weatherData.time == newItem.weatherData.time
 				}
@@ -149,6 +170,9 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 			return when (newItem.itemType) {
 				"Article" -> {
 					oldItem.article.text == newItem.article.text
+				}
+				"Club" -> {
+					oldItem.club.clubText == newItem.club.clubText
 				}
 				"WeatherData" -> {
 					oldItem.weatherData.time == newItem.weatherData.time
@@ -174,7 +198,7 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 				)
 			}
 			1 -> {
-				ClubDataAdapter.CardClubViewHolder(
+				CardClubViewHolder(
 					CardClubBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 				)
 			}
@@ -239,6 +263,10 @@ class NewsDataAdapter : ListAdapter<FeedData, RecyclerView.ViewHolder>(DiffCallb
 			0 -> {
 				Log.d(TAG, "onBindViewHolder: binding article $thisItem")
 				(holder as CardNewsViewHolder).bind(thisItem.article)
+			}
+			1 -> {
+				Log.d(TAG, "onBindViewHolder: binding club $thisItem")
+				(holder as CardClubViewHolder).bind(thisItem.club)
 			}
 			2 -> {
 				Log.d(TAG, "onBindViewHolder: binding weather $thisItem")

@@ -32,7 +32,6 @@ var feedDataDeser = JsonDeserializer { json, _, _ ->
 			for (tag in jsonObject.get("tags").asJsonArray) {
 				tagsList.add(tag.asString)
 			}
-
 			return@JsonDeserializer FeedData(
 				Article(
 					jsonObject.get("articleId").asInt,
@@ -48,6 +47,23 @@ var feedDataDeser = JsonDeserializer { json, _, _ ->
 					jsonObject.get("text").asString
 				)
 			)
+		}
+		"Club" -> {
+			var tagsList: MutableList<String> = mutableListOf()
+			for (tag in jsonObject.get("tags").asJsonArray) {
+				tagsList.add(tag.asString)
+			}
+			return@JsonDeserializer FeedData(
+				Club(
+					jsonObject.get("clubId").asInt,
+					jsonObject.get("clubThumbnail").asString,
+					tagsList,
+					jsonObject.get("clubName").asString,
+					jsonObject.get("clubSubtitle").asString,
+					jsonObject.get("clubText").asString
+				)
+			)
+
 		}
 		"WeatherData" -> {
 			return@JsonDeserializer FeedData(
@@ -140,7 +156,7 @@ interface FHSNewsApiService {
 
 	// Called when opening or refreshing the clubs feed
 	@GET("api/feedClubs")
-	suspend fun getClubs(): List<Club>
+	suspend fun getClubs(): List<FeedData>
 
 	// Called when clicking on an article club
 	@GET("api/article/{id}")
