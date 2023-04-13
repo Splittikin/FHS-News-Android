@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/home"
-        android:icon="@drawable/ico_home"
-        android:title="@string/home_tab" />
-    <item
-        android:id="@+id/clubs"
-        android:icon="@drawable/ico_club"
-        android:title="@string/clubs_tab" />
-    <item
-        android:id="@+id/events"
-        android:icon="@drawable/ico_events"
-        android:title="@string/events_tab" />
-    <item
-        android:id="@+id/search"
-        android:icon="@drawable/ico_search"
-        android:title="@string/search_tab" />
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ico_settings"
-        android:title="@string/settings_tab" />
+	<item
+		android:id="@+id/home"
+		android:icon="@drawable/ico_home"
+		android:title="@string/home_tab" />
+	<item
+		android:id="@+id/clubs"
+		android:icon="@drawable/ico_club"
+		android:title="@string/clubs_tab" />
+	<item
+		android:id="@+id/events"
+		android:icon="@drawable/ico_events"
+		android:title="@string/events_tab" />
+	<item
+		android:id="@+id/search"
+		android:icon="@drawable/ico_search"
+		android:title="@string/search_tab" />
+	<item
+		android:id="@+id/settings"
+		android:icon="@drawable/ico_settings"
+		android:title="@string/settings_tab" />
 </menu>

@@ -21,86 +21,86 @@ import com.fhs.fhsnews.overview.FHSNewsApiStatus
 // All of these List Data adapters do the same thing but with different types of objects and different card views
 @BindingAdapter("articleListData")
 fun bindArticlesRecyclerView(recyclerView: RecyclerView, data: List<FeedData>?) {
-    Log.d(TAG, "bindRecyclerView: updating list data with $data")
-    val adapter = recyclerView.adapter as NewsDataAdapter?
-    adapter?.submitList(data)
+	Log.d(TAG, "bindRecyclerView: updating list data with $data")
+	val adapter = recyclerView.adapter as NewsDataAdapter?
+	adapter?.submitList(data)
 }
 
 @BindingAdapter("eventsListData")
 fun bindEventsRecyclerView(recyclerView: RecyclerView, data: List<FeedData>?) {
-    Log.d(TAG, "bindRecyclerView: updating list data with $data")
-    val adapter = recyclerView.adapter as NewsDataAdapter?
-    adapter?.submitList(data)
+	Log.d(TAG, "bindRecyclerView: updating list data with $data")
+	val adapter = recyclerView.adapter as NewsDataAdapter?
+	adapter?.submitList(data)
 }
 
 @BindingAdapter("clubsListData")
 fun bindClubsRecyclerView(recyclerView: RecyclerView, data: List<Club>?) {
-    Log.d(TAG, "bindRecyclerView: updating list data with $data")
-    val adapter = recyclerView.adapter as ClubDataAdapter?
-    adapter?.submitList(data)
+	Log.d(TAG, "bindRecyclerView: updating list data with $data")
+	val adapter = recyclerView.adapter as ClubDataAdapter?
+	adapter?.submitList(data)
 }
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
-    Log.d(TAG, "bindImage: loading image at $imgUrl")
-    imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("http").build()
-        imgView.load(imgUri) {
-            placeholder(R.drawable.ic_baseline_download_24)
-            error(R.drawable.ico_image_error)
-            scale(Scale.FILL)
-        }
-    }
+	Log.d(TAG, "bindImage: loading image at $imgUrl")
+	imgUrl?.let {
+		val imgUri = imgUrl.toUri().buildUpon().scheme("http").build()
+		imgView.load(imgUri) {
+			placeholder(R.drawable.ic_baseline_download_24)
+			error(R.drawable.ico_image_error)
+			scale(Scale.FILL)
+		}
+	}
 }
 
 @BindingAdapter("weatherImage")
 fun bindWeatherImage(imgView: ImageView, imgCode: String?) {
-    imgCode?.let {
-        val imgUri = "https://www.weatherbit.io/static/img/icons/$imgCode.png".toUri().buildUpon()
-            .scheme("https").build()
+	imgCode?.let {
+		val imgUri = "https://www.weatherbit.io/static/img/icons/$imgCode.png".toUri().buildUpon()
+			.scheme("https").build()
 
-        Log.d(TAG, "bindImage: loading weather image with code $imgCode from $imgUri")
-        imgView.load(imgUri) {
-            placeholder(R.drawable.ic_baseline_download_24)
-            error(R.drawable.ico_image_error)
-            scale(Scale.FILL)
-        }
-    }
+		Log.d(TAG, "bindImage: loading weather image with code $imgCode from $imgUri")
+		imgView.load(imgUri) {
+			placeholder(R.drawable.ic_baseline_download_24)
+			error(R.drawable.ico_image_error)
+			scale(Scale.FILL)
+		}
+	}
 }
 
 @BindingAdapter("FHSNewsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: FHSNewsApiStatus?) {
-    when (status) {
-        FHSNewsApiStatus.LOADING -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.ic_baseline_download_24)
-        }
-        FHSNewsApiStatus.ERROR -> {
-            statusImageView.visibility = View.GONE
-        }
-        FHSNewsApiStatus.DONE -> {
-            statusImageView.visibility = View.GONE
-        }
-        else -> {
-            statusImageView.visibility = View.GONE
-        }
-    }
+	when (status) {
+		FHSNewsApiStatus.LOADING -> {
+			statusImageView.visibility = View.VISIBLE
+			statusImageView.setImageResource(R.drawable.ic_baseline_download_24)
+		}
+		FHSNewsApiStatus.ERROR -> {
+			statusImageView.visibility = View.GONE
+		}
+		FHSNewsApiStatus.DONE -> {
+			statusImageView.visibility = View.GONE
+		}
+		else -> {
+			statusImageView.visibility = View.GONE
+		}
+	}
 }
 
 @BindingAdapter("FHSNewsApiStatus")
 fun bindProblem(problemTextView: TextView, problem: String) {
-    if (problem != "") {
-        problemTextView.visibility = View.VISIBLE
-        problemTextView.text = problem
-    }
+	if (problem != "") {
+		problemTextView.visibility = View.VISIBLE
+		problemTextView.text = problem
+	}
 }
 
 @BindingAdapter("alertCardBackgroundColor")
 fun bindAlertCardColor(colorCardView: CardView, color: String) {
-    colorCardView.setCardBackgroundColor(Color.parseColor(color))
+	colorCardView.setCardBackgroundColor(Color.parseColor(color))
 }
 
 @BindingAdapter("alertCardForegroundColor")
 fun bindAlertTextColor(colorTextView: TextView, color: String) {
-    colorTextView.setTextColor(Color.parseColor(color))
+	colorTextView.setTextColor(Color.parseColor(color))
 }

@@ -4,9 +4,6 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.fhs.fhsnews.model.*
 import com.google.gson.*
-import com.google.gson.stream.JsonReader
-import com.google.gson.stream.JsonToken
-import com.google.gson.stream.JsonWriter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -20,261 +17,146 @@ private const val BASE_URL = "http://76.139.70.221:3000" // Actual server
 //private const val BASE_URL = "http://192.168.8.208:3000" // Actual server on own computer
 //private const val BASE_URL = "http://10.0.2.2:3000" // Android emulator
 
-// Thingy that converts the date strings from the json files to proper java.util.Date objects
 var dateDeser = JsonDeserializer { jSon: JsonElement?, _: Type?, _: JsonDeserializationContext? ->
-    if (jSon == null) null else Date(
-        jSon.asLong
-    )
+	if (jSon == null) null else Date(
+		jSon.asLong
+	)
 }
 
-class HomeFeedDataJsonAdapter() : TypeAdapter<FeedData>() {
-    override fun write(out: JsonWriter?, value: FeedData?) {
-        // burh
-    }
+var feedDataDeser = JsonDeserializer { json, _, _ ->
+	val jsonObject = json.asJsonObject
+	Log.d(TAG, "feedDataDeser: ${jsonObject.get("itemType")}")
+	when (jsonObject.get("itemType").asString) {
+		"Article" -> {
+			var tagsList: MutableList<String> = mutableListOf()
+			for (tag in jsonObject.get("tags").asJsonArray) {
+				tagsList.add(tag.asString)
+			}
 
-    override fun read(reader: JsonReader): FeedData {
-        Log.d(TAG, "read: got feed data ${reader.beginObject()}, ${reader.nextName()}")
-        Log.d(TAG, "read: reader is ")
-        when (reader.nextString()) {
-            "Article" -> {
-                var returnData = FeedData(
-                    Article(
-                        -1, "", Date(-1), Date(-1), "", "", "", mutableListOf(), "Bruh", "", ""
-                    )
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "articleId" -> {
-                            returnData.article.articleId = reader.nextInt()
-                        }
-                        "articleThumbnail" -> {
-                            returnData.article.articleThumbnail = reader.nextString()
-                        }
-                        "postedTime" -> {
-                            returnData.article.postedTime =
-                                Date(reader.nextString().toLong() * 1000)
-                        }
-                        "timeUntil" -> {
-                            returnData.article.timeUntil = Date(reader.nextString().toLong() * 1000)
-                        }
-                        "topperText" -> {
-                            returnData.article.topperText = reader.nextString()
-                        }
-                        "topperIcon" -> {
-                            returnData.article.topperIcon = reader.nextString()
-                        }
-                        "author" -> {
-                            returnData.article.author = reader.nextString()
-                        }
-                        "tags" -> {
-                            reader.beginArray()
-                            while (reader.peek() != JsonToken.END_ARRAY) {
-                                returnData.article.tags.add(reader.nextString())
-                            }
-                            reader.endArray()
-                        }
-                        "headline" -> {
-                            returnData.article.headline = reader.nextString()
-                        }
-                        "subtitle" -> {
-                            returnData.article.subtitle = reader.nextString()
-                        }
-                        "text" -> {
-                            returnData.article.text = reader.nextString()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            "WeatherData" -> {
-                var returnData = FeedData(
-                    WeatherData(Date(-1), "-1", "", "Bruh")
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "time" -> {
-                            returnData.weatherData.time = Date(reader.nextString().toLong() * 1000)
-                        }
-                        "current_temp" -> {
-                            returnData.weatherData.current_temp = reader.nextInt().toString() + "°F"
-                        }
-                        "weather_icon_id" -> {
-                            returnData.weatherData.weather_icon_id = reader.nextString()
-                        }
-                        "weather_description" -> {
-                            returnData.weatherData.weather_description = reader.nextString()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            "Alert" -> {
-                var returnData = FeedData(
-                    Alert("", "", "")
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "text" -> {
-                            returnData.alert.text = reader.nextString()
-                        }
-                        "background_color" -> {
-                            returnData.alert.background_color = reader.nextString()
-                        }
-                        "foreground_color" -> {
-                            returnData.alert.foreground_color = reader.nextString()
-                        }
-                        "night_background_color" -> {
-                            returnData.alert.night_background_color = reader.nextString()
-                        }
-                        "night_foreground_color" -> {
-                            returnData.alert.night_foreground_color = reader.nextString()
-                        }
-                        "links" -> {
-                            reader.beginObject()
-                            while (reader.peek() != JsonToken.END_OBJECT) {
-                                returnData.alert.links[reader.nextName()] = reader.nextString()
-                            }
-                            reader.endObject()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            "LunchData" -> {
-                var returnData = FeedData(
-                    LunchData(Date(0))
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "time" -> {
-                            returnData.lunchData.time = Date(reader.nextInt().toLong() * 1000)
-                        }
-                        "entree1" -> {
-                            returnData.lunchData.entree1 = reader.nextString()
-                        }
-                        "entree2" -> {
-                            returnData.lunchData.entree2 = reader.nextString()
-                        }
-                        "vegetable1" -> {
-                            returnData.lunchData.vegetable1 = reader.nextString()
-                        }
-                        "vegetable2" -> {
-                            returnData.lunchData.vegetable2 = reader.nextString()
-                        }
-                        "grain1" -> {
-                            returnData.lunchData.grain1 = reader.nextString()
-                        }
-                        "grain2" -> {
-                            returnData.lunchData.grain2 = reader.nextString()
-                        }
-                        "fruit1" -> {
-                            returnData.lunchData.fruit1 = reader.nextString()
-                        }
-                        "fruit2" -> {
-                            returnData.lunchData.fruit2 = reader.nextString()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            "ServerError" -> {
-                var returnData = FeedData(
-                    Error(ErrorType.PROBLEM, "", "")
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "details" -> {
-                            returnData.error.description = reader.nextString()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            "ClientError" -> {
-                var returnData = FeedData(
-                    Error(ErrorType.WARNING, "", "")
-                )
-                while (reader.peek() != JsonToken.END_OBJECT) {
-                    var fieldName = reader.nextName()
-
-                    when (fieldName) {
-                        "details" -> {
-                            returnData.error.description = reader.nextString()
-                        }
-                    }
-                }
-                reader.endObject()
-                Log.d(TAG, "read: final data is $returnData")
-                return returnData
-            }
-            else -> {
-                return FeedData(
-                    Error(
-                        ErrorType.WARNING, "", "API returned an object that we can't identify."
-                    )
-                )
-                // TODO: Set attribute text to the ENTIRE json as a string. If successful, change errorType to UNKNOWN
-            }
-        }
-    }
+			return@JsonDeserializer FeedData(
+				Article(
+					jsonObject.get("articleId").asInt,
+					jsonObject.get("articleThumbnail").asString,
+					Date(jsonObject.get("postedTime").asLong * 1000),
+					Date(0),
+					jsonObject.get("topperText").asString,
+					jsonObject.get("topperIcon").asString,
+					jsonObject.get("author").asString,
+					tagsList,
+					jsonObject.get("headline").asString,
+					jsonObject.get("subtitle").asString,
+					jsonObject.get("text").asString
+				)
+			)
+		}
+		"WeatherData" -> {
+			return@JsonDeserializer FeedData(
+				WeatherData(
+					Date(jsonObject.get("time").asLong * 1000),
+					jsonObject.get("current_temp").asString,
+					jsonObject.get("weather_icon_id").asString,
+					jsonObject.get("weather_description").asString
+				)
+			)
+		}
+		"Alert" -> {
+			var linksList: MutableMap<String, String> = mutableMapOf()
+			if (jsonObject.has("links")) { // TODO: Make this check if the links list has entries in addition to checking if it exists
+				var linksJson = jsonObject.get("links").asJsonObject
+				Log.d(TAG, "feedDataDeser: ${linksJson.entrySet()}")
+				for (item in linksJson.entrySet()) {
+					linksList[item.key] = item.value.asString
+				}
+			}
+			return@JsonDeserializer FeedData(
+				Alert(
+					jsonObject.get("text").asString,
+					jsonObject.get("background_color").asString,
+					jsonObject.get("foreground_color").asString,
+					linksList
+				)
+			)
+		}
+		"LunchData" -> {
+			return@JsonDeserializer FeedData(
+				LunchData(
+					Date(jsonObject.get("time").asLong * 1000),
+					jsonObject.get("entree1").asString,
+					jsonObject.get("entree2").asString,
+					jsonObject.get("vegetable1").asString,
+					jsonObject.get("vegetable2").asString,
+					jsonObject.get("grain1").asString,
+					jsonObject.get("grain2").asString,
+					jsonObject.get("fruit1").asString,
+					jsonObject.get("fruit2").asString
+				)
+			)
+		}
+		"ServerError" -> {
+			return@JsonDeserializer FeedData(
+				Error(
+					ErrorType.PROBLEM,
+					"",
+					jsonObject.get("description").asString
+				)
+			)
+		}
+		"ClientError" -> {
+			return@JsonDeserializer FeedData(
+				Error(
+					ErrorType.WARNING,
+					"",
+					jsonObject.get("description").asString
+				)
+			)
+		}
+		else -> {
+			return@JsonDeserializer FeedData(
+				Error(
+					ErrorType.UNKNOWN,
+					jsonObject.asJsonObject.toString(),
+					"Couldn't identify this item! Is your FHS News version up to date?" // TODO: Unhardcode this
+				)
+			)
+		}
+	}
 }
 
-var gson: Gson = GsonBuilder().registerTypeAdapter(Date::class.java, dateDeser)
-    .registerTypeAdapter(FeedData::class.java, HomeFeedDataJsonAdapter()).create()
+var gson: Gson = GsonBuilder().registerTypeAdapter(FeedData::class.java, feedDataDeser).registerTypeAdapter(Date::class.java, dateDeser)
+	.create()
 
 // Retrofit
 private val retrofit =
-    Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).baseUrl(BASE_URL)
-        .build()
+	Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).baseUrl(BASE_URL)
+		.build()
 
 interface FHSNewsApiService {
-    // Called when opening or refreshing the home feed
-    @GET("api/home")
-    suspend fun getArticlesFromApi(
-        /* @Query("position") position: Int,
-        @Query("amount") amount: Int */
-        // SOON
-    ): List<FeedData>
+	// Called when opening or refreshing the home feed
+	@GET("api/home")
+	suspend fun getArticlesFromApi(
+		@Query("position") position: Int = 0,
+		@Query("quantity") quantity: Int = 10
+	): List<FeedData>
 
-    // Called when opening or refreshing the clubs feed
-    @GET("api/feedClubs")
-    suspend fun getClubs(): List<Club>
+	// Called when opening or refreshing the clubs feed
+	@GET("api/feedClubs")
+	suspend fun getClubs(): List<Club>
 
-    // Called when clicking on an article club
-    @GET("api/article/{id}")
-    suspend fun getArticle(@Path("id") articleId: Int): Article
+	// Called when clicking on an article club
+	@GET("api/article/{id}")
+	suspend fun getArticle(@Path("id") articleId: Int): Article
 
-    // Called when clicking on a club card
-    @GET("api/club/{id}")
-    suspend fun getClub(@Path("id") clubId: Int): Club
+	// Called when clicking on a club card
+	@GET("api/club/{id}")
+	suspend fun getClub(@Path("id") clubId: Int): Club
 
-    // Called when selecting a date in the Events tab
-    @GET("api/search_date")
-    suspend fun searchArticlesDate(
-        @Query("range_start") rangeStart: Long, @Query("range_end") rangeEnd: Long
-    ): List<FeedData>
+	// Called when selecting a date in the Events tab
+	@GET("api/search_date")
+	suspend fun searchArticlesDate(
+		@Query("range_start") rangeStart: Long, @Query("range_end") rangeEnd: Long
+	): List<FeedData>
 }
 
 object FHSNewsApi {
-    val retrofitService: FHSNewsApiService by lazy { retrofit.create(FHSNewsApiService::class.java) }
+	val retrofitService: FHSNewsApiService by lazy { retrofit.create(FHSNewsApiService::class.java) }
 }

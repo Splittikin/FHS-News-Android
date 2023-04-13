@@ -1,25 +1,26 @@
 <resources>
-    <string name="app_name">FHS News</string>
-    <string name="home_tab">Home</string>
-    <string name="clubs_tab">Clubs</string>
-    <string name="events_tab">Events</string>
-    <string name="search_tab">Search</string>
-    <string name="settings_tab">Settings</string>
+	<string name="app_name">FHS News</string>
+	<string name="title_clubs">FHS Clubs</string>
+	<string name="title_events">FHS Events</string>
+	<string name="lunch_card_title">FHS Diner</string>
 
-    <string name="title_home">FHS News</string>
-    <string name="title_clubs">FHS Clubs</string>
-    <string name="title_events">FHS Events</string>
-    <string name="title_search">Search</string>
-    <string name="title_settings">Settings</string>
+	<string name="home_tab">Home</string>
+	<string name="clubs_tab">Clubs</string>
+	<string name="events_tab">Events</string>
+	<string name="search_tab">Search</string>
+	<string name="settings_tab">Settings</string>
 
-    <string name="setting_app_theme_name">App Theme</string>
-    <string name="setting_app_theme_systemdefault">System Default</string>
-    <string name="setting_app_theme_light">Light</string>
-    <string name="setting_app_theme_dark">Dark</string>
+	<string name="title_home">@string/app_name</string>
+	<string name="title_search">Search</string>
+	<string name="title_settings">Settings</string>
 
-    <string name="lunch_card_title">FHS Diner</string>
-    <string name="lunch_fruit_title">Fruit</string>
-    <string name="lunch_grain_title">Grain</string>
-    <string name="lunch_entree_title">Entree</string>
-    <string name="lunch_vegetable_title">Vegetable</string>
+	<string name="setting_app_theme_name">App Theme</string>
+	<string name="setting_app_theme_systemdefault">System Default</string>
+	<string name="setting_app_theme_light">Light</string>
+	<string name="setting_app_theme_dark">Dark</string>
+
+	<string name="lunch_fruit_title">Fruit</string>
+	<string name="lunch_grain_title">Grain</string>
+	<string name="lunch_entree_title">Entree</string>
+	<string name="lunch_vegetable_title">Vegetable</string>
 </resources>

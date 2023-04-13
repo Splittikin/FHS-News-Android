@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+	<data>
 
-        <variable
-            name="viewModel"
-            type="com.fhs.fhsnews.overview.OverviewViewModel" />
-    </data>
+		<variable
+			name="viewModel"
+			type="com.fhs.fhsnews.overview.OverviewViewModel" />
+	</data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
 
-        <CalendarView
-            android:id="@+id/eventsDatePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+		<CalendarView
+			android:id="@+id/eventsDatePicker"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventsDatePicker"
-            app:layout_constraintVertical_bias="1.0">
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/eventsDatePicker"
+			app:layout_constraintVertical_bias="1.0">
 
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/events_view_status_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_download_24"
-                app:FHSNewsApiStatus="@{viewModel.status}" />
+			<pl.droidsonroids.gif.GifImageView
+				android:id="@+id/events_view_status_icon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/ic_baseline_download_24"
+				app:FHSNewsApiStatus="@{viewModel.status}" />
 
-            <TextView
-                android:id="@+id/events_view_error_message"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:visibility="invisible"
-                app:FHSNewsApiStatus="@{viewModel.problem}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+			<TextView
+				android:id="@+id/events_view_error_message"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:text="TextView"
+				android:textAlignment="center"
+				android:visibility="invisible"
+				app:FHSNewsApiStatus="@{viewModel.problem}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
 
-            <FrameLayout
-                android:id="@+id/frameLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+			<FrameLayout
+				android:id="@+id/frameLayout"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginBottom="8dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/eventsRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:eventsListData="@{viewModel.searchResults}" />
-            </FrameLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/eventsRecycler"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					app:eventsListData="@{viewModel.searchResults}" />
+			</FrameLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
