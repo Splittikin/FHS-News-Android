@@ -1,5 +1,5 @@
-# FHS-News
-News feed for FHS happenings
+# FHS-News-Android
+Android client for the news feed of FHS happenings
 
 Super duper WIP! Any part of the app can change at any time! Here be jank!
 
@@ -30,6 +30,7 @@ DO THIS:
 - Click apply again
 
 Notes:
-- The backend server is private for the time being. Once it's in a reasonably good and secure state, it will be made public just like this client.
-- The iOS client can be found here: https://github.com/mrbfrench/FHSNewsIOS_remote
-- The web client can be found here: TBD
+- The iOS client can be found [here](https://github.com/mrbfrench/FHSNewsIOS_remote).
+- The web client can be found [here](https://github.com/Acoop06/FHS-News-Web).
+- The backend API can be found [here](https://github.com/Splittikin/FHS-News-Api).
+- Documentation for the backend API can be found [here](https://splittikin.github.io/FHS-News-Docs/).
